@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Básico -->
     <title>mokakopa | portfolio de proyectos artísticos</title>
     <meta name="description" content="portfolio de proyectos artísticos de monica kopatschek: grabados, acuarelas, esculturas y performance. teatro de las plantas, bacanales, y otros cuentos.">
@@ -11,7 +11,7 @@
     <meta name="author" content="meowrhino.studio">
     <meta name="robots" content="index, follow">
     <meta name="language" content="Spanish">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://meowrhino.github.io/mokakopa/">
@@ -20,23 +20,20 @@
     <meta property="og:image" content="https://meowrhino.github.io/mokakopa/data/teatroPlantas/carasol/1.jpg">
     <meta property="og:locale" content="es_ES">
     <meta property="og:locale:alternate" content="en_US">
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://meowrhino.github.io/mokakopa/">
     <meta name="twitter:title" content="mokakopa | portfolio de proyectos artísticos">
     <meta name="twitter:description" content="portfolio de proyectos artísticos de monica kopatschek: grabados, acuarelas, esculturas y performance.">
     <meta name="twitter:image" content="https://meowrhino.github.io/mokakopa/data/teatroPlantas/carasol/1.jpg">
-    
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://meowrhino.github.io/mokakopa/">
-    
-    <!-- Favicon (opcional - añadir cuando tengas uno) -->
-    <!-- <link rel="icon" type="image/png" href="favicon.png"> -->
-    
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-    
+
     <!-- Structured Data / Schema.org -->
     <script type="application/ld+json">
     {
@@ -54,35 +51,39 @@
         "name": "meowrhino.studio",
         "url": "https://meowrhino.studio"
       },
-      "inLanguage": ["es", "en"]
+      "inLanguage": ["es", "en", "ca"]
     }
     </script>
 </head>
 <body>
-    
-    <!-- Nombre/Logo clickeable -->
-    <div id="site-name">mokakopa</div>
-    
-    <!-- About modal -->
-    <div id="about-modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="about-title">
-        <div id="about-content">
-            <button id="close-about" aria-label="cerrar modal">×</button>
-            <h2 id="about-title">sobre mokakopa</h2>
-            <p>información sobre el proyecto...</p>
+
+    <!-- Header: nombre + idiomas -->
+    <div id="site-header">
+        <div id="site-name">mokakopa</div>
+        <div id="language-selector">
+            <span class="active" data-lang="ES">ES</span>
+            <span data-lang="EN">EN</span>
+            <span data-lang="CAT">CAT</span>
         </div>
     </div>
-    
-    <!-- Menú lateral izquierdo -->
+
+    <!-- About overlay (velo) -->
+    <div id="about-overlay" class="hidden" role="dialog" aria-modal="true" aria-labelledby="about-title">
+        <div id="about-content">
+            <h2 id="about-title"></h2>
+            <p class="about-subtitle"></p>
+        </div>
+        <button id="close-about" aria-label="cerrar">×</button>
+    </div>
+
+    <!-- Menú de proyectos (abajo izquierda) -->
     <nav id="menu"></nav>
-    
-    <!-- Botón de idioma -->
-    <button id="language-toggle" aria-label="cambiar idioma">ES</button>
-    
+
     <!-- Contenedor de proyectos -->
     <main id="projects-container"></main>
-    
+
     <!-- Script principal -->
     <script type="module" src="js/main.js"></script>
-    
+
 </body>
 </html>

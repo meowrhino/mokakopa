@@ -25,129 +25,161 @@ body {
 }
 
 /* ============================================================================
-   NOMBRE DEL SITIO (ARRIBA IZQUIERDA)
+   HEADER: NOMBRE + IDIOMAS (ARRIBA IZQUIERDA)
    ============================================================================ */
-#site-name {
+#site-header {
     position: fixed;
     top: 20px;
     left: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#site-name {
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
-    z-index: 1000;
-    transition: color 0.3s ease;
+    transition: opacity 0.3s ease;
+    color: #000;
 }
 
 #site-name:hover {
-    color: #666;
+    opacity: 0.6;
+}
+
+/* Selector de idiomas debajo de mokakopa */
+#language-selector {
+    display: flex;
+    gap: 8px;
+    font-size: 13px;
+}
+
+#language-selector span {
+    cursor: pointer;
+    color: #000;
+    transition: opacity 0.3s ease;
+    font-weight: normal;
+}
+
+#language-selector span:hover {
+    opacity: 0.6;
+}
+
+#language-selector span.active {
+    font-weight: bold;
 }
 
 /* ============================================================================
-   ABOUT MODAL
+   ABOUT OVERLAY (VELO COMPLETO)
    ============================================================================ */
-#about-modal {
+#about-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(255, 255, 255, 0.92);
     z-index: 2000;
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#about-modal.hidden {
+#about-overlay.hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
 
 #about-content {
-    background-color: white;
-    padding: 40px;
-    max-width: 600px;
+    max-width: 560px;
+    padding: 60px 40px;
     position: relative;
-    border-radius: 8px;
+}
+
+#about-content h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+#about-content .about-subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+#about-content p {
+    margin-bottom: 16px;
+    line-height: 1.8;
+    font-size: 14px;
 }
 
 #close-about {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 32px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
     background: none;
     border: none;
     cursor: pointer;
-    color: #666;
+    color: #000;
+    z-index: 2001;
+    line-height: 1;
 }
 
 #close-about:hover {
-    color: #000;
+    color: #666;
 }
 
 /* ============================================================================
-   MENÚ LATERAL IZQUIERDO
+   MENÚ DE PROYECTOS (ABAJO IZQUIERDA, SIN BLUR, BLEND MODE)
    ============================================================================ */
 #menu {
     position: fixed;
     left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    bottom: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
     z-index: 1000;
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    border-radius: 8px;
+    mix-blend-mode: difference;
 }
 
 #menu a {
     text-decoration: none;
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
-    transition: color 0.3s ease, transform 0.2s ease;
-    /* Efecto blend mode como en investigacion 001 */
-    mix-blend-mode: difference;
+    transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
 #menu a:hover {
-    color: #ccc;
+    opacity: 0.6;
     transform: translateX(5px);
 }
 
-/* ============================================================================
-   BOTÓN DE IDIOMA (ARRIBA DERECHA)
-   ============================================================================ */
-#language-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 1000;
-    transition: opacity 0.3s ease;
-    background: none;
-    border: none;
-    color: inherit;
-    font-family: inherit;
+#menu a.active {
+    text-decoration: underline;
 }
 
-#language-toggle:hover {
-    opacity: 0.6;
+/* Subproyectos indentados */
+#menu .submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 12px;
 }
 
-#language-toggle:focus {
-    outline: 2px solid #666;
-    outline-offset: 4px;
+#menu .submenu a {
+    font-size: 12px;
+    font-weight: normal;
 }
 
 /* ============================================================================
@@ -176,9 +208,6 @@ body {
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    /* Padding para centrar primera y última imagen */
-    padding-left: max(20px, calc(50dvw - 40dvh));
-    padding-right: max(20px, calc(50dvw - 40dvh));
     gap: 20px;
 }
 
@@ -211,22 +240,24 @@ body {
 .gallery-text {
     flex-shrink: 0;
     width: 80dvw;
-    max-width: 600px;
+    max-width: 560px;
     padding: 40px;
     scroll-snap-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 100%;
 }
 
 .gallery-text h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
+    font-size: 18px;
+    margin-bottom: 16px;
+    font-weight: bold;
 }
 
 .gallery-text p {
-    margin-bottom: 15px;
-    line-height: 1.8;
+    margin-bottom: 12px;
+    line-height: 1.7;
 }
 
 .gallery-text a {
@@ -242,40 +273,43 @@ body {
    RESPONSIVE - MÓVIL
    ============================================================================ */
 @media (max-width: 768px) {
+    #site-header {
+        top: 15px;
+        left: 15px;
+    }
+
     #site-name {
         font-size: 18px;
-        top: 15px;
-        left: 15px;
     }
-    
+
+    #language-selector {
+        font-size: 11px;
+    }
+
     #menu {
         left: 15px;
-        font-size: 14px;
-        gap: 8px;
+        bottom: 15px;
     }
-    
-    #language-toggle {
-        top: 15px;
-        right: 15px;
-        font-size: 14px;
+
+    #menu a {
+        font-size: 12px;
     }
-    
-    .gallery {
-        padding-left: max(15px, calc(50dvw - 35dvh));
-        padding-right: max(15px, calc(50dvw - 35dvh));
-    }
-    
+
     .gallery-item img {
         height: 70dvh;
     }
-    
+
     .gallery-text {
         width: 90dvw;
         padding: 20px;
     }
-    
+
     .gallery-text h2 {
-        font-size: 24px;
+        font-size: 16px;
+    }
+
+    #about-content {
+        padding: 40px 20px;
     }
 }
 
@@ -283,5 +317,7 @@ body {
    UTILIDADES
    ============================================================================ */
 .hidden {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
