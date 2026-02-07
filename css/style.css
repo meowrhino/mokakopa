@@ -1,0 +1,271 @@
+/* ============================================================================
+   STYLE.CSS - mokakopa
+   ============================================================================ */
+
+/* ============================================================================
+   RESET Y CONFIGURACIÓN GLOBAL
+   ============================================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: #ffffff;
+    color: #000000;
+    overflow-x: hidden;
+}
+
+/* ============================================================================
+   NOMBRE DEL SITIO (ARRIBA IZQUIERDA)
+   ============================================================================ */
+#site-name {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+    transition: color 0.3s ease;
+}
+
+#site-name:hover {
+    color: #666;
+}
+
+/* ============================================================================
+   ABOUT MODAL
+   ============================================================================ */
+#about-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+#about-modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#about-content {
+    background-color: white;
+    padding: 40px;
+    max-width: 600px;
+    position: relative;
+    border-radius: 8px;
+}
+
+#close-about {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+}
+
+#close-about:hover {
+    color: #000;
+}
+
+/* ============================================================================
+   MENÚ LATERAL IZQUIERDO
+   ============================================================================ */
+#menu {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+#menu a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    /* Efecto blend mode como en investigacion 001 */
+    mix-blend-mode: difference;
+}
+
+#menu a:hover {
+    color: #666;
+}
+
+/* ============================================================================
+   BOTÓN DE IDIOMA (ARRIBA DERECHA)
+   ============================================================================ */
+#language-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+#language-toggle:hover {
+    opacity: 0.6;
+}
+
+/* ============================================================================
+   CONTENEDOR DE PROYECTOS
+   ============================================================================ */
+#projects-container {
+    width: 100%;
+}
+
+/* Cada proyecto ocupa 100dvh y 100dvw */
+.project {
+    width: 100dvw;
+    height: 100dvh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ============================================================================
+   GALERÍA HORIZONTAL SCROLLEABLE
+   ============================================================================ */
+.gallery {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    /* Padding para centrar primera y última imagen */
+    padding-left: calc(50dvw - 40dvh);
+    padding-right: calc(50dvw - 40dvh);
+    gap: 20px;
+}
+
+/* Ocultar scrollbar pero mantener funcionalidad */
+.gallery::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* ============================================================================
+   ITEMS DE LA GALERÍA (IMÁGENES Y TEXTO)
+   ============================================================================ */
+.gallery-item {
+    flex-shrink: 0;
+    scroll-snap-align: center;
+}
+
+.gallery-item img {
+    height: 80dvh;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Texto al final de la galería */
+.gallery-text {
+    flex-shrink: 0;
+    width: 80dvw;
+    max-width: 600px;
+    padding: 40px;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gallery-text h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.gallery-text p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.gallery-text a {
+    color: #000;
+    text-decoration: underline;
+}
+
+.gallery-text a:hover {
+    color: #666;
+}
+
+/* ============================================================================
+   RESPONSIVE - MÓVIL
+   ============================================================================ */
+@media (max-width: 768px) {
+    #site-name {
+        font-size: 18px;
+        top: 15px;
+        left: 15px;
+    }
+    
+    #menu {
+        left: 15px;
+        font-size: 14px;
+        gap: 8px;
+    }
+    
+    #language-toggle {
+        top: 15px;
+        right: 15px;
+        font-size: 14px;
+    }
+    
+    .gallery {
+        padding-left: calc(50dvw - 35dvh);
+        padding-right: calc(50dvw - 35dvh);
+    }
+    
+    .gallery-item img {
+        height: 70dvh;
+    }
+    
+    .gallery-text {
+        width: 90dvw;
+        padding: 20px;
+    }
+    
+    .gallery-text h2 {
+        font-size: 24px;
+    }
+}
+
+/* ============================================================================
+   UTILIDADES
+   ============================================================================ */
+.hidden {
+    display: none;
+}

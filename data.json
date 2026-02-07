@@ -7,7 +7,7 @@
         "textosES": [],
         "textosEN": [],
         "textosCAT": [],
-        "imgCount": 0
+        "imgCount": 18
       }
     ],
     [
@@ -38,7 +38,7 @@
           "L'equip va comptar amb la dramatúrgia lírica enterament escrita per A. López, amb M. Kopatschek com a directora d'art, J. Casanovas com a director escènic, M. Marin i I. Espinilla com a actrius (Institut del Teatre), A. Pino com a actor (Escola Massana, @elnoviodevenus) i videoart per M. Papadopoulos i S. Sborlino (Escola Grisart).",
           "VIDEO RESUM\n<a href=\"https://www.instagram.com/estupidovenus/\">Instagram Estupido Venus</a>\n<a href=\"https://youtu.be/8VNjt9IWyY\">Video resum 1</a>\n<a href=\"https://youtu.be/scYl5p1AtvI\">Video resum 2</a>\n<a href=\"https://youtu.be/zMAykjdFi8M\">Video resum 3</a>\n<a href=\"https://youtu.be/xjzjVxgim48\">Video resum 4</a>"
         ],
-        "imgCount": 0
+        "imgCount": 21
       }
     ],
     [
@@ -48,7 +48,7 @@
         "textosES": [],
         "textosEN": [],
         "textosCAT": [],
-        "imgCount": 0
+        "imgCount": 12
       }
     ],
     [
@@ -76,7 +76,7 @@
           "El subconscient és un remolí fosc que engoleix i escup, i en el cas de Y otros cuentos brolla d'un abisme de records i anhels per esclatar en tota una mitologia personal que narra el passat i prediu el futur.",
           "Les dones faune amb ulleres de sol es recreuen immunes a la llarga ombra dels xiprers davant d'una gegantina mà divina, que les perdona. Dimensions corbes se succeeixen en taulers d'escacs, de l'apocalipsi ens alliberem gràcies a una porta entre els núvols, i una ballarina a la cantonada superior d'un aiguafort és la nostra única esperança. Aquests contes, i molts més, conformen l'espiral narrativa transformada que, en sorgir de les profunditats, esdevé una manera increïble d'entendre altres històries viscudes."
         ],
-        "imgCount": 0
+        "imgCount": 45
       }
     ],
     [
@@ -98,7 +98,7 @@
           "L’univers de le pomme de terre defineix algunes d'aquestes formes essencials: Baby tooth s'alça orgullós sobre les seves suaus potes desplegant tota la seva innocència amb la seva pell llisa de pi centenari. Els seus amics l'esperen al parc d'atraccions. Viu en un món dibuixat pels vincles. El nostre món.",
           "Sap que sota els seus peus hi ha un tauler d'escacs quan camina per la vida, però no se'n preocupa, hi ha diverses partides. I es corben per les cantonades de l'univers generant noves possibilitats. Tanmateix, en aquest món hi ha fils invisibles, classificacions, estrats i poders. Es van començar a percebre amb els ulls oberts mentre jugava, amb la seva tranquil·la senzillesa de només existir, una tarda de tardor en un banc. Del petit al global, L’univers de le pomme de terre indaga en les formes pures i les fa trobar-se per acabar transcendint en vincles transparents i mecanismes universals."
         ],
-        "imgCount": 0
+        "imgCount": 10
       }
     ],
     [
@@ -135,7 +135,11 @@
           "El documental que es pot visitar en aquest enllaç constitueix una finestra al procés creatiu d'El teatro de las Plantas i mostra pas a pas el procés de l'aiguafort sobre coure:",
           "<a href=\"https://youtu.be/LweaiI0Q3ks\">Documental El teatro de las plantas</a>"
         ],
-        "imgCount": 0,
+        "imgCount": {
+          "carasol": 31,
+          "nuvol": 12,
+          "sean": 48
+        },
         "subproyectos": [
           [
             "nuvol",
@@ -195,7 +199,7 @@
           "Una narració es desenvolupa paral·lelament en forma de versos. Els poemes d'Ana López transcriuen els instants i vivències que resultaven d'aquest marc temporal i espacial tan influent com els darrers i nostàlgics dies d'aquell daurat final d'estiu de 2020. Ambdues artistes mostren dues visions àmpliament relacionades en diversos sentits, des del seu procés de creació fins a l'intent de ficcionar i donar forma, a través d'escenes i històries, a la reivindicació de les expressions humanes conjuntes que tant necessita qualsevol societat.",
           "Publicacions- Premsa"
         ],
-        "imgCount": 0
+        "imgCount": 48
       }
     ]
   ],
