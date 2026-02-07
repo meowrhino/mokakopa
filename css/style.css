@@ -36,6 +36,9 @@ body {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    /* Mismo efecto de contraste dinámico que el menú */
+    mix-blend-mode: difference;
+    color: #fff;
 }
 
 /* "mokakopa" — clickable, abre el about */
@@ -43,7 +46,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
-    color: #000;
+    color: inherit;
     transition: opacity 0.3s ease;
 }
 
@@ -60,7 +63,7 @@ body {
 
 #language-selector span {
     cursor: pointer;
-    color: #000;
+    color: inherit;
     font-weight: normal;
     transition: opacity 0.3s ease;
 }
@@ -104,7 +107,9 @@ body {
 /* Contenido del about centrado */
 #about-content {
     max-width: 560px;
-    padding: 60px 40px;
+    padding: 20dvh 40px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 #about-content h2 {
@@ -323,6 +328,6 @@ body {
     }
 
     #about-content {
-        padding: 40px 20px;
+        padding: 20dvh 20px;
     }
 }
