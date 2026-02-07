@@ -15,6 +15,11 @@ async function init() {
     try {
         // Cargar datos de proyectos
         const response = await fetch('data.json');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         projectsData = await response.json();
         console.log('Datos cargados:', projectsData);
         
@@ -33,6 +38,15 @@ async function init() {
         console.log('✓ Inicialización completa');
     } catch (error) {
         console.error('Error al inicializar:', error);
+        // Mostrar mensaje de error al usuario
+        const container = document.getElementById('projects-container');
+        container.innerHTML = `
+            <div style="display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column; padding: 20px; text-align: center;">
+                <h1>error al cargar mokakopa</h1>
+                <p>no se pudieron cargar los datos. por favor, recarga la página.</p>
+                <p style="color: #666; font-size: 14px; margin-top: 20px;">error: ${error.message}</p>
+            </div>
+        `;
     }
 }
 
@@ -66,8 +80,9 @@ function createProjectElement(projectName, projectData) {
         projectData.subproyectos.forEach(([subName, subData]) => {
             const subImgCount = projectData.imgCount[subName];
             addImagesToGallery(gallery, `${projectName}/${subName}`, subImgCount);
-            // Texto del subproyecto (si existe)
-            if (subData.textosES && subData.textosES.length > 0) {
+            // Texto del subproyecto (si existe en el idioma actual)
+            const subTextos = getTextsByLang(subData);
+            if (subTextos && subTextos.length > 0) {
                 addTextToGallery(gallery, subName, subData);
             }
         });
@@ -90,24 +105,22 @@ function addImagesToGallery(gallery, path, count) {
         img.loading = 'lazy';
         
         // Manejo de errores de carga
-        img.onerror = function() {
-            // Intentar con otras extensiones
-            const extensions = ['png', 'jpeg', 'webp', 'gif'];
-            let extIndex = 0;
-            
-            const tryNextExtension = () => {
-                if (extIndex < extensions.length) {
-                    img.src = `data/${path}/${i}.${extensions[extIndex]}`;
-                    extIndex++;
-                } else {
-                    console.warn(`No se pudo cargar imagen: ${path}/${i}`);
-                    item.style.display = 'none';
-                }
-            };
-            
-            img.onerror = tryNextExtension;
-            tryNextExtension();
+        const extensions = ['png', 'jpeg', 'webp', 'gif'];
+        let extIndex = 0;
+        
+        const tryNextExtension = () => {
+            if (extIndex < extensions.length) {
+                img.onerror = tryNextExtension; // Asignar ANTES de cambiar src
+                img.src = `data/${path}/${i}.${extensions[extIndex]}`;
+                extIndex++;
+            } else {
+                img.onerror = null; // Limpiar handler
+                console.warn(`No se pudo cargar imagen: ${path}/${i}`);
+                item.style.display = 'none';
+            }
         };
+        
+        img.onerror = tryNextExtension;
         
         item.appendChild(img);
         gallery.appendChild(item);

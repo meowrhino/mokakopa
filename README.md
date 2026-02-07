@@ -6,13 +6,15 @@ portfolio de proyectos artísticos por meowrhino.studio
 
 ```
 mokakopa/
-├── index.html          # página principal
+├── index.html          # página principal con seo completo
 ├── data.json           # datos de proyectos (actualizado automáticamente)
 ├── updateImgCount.js   # script para actualizar conteo de imágenes
+├── robots.txt          # configuración para crawlers
+├── sitemap.xml         # mapa del sitio para seo
 ├── css/
-│   └── style.css       # estilos principales
+│   └── style.css       # estilos principales mejorados
 ├── js/
-│   └── main.js         # lógica principal
+│   └── main.js         # lógica principal (bugs corregidos)
 └── data/               # carpetas de proyectos con imágenes
     ├── patoCeramics/
     ├── porSiglos/
@@ -32,10 +34,13 @@ mokakopa/
 - ✅ galerías horizontales scrolleables con padding para centrar primera y última imagen
 - ✅ texto al final de cada galería
 - ✅ proyectos complejos con estructura: [imgs sub1] [texto sub1] [imgs sub2] [texto sub2] ... [texto general]
-- ✅ menú lateral izquierdo con efecto `mix-blend-mode: difference`
+- ✅ menú lateral izquierdo con efecto `mix-blend-mode: difference` y glassmorphism
 - ✅ nombre "mokakopa" arriba izquierda que abre modal about
 - ✅ botón de idioma arriba derecha (ES/EN) con animación
 - ✅ conteo automático de imágenes por proyecto
+- ✅ **seo completo**: meta tags, open graph, twitter cards, schema.org
+- ✅ **accesibilidad mejorada**: aria labels, roles, navegación por teclado
+- ✅ **bugs corregidos**: carga de imágenes, manejo de errores, transiciones
 
 ## uso del script updateImgCount.js
 

@@ -57,11 +57,13 @@ body {
     align-items: center;
     z-index: 2000;
     opacity: 1;
-    transition: opacity 0.3s ease;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 #about-modal.hidden {
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
 }
 
@@ -100,20 +102,25 @@ body {
     flex-direction: column;
     gap: 10px;
     z-index: 1000;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
 }
 
 #menu a {
     text-decoration: none;
-    color: #000;
+    color: #fff;
     font-size: 16px;
     font-weight: bold;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
     /* Efecto blend mode como en investigacion 001 */
     mix-blend-mode: difference;
 }
 
 #menu a:hover {
-    color: #666;
+    color: #ccc;
+    transform: translateX(5px);
 }
 
 /* ============================================================================
@@ -128,10 +135,19 @@ body {
     cursor: pointer;
     z-index: 1000;
     transition: opacity 0.3s ease;
+    background: none;
+    border: none;
+    color: inherit;
+    font-family: inherit;
 }
 
 #language-toggle:hover {
     opacity: 0.6;
+}
+
+#language-toggle:focus {
+    outline: 2px solid #666;
+    outline-offset: 4px;
 }
 
 /* ============================================================================
@@ -161,8 +177,8 @@ body {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     /* Padding para centrar primera y última imagen */
-    padding-left: calc(50dvw - 40dvh);
-    padding-right: calc(50dvw - 40dvh);
+    padding-left: max(20px, calc(50dvw - 40dvh));
+    padding-right: max(20px, calc(50dvw - 40dvh));
     gap: 20px;
 }
 
@@ -245,8 +261,8 @@ body {
     }
     
     .gallery {
-        padding-left: calc(50dvw - 35dvh);
-        padding-right: calc(50dvw - 35dvh);
+        padding-left: max(15px, calc(50dvw - 35dvh));
+        padding-right: max(15px, calc(50dvw - 35dvh));
     }
     
     .gallery-item img {

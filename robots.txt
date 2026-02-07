@@ -1,0 +1,6 @@
+# robots.txt para mokakopa
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://meowrhino.github.io/mokakopa/sitemap.xml

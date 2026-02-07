@@ -3,10 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="mokakopa - portfolio de proyectos artísticos">
+    
+    <!-- SEO Básico -->
+    <title>mokakopa | portfolio de proyectos artísticos</title>
+    <meta name="description" content="portfolio de proyectos artísticos de monica kopatschek: grabados, acuarelas, esculturas y performance. teatro de las plantas, bacanales, y otros cuentos.">
+    <meta name="keywords" content="mokakopa, monica kopatschek, arte, portfolio, grabado, acuarela, escultura, performance, teatro plantas, bacanales, arte contemporáneo">
     <meta name="author" content="meowrhino.studio">
-    <title>mokakopa</title>
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://meowrhino.github.io/mokakopa/">
+    <meta property="og:title" content="mokakopa | portfolio de proyectos artísticos">
+    <meta property="og:description" content="portfolio de proyectos artísticos de monica kopatschek: grabados, acuarelas, esculturas y performance.">
+    <meta property="og:image" content="https://meowrhino.github.io/mokakopa/data/teatroPlantas/carasol/1.jpg">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:locale:alternate" content="en_US">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://meowrhino.github.io/mokakopa/">
+    <meta name="twitter:title" content="mokakopa | portfolio de proyectos artísticos">
+    <meta name="twitter:description" content="portfolio de proyectos artísticos de monica kopatschek: grabados, acuarelas, esculturas y performance.">
+    <meta name="twitter:image" content="https://meowrhino.github.io/mokakopa/data/teatroPlantas/carasol/1.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://meowrhino.github.io/mokakopa/">
+    
+    <!-- Favicon (opcional - añadir cuando tengas uno) -->
+    <!-- <link rel="icon" type="image/png" href="favicon.png"> -->
+    
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "mokakopa",
+      "url": "https://meowrhino.github.io/mokakopa/",
+      "description": "portfolio de proyectos artísticos de monica kopatschek",
+      "author": {
+        "@type": "Person",
+        "name": "monica kopatschek"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "meowrhino.studio",
+        "url": "https://meowrhino.studio"
+      },
+      "inLanguage": ["es", "en"]
+    }
+    </script>
 </head>
 <body>
     
@@ -14,10 +64,10 @@
     <div id="site-name">mokakopa</div>
     
     <!-- About modal -->
-    <div id="about-modal" class="hidden">
+    <div id="about-modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="about-title">
         <div id="about-content">
-            <button id="close-about">×</button>
-            <h2>sobre mokakopa</h2>
+            <button id="close-about" aria-label="cerrar modal">×</button>
+            <h2 id="about-title">sobre mokakopa</h2>
             <p>información sobre el proyecto...</p>
         </div>
     </div>
@@ -26,7 +76,7 @@
     <nav id="menu"></nav>
     
     <!-- Botón de idioma -->
-    <div id="language-toggle">ES</div>
+    <button id="language-toggle" aria-label="cambiar idioma">ES</button>
     
     <!-- Contenedor de proyectos -->
     <main id="projects-container"></main>
