@@ -298,7 +298,7 @@ function initMenu() {
         menu.appendChild(link);
 
         // Subproyectos indentados (solo en proyectos complejos)
-        if (projectData.tipo === 'complejo' && projectData.subproyectos) {
+        if (projectName !== 'teatroPlantas' && projectData.tipo === 'complejo' && projectData.subproyectos) {
             const submenu = document.createElement('div');
             submenu.className = 'submenu';
             projectData.subproyectos.forEach(([subName]) => {

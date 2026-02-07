@@ -48,10 +48,11 @@ body {
     cursor: pointer;
     color: inherit;
     transition: opacity 0.3s ease;
+    opacity: 0.6;
 }
 
 #site-name:hover {
-    opacity: 0.6;
+    opacity: 1;
 }
 
 /* ES  EN  CAT — el activo va en negrita */
@@ -66,14 +67,16 @@ body {
     color: inherit;
     font-weight: normal;
     transition: opacity 0.3s ease;
+    opacity: 0.6;
 }
 
 #language-selector span:hover {
-    opacity: 0.6;
+    opacity: 1;
 }
 
 #language-selector span.active {
     font-weight: bold;
+    opacity: 1;
 }
 
 
@@ -162,7 +165,7 @@ body {
     bottom: 20px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
     z-index: 1000;
     mix-blend-mode: difference;
 }
@@ -175,14 +178,18 @@ body {
     transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
-#menu a:hover {
+#menu a:not(.active) {
     opacity: 0.6;
+}
+
+#menu a:hover {
+    opacity: 1;
     transform: translateX(5px);
 }
 
 /* Proyecto activo (detectado por scroll spy) */
 #menu a.active {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* Subproyectos indentados (ej: nuvol, carasol, sean dentro de teatroPlantas) */
@@ -308,6 +315,7 @@ body {
     #menu {
         left: 15px;
         bottom: 15px;
+        gap: 2px;
     }
 
     #menu a {
