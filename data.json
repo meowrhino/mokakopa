@@ -4,7 +4,9 @@
       "patoCeramics",
       {
         "tipo": "simple",
-        "textos": [],
+        "textosES": [],
+        "textosEN": [],
+        "textosCAT": [],
         "imgCount": 0
       }
     ],
@@ -12,13 +14,29 @@
       "porSiglos",
       {
         "tipo": "simple",
-        "textos": [
+        "textosES": [
           "Por Siglos en Eros se presentó en el Espai Jove Boca Nord el día de Sant Jordi en el marco de la primera edición del Festival de Poesia Jove del Carmel. Esta performance presenta una historia de amor cargada de emoción entre la diosa Atenea y una artista mortal que se prolonga por siglos debido a una situación que inquieta a cuatro de los Perpetuos: Muerte, Eros, Porvenir y Locura (personificaciones eternas de las pasiones humanas).",
           "Buscando la manera de revertir los mitos griegos que muestran dioses del Olimpo persiguiendo ninfas y tramando planes inverosímiles para seducirlas, Por siglos en Eros reivindica el amor entre mujeres. Un amor arriesgado e incondicional que se materializa a través de un personaje alegórico sin nombre, la artista; e invierte el papel de la diosa Atenea como heroína trágica.",
           "Mezclando comedia y lirismo, la historia se sirve del arte que desborda, presentándose como creador de sentido y metáfora de un mundo posible moldeado por las emociones.",
           "En noviembre de 2021, l'Espai Jove Boca Nord, a partir de la exposición de acuarelas y poesía de Monica Kopatschek y Ana López Serrano Se acabaron las bacanales, ofreció a las artistas la oportunidad de organizar el Festival de Poesia Jove del Carmel. Así nació Estúpido Venus, que dio forma al proyecto reuniendo un equipo de actrices, artistas visuales, especialistas en teatro y performance que se unieron sin ánimo de lucro y con la voluntad de potenciar sus creaciones juntándose con otros artistas en un solo espectáculo. Los participantes encontraron en Por siglos en Eros una oportunidad de colaborar y crecer con un proyecto en común.",
           "El equipo contó con la dramaturgia lírica enteramente escrita por A. López, con M. Kopatschek como directora de arte, J. Casanovas como director escénico, M. Marin y I. Espinilla como actrices (Institut del Teatre), A. Pino como actor (Escola Massana, @elnoviodevenus) videoarte por M. Papadopoulos y S. Sborlino (Escola Grisart).",
           "video RESUMEN\n<a href=\"https://www.instagram.com/estupidovenus/\">Instagram Estupido Venus</a>\n<a href=\"https://youtu.be/8VNjt9IWyY\">Video resumen 1</a>\n<a href=\"https://youtu.be/scYl5p1AtvI\">Video resumen 2</a>\n<a href=\"https://youtu.be/zMAykjdFi8M\">Video resumen 3</a>\n<a href=\"https://youtu.be/xjzjVxgim48\">Video resumen 4</a>"
+        ],
+        "textosEN": [
+          "Por Siglos en Eros was presented at the Espai Jove Boca Nord on Sant Jordi Day within the first edition of the Festival de Poesia Jove del Carmel. This performance presents a love story charged with emotion between the goddess Atenea and a mortal artist that extends for centuries due to a situation that unsettles four of the Perpetuos: Muerte, Eros, Porvenir y Locura (eternal personifications of human passions).",
+          "Seeking a way to reverse the Greek myths that show gods of Olimpo pursuing nymphs and hatching far-fetched plans to seduce them, Por Siglos en Eros advocates love between women. A risky and unconditional love that materializes through an allegorical character without a name, the artist; and it inverts the role of the goddess Atenea as a tragic heroine.",
+          "Mixing comedy and lyricism, the story draws on overflowing art, presenting itself as a creator of meaning and a metaphor for a possible world shaped by emotions.",
+          "In November 2021, l'Espai Jove Boca Nord, starting from the watercolor and poetry exhibition of Monica Kopatschek and Ana López Serrano Se acabaron las bacanales, offered the artists the opportunity to organize the Festival de Poesia Jove del Carmel. Thus Estúpido Venus was born, which shaped the project by bringing together a team of actresses, visual artists, theater and performance specialists who joined on a non-profit basis and with the will to strengthen their creations by joining with other artists in a single show. The participants found in Por Siglos en Eros an opportunity to collaborate and grow with a project in common.",
+          "The team had the lyrical dramaturgy entirely written by A. López, with M. Kopatschek as art director, J. Casanovas as stage director, M. Marin and I. Espinilla as actresses (Institut del Teatre), A. Pino as actor (Escola Massana, @elnoviodevenus), and video art by M. Papadopoulos and S. Sborlino (Escola Grisart).",
+          "SUMMARY VIDEO\n<a href=\"https://www.instagram.com/estupidovenus/\">Instagram Estupido Venus</a>\n<a href=\"https://youtu.be/8VNjt9IWyY\">Summary video 1</a>\n<a href=\"https://youtu.be/scYl5p1AtvI\">Summary video 2</a>\n<a href=\"https://youtu.be/zMAykjdFi8M\">Summary video 3</a>\n<a href=\"https://youtu.be/xjzjVxgim48\">Summary video 4</a>"
+        ],
+        "textosCAT": [
+          "Por Siglos en Eros es va presentar a l'Espai Jove Boca Nord el dia de Sant Jordi en el marc de la primera edició del Festival de Poesia Jove del Carmel. Aquesta performance presenta una història d'amor carregada d'emoció entre la deessa Atenea i una artista mortal que s'allarga per segles a causa d'una situació que inquieta quatre dels Perpetuos: Muerte, Eros, Porvenir i Locura (personificacions eternes de les passions humanes).",
+          "Buscant la manera de revertir els mites grecs que mostren déus de l'Olimpo perseguint nimfes i tramant plans inversemblants per seduir-les, Por Siglos en Eros reivindica l'amor entre dones. Un amor arriscat i incondicional que es materialitza a través d'un personatge al·legòric sense nom, l'artista; i inverteix el paper de la deessa Atenea com a heroïna tràgica.",
+          "Barrejant comèdia i lirisme, la història es serveix de l'art que desborda, presentant-se com a creador de sentit i metàfora d'un món possible modelat per les emocions.",
+          "Al novembre de 2021, l'Espai Jove Boca Nord, a partir de l'exposició d'aquarel·les i poesia de Monica Kopatschek i Ana López Serrano Se acabaron las bacanales, va oferir a les artistes l'oportunitat d'organitzar el Festival de Poesia Jove del Carmel. Així va néixer Estúpido Venus, que va donar forma al projecte reunint un equip d'actrius, artistes visuals, especialistes en teatre i performance que es van unir sense ànim de lucre i amb la voluntat de potenciar les seves creacions ajuntant-se amb altres artistes en un sol espectacle. Els participants van trobar en Por Siglos en Eros una oportunitat de col·laborar i créixer amb un projecte en comú.",
+          "L'equip va comptar amb la dramatúrgia lírica enterament escrita per A. López, amb M. Kopatschek com a directora d'art, J. Casanovas com a director escènic, M. Marin i I. Espinilla com a actrius (Institut del Teatre), A. Pino com a actor (Escola Massana, @elnoviodevenus) i videoart per M. Papadopoulos i S. Sborlino (Escola Grisart).",
+          "VIDEO RESUM\n<a href=\"https://www.instagram.com/estupidovenus/\">Instagram Estupido Venus</a>\n<a href=\"https://youtu.be/8VNjt9IWyY\">Video resum 1</a>\n<a href=\"https://youtu.be/scYl5p1AtvI\">Video resum 2</a>\n<a href=\"https://youtu.be/zMAykjdFi8M\">Video resum 3</a>\n<a href=\"https://youtu.be/xjzjVxgim48\">Video resum 4</a>"
         ],
         "imgCount": 0
       }
@@ -27,7 +45,9 @@
       "abuelo",
       {
         "tipo": "simple",
-        "textos": [],
+        "textosES": [],
+        "textosEN": [],
+        "textosCAT": [],
         "imgCount": 0
       }
     ],
@@ -35,12 +55,26 @@
       "otrosCuentos",
       {
         "tipo": "simple",
-        "textos": [
+        "textosES": [
           "La búsqueda en las profundidades del subconsciente es un viaje opaco y misterioso que saca racional. a la luz historias recónditas. Y otros cuentos nace al margen de la realidad palpable, Creada a partir del método crítico paranoico inventado por Salvador Dalí, basa toda su composición y apariencia global en trazos nacidos del automatismo inconsciente.",
           "Dibujos que pueden ser leídos del derecho y del revés, formas pequeñas que resultan en componentes de grandes figuras, personajes secundarios y símbolos animales y humanos se mezclan en esta dinámica sucesión de acontecimientos fantásticos.",
           "A lo largo de las ocho planchas de hierro, una infinidad de relatos inundados de sátiros, colinas, islas flotantes y nubes de tormenta, forman los cimientos de todo un mundo interior que clama por salir a la luz y dar una explicación emocional a las vicisitudes de la vida diaria.",
           "El subconsciente es un torbellino oscuro que traga y escupe, y en el caso de Y otros cuentos brota de un abismo de recuerdos y anhelos para explotar en toda una mitología personal que narra lo pasado y predice lo futuro.",
           "Las mujeres fauno con gafas de sol se regodean inmunes a la larga sombra de los cipreses ante una gigante mano divina, que las perdona. Curvadas dimensiones se suceden en tableros de ajedrez, del apocalipsis nos libramos gracias a una puerta entre las nubes, y una bailarina en la esquina superior de un aguafuerte es nuestra única esperanza. Estos cuentos, y muchos más, conforman la espiral narrativa transformada, al surgir de las profundidades, en una increíble manera de entender otras historias vividas."
+        ],
+        "textosEN": [
+          "The search into the depths of the subconscious is an opaque and mysterious journey that brings hidden stories to light. Y otros cuentos is born at the margins of palpable reality. Created from the paranoid-critical method invented by Salvador Dalí, it bases its entire composition and overall appearance on strokes born from unconscious automatism.",
+          "Drawings that can be read right side up and upside down, small forms that become components of large figures, secondary characters, and animal and human symbols mix in this dynamic succession of fantastic events.",
+          "Across the eight iron plates, an infinity of tales flooded with satyrs, hills, floating islands, and storm clouds form the foundations of an entire inner world that clamors to come to light and give an emotional explanation to the vicissitudes of daily life.",
+          "The subconscious is a dark whirlpool that swallows and spits, and in the case of Y otros cuentos it springs from an abyss of memories and longings to explode into a whole personal mythology that narrates the past and predicts the future.",
+          "The faun women with sunglasses revel, immune to the long shadow of the cypresses, before a giant divine hand that forgives them. Curved dimensions follow one another on chessboards, we are saved from the apocalypse thanks to a door between the clouds, and a dancer in the upper corner of an etching is our only hope. These tales, and many more, form the transformed narrative spiral that, emerging from the depths, becomes an incredible way of understanding other lived stories."
+        ],
+        "textosCAT": [
+          "La recerca en les profunditats del subconscient és un viatge opac i misteriós que treu a la llum històries recòndites. Y otros cuentos neix al marge de la realitat palpable. Creat a partir del mètode crític paranoic inventat per Salvador Dalí, basa tota la seva composició i aparença global en traços nascuts de l'automatisme inconscient.",
+          "Dibuixos que es poden llegir del dret i del revés, formes petites que esdevenen components de grans figures, personatges secundaris i símbols animals i humans es barregen en aquesta dinàmica successió d'esdeveniments fantàstics.",
+          "Al llarg de les vuit planxes de ferro, una infinitat de relats inundats de sàtirs, turons, illes flotants i núvols de tempesta formen els fonaments de tot un món interior que clama per sortir a la llum i donar una explicació emocional a les vicissituds de la vida diària.",
+          "El subconscient és un remolí fosc que engoleix i escup, i en el cas de Y otros cuentos brolla d'un abisme de records i anhels per esclatar en tota una mitologia personal que narra el passat i prediu el futur.",
+          "Les dones faune amb ulleres de sol es recreuen immunes a la llarga ombra dels xiprers davant d'una gegantina mà divina, que les perdona. Dimensions corbes se succeeixen en taulers d'escacs, de l'apocalipsi ens alliberem gràcies a una porta entre els núvols, i una ballarina a la cantonada superior d'un aiguafort és la nostra única esperança. Aquests contes, i molts més, conformen l'espiral narrativa transformada que, en sorgir de les profunditats, esdevé una manera increïble d'entendre altres històries viscudes."
         ],
         "imgCount": 0
       }
@@ -49,10 +83,20 @@
       "pommeTerre",
       {
         "tipo": "simple",
-        "textos": [
+        "textosES": [
           "Nacemos y crecemos con los ojos abiertos; al principio, los primeros meses en este mundo, no somos más que imágenes y sensaciones: entre mis primeros recuerdos hay un cristal grueso texturizado tan amarillo como los ojos de un tigre. Sé que mi madre está detrás de él, en el comedor, aunque aún no sé lo que es un comedor. No sé hablar. Soy todo ojos enormes y vientos de emociones. No existen los símbolos. Nada remite a nada. El mundo se presenta en imágenes que se nombran a sí mismas. Son, únicamente, su propia forma y color. Algo que recuperaré más tarde, cuando sepa sostener un pincel, con el arte abstracto.",
           "L’univers de le pomme de terre define algunas de estas formas esenciales: Baby tooth se alza orgulloso sobre sus suaves patas desplegando toda su inocencia con su lisa piel de pino centenario. Sus amigos lo esperan en el parque de atracciones. Él vive en un mundo dibujado por los vínculos. Nuestro mundo.",
           "Sabe que bajo sus pies hay un tablero de ajedrez cuando camina por la vida, pero no se preocupa, hay varias partidas. Y se curvan por las esquinas del universo generando nuevas posibilidades. Sin embargo, en este mundo hay hilos invisibles, clasificaciones, estratos y poderes. Vinieron a percibirse con los ojos abiertos mientras jugaba, con su tranquila sencillez de tan sólo existir, una tarde de otoño en un banco. De lo pequeño a lo global, L’univers de le pomme de terre indaga en las formas puras y las hace encontrarse para acabar trascendiendo en transparentes vínculos y mecanismos universales."
+        ],
+        "textosEN": [
+          "We are born and grow with our eyes open; at first, in the first months in this world, we are nothing but images and sensations: among my earliest memories there is a thick textured pane of glass as yellow as a tiger's eyes. I know my mother is behind it, in the dining room, although I still don't know what a dining room is. I don't know how to speak. I am all huge eyes and winds of emotion. Symbols do not exist. Nothing refers to anything. The world appears in images that name themselves. They are only their own shape and color. Something I will recover later, when I know how to hold a brush, with abstract art.",
+          "L’univers de le pomme de terre defines some of these essential forms: Baby tooth stands proudly on its soft legs, displaying all its innocence with its smooth skin of centuries-old pine. Its friends wait for it at the amusement park. It lives in a world drawn by bonds. Our world.",
+          "It knows that beneath its feet there is a chessboard as it walks through life, but it does not worry--there are several games. And they bend around the corners of the universe, generating new possibilities. However, in this world there are invisible threads, classifications, strata, and powers. They came to be perceived with open eyes while it played, with its calm simplicity of merely existing, one autumn afternoon on a bench. From the small to the global, L’univers de le pomme de terre investigates pure forms and brings them together, eventually transcending into transparent bonds and universal mechanisms."
+        ],
+        "textosCAT": [
+          "Naixem i creixem amb els ulls oberts; al principi, els primers mesos en aquest món, no som més que imatges i sensacions: entre els meus primers records hi ha un vidre gruixut texturitzat tan groc com els ulls d'un tigre. Sé que la meva mare és darrere, al menjador, tot i que encara no sé què és un menjador. No sé parlar. Sóc tot ulls enormes i vents d'emocions. No existeixen els símbols. Res remet a res. El món es presenta en imatges que s'anomenen a si mateixes. Són, únicament, la seva pròpia forma i color. Una cosa que recuperaré més endavant, quan sàpiga sostenir un pinzell, amb l'art abstracte.",
+          "L’univers de le pomme de terre defineix algunes d'aquestes formes essencials: Baby tooth s'alça orgullós sobre les seves suaus potes desplegant tota la seva innocència amb la seva pell llisa de pi centenari. Els seus amics l'esperen al parc d'atraccions. Viu en un món dibuixat pels vincles. El nostre món.",
+          "Sap que sota els seus peus hi ha un tauler d'escacs quan camina per la vida, però no se'n preocupa, hi ha diverses partides. I es corben per les cantonades de l'univers generant noves possibilitats. Tanmateix, en aquest món hi ha fils invisibles, classificacions, estrats i poders. Es van començar a percebre amb els ulls oberts mentre jugava, amb la seva tranquil·la senzillesa de només existir, una tarda de tardor en un banc. Del petit al global, L’univers de le pomme de terre indaga en les formes pures i les fa trobar-se per acabar transcendint en vincles transparents i mecanismes universals."
         ],
         "imgCount": 0
       }
@@ -61,7 +105,7 @@
       "teatroPlantas",
       {
         "tipo": "complejo",
-        "textos": [
+        "textosES": [
           "El teatro de las plantas es un trabajo en curso que investiga la vida en los ecosistemas de Collserola a partir de la observación, el dibujo y la imaginación. Seleccionado inicialmente para la convocatoria Art i Ciutat Sant Cugat 2022, se inspiró en las revolucionarias ideas mediante las cuales diversos autores, desde Demócrito, pasando por Darwin, y desembocando en actuales neurobiólogos del mundo vegetal como Monica Gagliano o Stefano Mancuso, han expresado su convicción de que las plantas están dotadas de habilidades y sensibilidades mucho más refinadas de las que comúnmente se observan.",
           "El proyecto parte de la voluntad de explorar las posibilidades narrativas y poéticas cuando imaginamos la existencia desde percepciones diferentes a la temporalidad y el desplazamiento humano habitual. Comienza observando la naturaleza de Collserola para desembocar en dibujos que expresan los patrones de crecimiento de plantas e insectos. Las líneas que los conforman dan información sobre su desarrollo ordenado en el tiempo. Estos patrones remiten a ideas y símbolos presentes en nuestro subconsciente y, por ende, en el arte y la literatura de autores contemporáneos y anteriores a nosotras. Muchas piezas experimentan también con escenas narrativas y asociaciones. A lo largo de este recorrido, encontramos una contemplación reiterada de lo desconocido mediante personajes que descubren diminutos mundos de fantasía.",
           "Estas escenas desprenden un lirismo nostálgico de la infancia como época de descubrimiento e imaginación. A medida que El Teatro de las plantas avanza, surgen ideas relacionadas con los ciclos lunares, que se reflejan en sincronía rítmica y regular en la vida de los ecosistemas, y también preguntas sobre el sol y los ciclos estacionales. Poco a poco, el tiempo se desvanece y la única medida que queda de él es el cambio. Un compás complejo y sordo reproduce la esfera celeste en los movimientos del bosque.",
@@ -71,13 +115,35 @@
           "El documental que se puede visitar en este enlace constituye una ventana al proceso creativo de El teatro de las Plantas y muestra paso a paso el proceso del aguafuerte sobre cobre:",
           "<a href=\"https://youtu.be/LweaiI0Q3ks\">Documental El teatro de las plantas</a>"
         ],
+        "textosEN": [
+          "El teatro de las plantas is an ongoing work that investigates life in the ecosystems of Collserola through observation, drawing, and imagination. Initially selected for the Art i Ciutat Sant Cugat 2022 call, it was inspired by the revolutionary ideas through which various authors, from Demócrito, through Darwin, and arriving at current neurobiologists of the plant world such as Monica Gagliano or Stefano Mancuso, have expressed their conviction that plants are endowed with abilities and sensitivities far more refined than those commonly observed.",
+          "The project begins from the desire to explore narrative and poetic possibilities when we imagine existence from perceptions different from usual human temporality and movement. It begins by observing the nature of Collserola to culminate in drawings that express the growth patterns of plants and insects. The lines that shape them provide information about their ordered development over time. These patterns refer to ideas and symbols present in our subconscious and, therefore, in the art and literature of contemporary authors and those who came before us. Many pieces also experiment with narrative scenes and associations. Along this path, we find a repeated contemplation of the unknown through characters who discover tiny worlds of fantasy.",
+          "These scenes give off a nostalgic lyricism of childhood as a time of discovery and imagination. As El Teatro de las plantas advances, ideas related to lunar cycles arise, which are reflected in rhythmic and regular synchrony in the life of ecosystems, and also questions about the sun and seasonal cycles. Little by little, time fades and the only measure left is change. A complex and muted beat reproduces the celestial sphere in the movements of the forest.",
+          "This project had its second stage in 2024, being selected for the 'Convocatòria d'Exposicions 2024' of CC Pere Pruna.",
+          "The new edition seeks to reveal the invisible links between what eludes being seen, and to give material form to possible imaginaries arising from non-hierarchical relationships and human celebrations.",
+          "Its inspirations are as diverse as botanical engravings, science fiction novels, comics, animated cartoons, magic, Greek mythology, and popular folklore. El teatro de las plantas serves as a theoretical framework for the need for self-knowledge and reflection on the environment we inhabit.",
+          "The documentary that can be visited at this link constitutes a window into the creative process of El teatro de las Plantas and shows step by step the process of etching on copper:",
+          "<a href=\"https://youtu.be/LweaiI0Q3ks\">Documentary El teatro de las plantas</a>"
+        ],
+        "textosCAT": [
+          "El teatro de las plantas és un treball en curs que investiga la vida als ecosistemes de Collserola a partir de l'observació, el dibuix i la imaginació. Seleccionat inicialment per a la convocatòria Art i Ciutat Sant Cugat 2022, es va inspirar en les idees revolucionàries mitjançant les quals diversos autors, des de Demócrito, passant per Darwin, i arribant a neurobiòlegs actuals del món vegetal com Monica Gagliano o Stefano Mancuso, han expressat la seva convicció que les plantes estan dotades d'habilitats i sensibilitats molt més refinades de les que comunament s'observen.",
+          "El projecte parteix de la voluntat d'explorar les possibilitats narratives i poètiques quan imaginem l'existència des de percepcions diferents de la temporalitat i el desplaçament humà habitual. Comença observant la natura de Collserola per desembocar en dibuixos que expressen els patrons de creixement de plantes i insectes. Les línies que els conformen donen informació sobre el seu desenvolupament ordenat en el temps. Aquests patrons remeten a idees i símbols presents en el nostre subconscient i, per tant, en l'art i la literatura d'autors contemporanis i anteriors a nosaltres. Moltes peces experimenten també amb escenes narratives i associacions. Al llarg d'aquest recorregut, trobem una contemplació reiterada del desconegut mitjançant personatges que descobreixen diminuts mons de fantasia.",
+          "Aquestes escenes desprenen un lirisme nostàlgic de la infància com a època de descobriment i imaginació. A mesura que El Teatro de las plantas avança, sorgeixen idees relacionades amb els cicles lunars, que es reflecteixen en sincronies rítmiques i regulars en la vida dels ecosistemes, i també preguntes sobre el sol i els cicles estacionals. A poc a poc, el temps s'esvaeix i l'única mesura que en queda és el canvi. Un compàs complex i sord reprodueix l'esfera celeste en els moviments del bosc.",
+          "Aquest projecte va tenir la seva segona etapa el 2024, i va ser seleccionat per a la 'Convocatòria d'Exposicions 2024' del CC Pere Pruna.",
+          "La nova edició busca revelar els vincles invisibles entre allò que fuig de ser vist, i donar forma material a possibles imaginaris sorgits de les relacions no jeràrquiques i les celebracions humanes.",
+          "Les seves inspiracions són tan diverses com els gravats botànics, les novel·les de ciència-ficció, còmic, dibuixos animats, màgia, mitologia grega i folklore popular. El teatro de las plantas serveix de marc teòric per a la necessitat d'autoconeixement i reflexió sobre l'entorn que habitem.",
+          "El documental que es pot visitar en aquest enllaç constitueix una finestra al procés creatiu d'El teatro de las Plantas i mostra pas a pas el procés de l'aiguafort sobre coure:",
+          "<a href=\"https://youtu.be/LweaiI0Q3ks\">Documental El teatro de las plantas</a>"
+        ],
         "imgCount": 0,
         "subproyectos": [
           [
             "nuvol",
             {
               "tipo": "simple",
-              "textos": [],
+              "textosES": [],
+              "textosEN": [],
+              "textosCAT": [],
               "imgCount": 0
             }
           ],
@@ -85,7 +151,9 @@
             "carasol",
             {
               "tipo": "simple",
-              "textos": [],
+              "textosES": [],
+              "textosEN": [],
+              "textosCAT": [],
               "imgCount": 0
             }
           ],
@@ -93,7 +161,9 @@
             "sean",
             {
               "tipo": "simple",
-              "textos": [],
+              "textosES": [],
+              "textosEN": [],
+              "textosCAT": [],
               "imgCount": 0
             }
           ]
@@ -104,12 +174,26 @@
       "bacanales",
       {
         "tipo": "simple",
-        "textos": [
+        "textosES": [
           "Esta exposición enlaza las creaciones que tuvieron lugar entre Agosto y Septiembre de 2020, de dos artistas que comparten estudio y entorno: las acuarelas de medio formato de Monica Kopatschek y los poemas de Ana López.",
           "'Se acabaron las bacanales' brota de una feroz voluntad de reivindicar las pasadas celebraciones de la vida de las personas, las relaciones entre ellas, las reuniones, y en definitiva, todo aquello que arrebató las medidas contra la crisis mundial de 2020. El primer verano en estas circunstancias, en lo que en la cultura mediterránea solía ser una época de explosión de alegría, sol, y atardeceres infinitos, nació a medias tintas y bajo el control estricto de las medidas anti-contacto. En esta exposición revisamos cómo, durante aquel final de verano, contemplamos también como había sido el final de la vida en sociedad tal y cómo la habíamos conocido, y el inicio de un otoño que empezaba con nuevas medidas. Rabia, decepción, y profunda reflexión, empujaron aquellas creaciones que hoy reunimos en vistas a un nuevo verano tras la crisis. Las escenas de las acuarelas se suceden en complejas composiciones de gente que ríe y se regocija sobre la hierba sin querer despertar. Pero ya es tarde: se han acabado las bacanales y tan solo nos queda la crítica nostálgica plagada de recuerdos de cuando se vivía, se respiraba y se bailaba en libertad.",
           "Entre brillantes colores diluidos en aguadas de mar y cielo, personajes que danzan, animales parlantes y leones heráldicos, los mensajes asoman una y otra vez: 'Remember your lungs but never forget your rights', dice un caballo cuyas patas se transforman en cigarrillos gigantes.",
           "Una narración se desarrolla paralelamente en forma de versos. Los poemas de Ana López transcriben los instantes y vivencias que resultaban de este marco temporal y espacial tan influyente como los últimos y nostálgicos días de aquel dorado final de verano de 2020. Ambas artistas muestran dos visiones ampliamente relacionadas en varios sentidos, desde su proceso de creación, hasta el intento de ficcionar y dar forma a través de escenas e historias la reivindicación de las expresiones humanas conjuntas que tanto necesita cualquier sociedad.",
           "Publicaciones- Prensa"
+        ],
+        "textosEN": [
+          "This exhibition links the creations that took place between August and September of 2020, by two artists who share studio and environment: the medium-format watercolors of Monica Kopatschek and the poems of Ana López.",
+          "'Se acabaron las bacanales' springs from a fierce will to reclaim the past celebrations of people's lives, the relationships between them, gatherings, and, in short, everything that the measures against the 2020 global crisis took away. The first summer in these circumstances, in what in Mediterranean culture used to be a time of exploding joy, sun, and endless sunsets, was born in half tones and under the strict control of anti-contact measures. In this exhibition we review how, during that late summer, we also contemplated what the end of social life as we had known it had been, and the beginning of an autumn that started with new measures. Anger, disappointment, and deep reflection pushed those creations that we now bring together with a view to a new summer after the crisis. The watercolor scenes unfold in complex compositions of people who laugh and rejoice on the grass without wanting to wake up. But it is already late: the bacchanals are over and all that remains is a nostalgic critique full of memories of when one lived, breathed, and danced in freedom.",
+          "Among bright colors diluted in washes of sea and sky, dancing characters, talking animals and heraldic lions, the messages emerge again and again: 'Remember your lungs but never forget your rights', says a horse whose legs turn into giant cigarettes.",
+          "A narrative unfolds in parallel in the form of verses. The poems of Ana López transcribe the moments and experiences that resulted from this temporal and spatial framework as influential as the last and nostalgic days of that golden late summer of 2020. Both artists show two visions closely related in many senses, from their creative process to the attempt to fictionalize and give form, through scenes and stories, to the vindication of the collective human expressions that any society so much needs.",
+          "Publications- Press"
+        ],
+        "textosCAT": [
+          "Aquesta exposició enllaça les creacions que van tenir lloc entre l'agost i el setembre de 2020, de dues artistes que comparteixen estudi i entorn: les aquarel·les de mig format de Monica Kopatschek i els poemes d'Ana López.",
+          "'Se acabaron las bacanales' brolla d'una ferma voluntat de reivindicar les passades celebracions de la vida de les persones, les relacions entre elles, les reunions i, en definitiva, tot allò que van arrabassar les mesures contra la crisi mundial de 2020. El primer estiu en aquestes circumstàncies, en el que en la cultura mediterrània solia ser una època d'explosió d'alegria, sol i capvespres infinits, va néixer a mitges tintes i sota el control estricte de les mesures anticontacte. En aquesta exposició revisem com, durant aquell final d'estiu, vam contemplar també com havia estat el final de la vida en societat tal com l'havíem coneguda, i l'inici d'una tardor que començava amb noves mesures. Ràbia, decepció i profunda reflexió van empènyer aquelles creacions que avui reunim amb vista a un nou estiu després de la crisi. Les escenes de les aquarel·les se succeeixen en complexes composicions de gent que riu i es regodeja sobre l'herba sense voler despertar-se. Però ja és tard: s'han acabat les bacanals i tan sols ens queda la crítica nostàlgica plena de records de quan es vivia, es respirava i es ballava en llibertat.",
+          "Entre colors brillants diluïts en aiguades de mar i cel, personatges que dansen, animals parlants i lleons heràldics, els missatges apareixen una vegada i una altra: 'Remember your lungs but never forget your rights', diu un cavall les potes del qual es transformen en cigarrets gegants.",
+          "Una narració es desenvolupa paral·lelament en forma de versos. Els poemes d'Ana López transcriuen els instants i vivències que resultaven d'aquest marc temporal i espacial tan influent com els darrers i nostàlgics dies d'aquell daurat final d'estiu de 2020. Ambdues artistes mostren dues visions àmpliament relacionades en diversos sentits, des del seu procés de creació fins a l'intent de ficcionar i donar forma, a través d'escenes i històries, a la reivindicació de les expressions humanes conjuntes que tant necessita qualsevol societat.",
+          "Publicacions- Premsa"
         ],
         "imgCount": 0
       }
@@ -119,11 +203,23 @@
     {
       "titulo": "ABOUT",
       "subtitulo": "Monica Kopatschek (San Francisco, 1993)",
-      "textos": [
+      "textosES": [
+        "Mi práctica se centra en la pintura figurativa como un lugar donde se cruzan poder, intimidad y ficción. Construyo escenas habitadas por personajes que oscilan entre formas humanas, animales y biomórficas, cohabitando en espacios compartidos y entablando relaciones que sugieren narrativas sin resolución. Estas pinturas funcionan como escenarios--cuidadosamente compuestos y visiblemente construidos--mientras se apoyan en gestos y dinámicas que parecen instintivas o naturales.",
+        "El proceso es central en mi trabajo y a menudo tiene prioridad sobre la imagen terminada. El dibujo funciona como mi modo principal de pensar y tomar decisiones. A través de un trazado abierto y receptivo, las formas emergen gradualmente en lugar de estar predeterminadas. La línea aleatoria o intuitiva se convierte en una estructura generativa, definiendo los contornos de figuras y espacios que luego se desarrollan en escenas pintadas. Este enfoque permite que el azar siga activo dentro de la obra, dando forma tanto a la forma como a la narrativa.",
+        "Mi práctica está informada por un entorno cultural saturado de imágenes, donde el relato, el entretenimiento y la instrucción suelen compartir el mismo lenguaje visual. Esto ha fomentado un escepticismo hacia las narrativas que se presentan como neutrales o inocentes. Los cuentos infantiles y las estructuras folclóricas reaparecen en mis pinturas no como nostalgia, sino como marcos tempranos a través de los cuales se ensayan roles, jerarquías y expectativas morales.",
+        "En lugar de ilustrar historias específicas, uso la ambigüedad narrativa para desplazar el significado hacia la postura, la mirada, la proximidad y el gesto. La pintura se convierte en un espacio donde la creencia se escenifica, se encarna y se inquieta silenciosamente."
+      ],
+      "textosEN": [
         "My practice centers on figurative painting as a site where power, intimacy, and fiction intersect. I construct scenes inhabited by characters that shift between human, animal, and biomorphic forms, coexisting within shared spaces and enacting relationships that suggest narrative without resolution. These paintings function as stages--carefully composed and visibly constructed--while drawing on gestures and dynamics that appear instinctive or natural.",
         "Process is central to my work and often takes precedence over the finished image. Drawing functions as my primary mode of thinking and decision-making. Through open, responsive mark-making, forms emerge gradually rather than being predetermined. The random or intuitive line becomes a generative structure, defining the contours of figures and spaces that later develop into painted scenes. This approach allows chance to remain active within the work, shaping both form and narrative.",
         "My practice is informed by an image-dense cultural environment, where storytelling, entertainment, and instruction often share the same visual language. This has fostered a scepticism toward narratives that present themselves as neutral or innocent. Children's stories and folkloric structures recur in my paintings not as nostalgia, but as early frameworks through which roles, hierarchies, and moral expectations are rehearsed.",
         "Rather than illustrating specific stories, I use narrative ambiguity to displace meaning into posture, gaze, proximity, and gesture. Painting becomes a space where belief is staged, embodied, and quietly unsettled."
+      ],
+      "textosCAT": [
+        "La meva pràctica se centra en la pintura figurativa com un lloc on s'entrecreuen poder, intimitat i ficció. Construeixo escenes habitades per personatges que oscil·len entre formes humanes, animals i biomòrfiques, cohabitant en espais compartits i entaulant relacions que suggereixen narrativa sense resolució. Aquestes pintures funcionen com a escenaris--curosament compostos i visiblement construïts--mentre es recolzen en gestos i dinàmiques que semblen instintives o naturals.",
+        "El procés és central en la meva feina i sovint té prioritat sobre la imatge acabada. El dibuix funciona com el meu mode principal de pensament i presa de decisions. A través d'un traç obert i receptiu, les formes emergeixen gradualment en lloc d'estar predeterminades. La línia aleatòria o intuïtiva es converteix en una estructura generativa, definint els contorns de figures i espais que més tard es desenvolupen en escenes pintades. Aquest enfocament permet que l'atzar continuï actiu dins de l'obra, modelant tant la forma com la narrativa.",
+        "La meva pràctica està informada per un entorn cultural dens d'imatges, on la narració, l'entreteniment i la instrucció sovint comparteixen el mateix llenguatge visual. Això ha fomentat un escepticisme envers les narratives que es presenten com a neutres o innocents. Els contes infantils i les estructures folklòriques reapareixen en les meves pintures no com a nostàlgia, sinó com a marcs primerencs a través dels quals s'assagen rols, jerarquies i expectatives morals.",
+        "En lloc d'il·lustrar històries específiques, faig servir l'ambigüitat narrativa per desplaçar el significat cap a la postura, la mirada, la proximitat i el gest. La pintura esdevé un espai on la creença s'escenifica, s'encarna i s'inquieta silenciosament."
       ]
     }
   ]
