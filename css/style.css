@@ -1,10 +1,11 @@
 /* ============================================================================
-   STYLE.CSS - mokakopa
+   STYLE.CSS — mokakopa
+   Portfolio de proyectos artísticos de Monica Kopatschek
    ============================================================================ */
 
-/* ============================================================================
-   RESET Y CONFIGURACIÓN GLOBAL
-   ============================================================================ */
+
+/* === RESET Y CONFIGURACIÓN GLOBAL ========================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -19,14 +20,14 @@ body {
     font-family: 'Courier New', monospace;
     font-size: 16px;
     line-height: 1.6;
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #fff;
+    color: #000;
     overflow-x: hidden;
 }
 
-/* ============================================================================
-   HEADER: NOMBRE + IDIOMAS (ARRIBA IZQUIERDA)
-   ============================================================================ */
+
+/* === HEADER: NOMBRE + SELECTOR DE IDIOMAS (arriba izquierda) ============== */
+
 #site-header {
     position: fixed;
     top: 20px;
@@ -37,19 +38,20 @@ body {
     gap: 4px;
 }
 
+/* "mokakopa" — clickable, abre el about */
 #site-name {
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
-    transition: opacity 0.3s ease;
     color: #000;
+    transition: opacity 0.3s ease;
 }
 
 #site-name:hover {
     opacity: 0.6;
 }
 
-/* Selector de idiomas debajo de mokakopa */
+/* ES  EN  CAT — el activo va en negrita */
 #language-selector {
     display: flex;
     gap: 8px;
@@ -59,8 +61,8 @@ body {
 #language-selector span {
     cursor: pointer;
     color: #000;
-    transition: opacity 0.3s ease;
     font-weight: normal;
+    transition: opacity 0.3s ease;
 }
 
 #language-selector span:hover {
@@ -71,9 +73,9 @@ body {
     font-weight: bold;
 }
 
-/* ============================================================================
-   ABOUT OVERLAY (VELO COMPLETO)
-   ============================================================================ */
+
+/* === ABOUT OVERLAY (velo blanco semitransparente a pantalla completa) ====== */
+
 #about-overlay {
     position: fixed;
     top: 0;
@@ -82,25 +84,27 @@ body {
     height: 100vh;
     background-color: rgba(255, 255, 255, 0.92);
     z-index: 2000;
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
     overflow-y: auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    /* Transición suave de apertura/cierre */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
+/* Estado oculto del overlay */
 #about-overlay.hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
 
+/* Contenido del about centrado */
 #about-content {
     max-width: 560px;
     padding: 60px 40px;
-    position: relative;
 }
 
 #about-content h2 {
@@ -121,6 +125,7 @@ body {
     font-size: 14px;
 }
 
+/* Botón cerrar (×) arriba derecha del overlay */
 #close-about {
     position: fixed;
     top: 20px;
@@ -138,9 +143,14 @@ body {
     color: #666;
 }
 
-/* ============================================================================
-   MENÚ DE PROYECTOS (ABAJO IZQUIERDA, SIN BLUR, BLEND MODE)
-   ============================================================================ */
+
+/* === MENÚ DE PROYECTOS (abajo izquierda, texto pelao, blend-mode) ========= */
+/*
+   Sin fondo, sin blur, sin bordes.
+   mix-blend-mode: difference en el contenedor con color: #fff en los links
+   → sobre fondo blanco se ven negros, sobre imágenes oscuras se ven claros.
+*/
+
 #menu {
     position: fixed;
     left: 20px;
@@ -165,11 +175,12 @@ body {
     transform: translateX(5px);
 }
 
+/* Proyecto activo (detectado por scroll spy) */
 #menu a.active {
     text-decoration: underline;
 }
 
-/* Subproyectos indentados */
+/* Subproyectos indentados (ej: nuvol, carasol, sean dentro de teatroPlantas) */
 #menu .submenu {
     display: flex;
     flex-direction: column;
@@ -182,14 +193,14 @@ body {
     font-weight: normal;
 }
 
-/* ============================================================================
-   CONTENEDOR DE PROYECTOS
-   ============================================================================ */
+
+/* === CONTENEDOR DE PROYECTOS ============================================== */
+
 #projects-container {
     width: 100%;
 }
 
-/* Cada proyecto ocupa 100dvh y 100dvw */
+/* Cada proyecto ocupa toda la pantalla (scroll vertical entre proyectos) */
 .project {
     width: 100dvw;
     height: 100dvh;
@@ -197,9 +208,13 @@ body {
     overflow: hidden;
 }
 
-/* ============================================================================
-   GALERÍA HORIZONTAL SCROLLEABLE
-   ============================================================================ */
+
+/* === GALERÍA HORIZONTAL SCROLLEABLE ======================================= */
+/*
+   Cada proyecto tiene un scroll horizontal con imágenes + texto al final.
+   El padding-left se calcula dinámicamente en JS para centrar la primera imagen.
+*/
+
 .gallery {
     display: flex;
     align-items: center;
@@ -209,26 +224,24 @@ body {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     gap: 20px;
-}
-
-/* Ocultar scrollbar pero mantener funcionalidad */
-.gallery::-webkit-scrollbar {
-    display: none;
-}
-
-.gallery {
+    /* Ocultar scrollbar en todos los navegadores */
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
-/* ============================================================================
-   ITEMS DE LA GALERÍA (IMÁGENES Y TEXTO)
-   ============================================================================ */
+.gallery::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* === ITEMS DE LA GALERÍA (imágenes y bloque de texto) ===================== */
+
 .gallery-item {
     flex-shrink: 0;
     scroll-snap-align: center;
 }
 
+/* Las imágenes ocupan 80% de la altura del viewport, ancho automático */
 .gallery-item img {
     height: 80dvh;
     width: auto;
@@ -236,7 +249,7 @@ body {
     display: block;
 }
 
-/* Texto al final de la galería */
+/* Bloque de texto al final de cada galería */
 .gallery-text {
     flex-shrink: 0;
     width: 80dvw;
@@ -247,6 +260,7 @@ body {
     flex-direction: column;
     justify-content: center;
     height: 100%;
+    /* El font-size se ajusta dinámicamente en JS según la cantidad de texto */
 }
 
 .gallery-text h2 {
@@ -269,9 +283,9 @@ body {
     color: #666;
 }
 
-/* ============================================================================
-   RESPONSIVE - MÓVIL
-   ============================================================================ */
+
+/* === RESPONSIVE (móvil < 768px) =========================================== */
+
 @media (max-width: 768px) {
     #site-header {
         top: 15px;
@@ -311,13 +325,4 @@ body {
     #about-content {
         padding: 40px 20px;
     }
-}
-
-/* ============================================================================
-   UTILIDADES
-   ============================================================================ */
-.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
 }
