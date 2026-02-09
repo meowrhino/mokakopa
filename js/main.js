@@ -77,26 +77,9 @@ function createProjectElement(projectName, projectData) {
     const gallery = document.createElement('div');
     gallery.className = 'gallery';
 
-    if (projectData.tipo === 'simple') {
-        // Proyecto simple: secuencia de imágenes + bloque de texto
-        addImagesToGallery(gallery, projectName, projectData.imgCount);
-        addTextToGallery(gallery, projectName, projectData);
-
-    } else if (projectData.tipo === 'complejo') {
-        // Proyecto complejo: [imgs sub1][texto sub1] ... [texto general]
-        projectData.subproyectos.forEach(([subName, subData]) => {
-            const subImgCount = projectData.imgCount[subName] || 0;
-            addImagesToGallery(gallery, projectName + '/' + subName, subImgCount);
-
-            // Solo añadir texto del subproyecto si tiene contenido
-            const subTextos = getTextsByLang(subData);
-            if (subTextos && subTextos.length > 0) {
-                addTextToGallery(gallery, subName, subData);
-            }
-        });
-        // Texto general del proyecto complejo al final
-        addTextToGallery(gallery, projectName, projectData);
-    }
+    // Todos los proyectos son simples: secuencia de imágenes + bloque de texto
+    addImagesToGallery(gallery, projectName, projectData.imgCount);
+    addTextToGallery(gallery, projectName, projectData);
 
     projectDiv.appendChild(gallery);
 
@@ -313,19 +296,6 @@ function initMenu() {
         link.textContent = projectName;
         link.dataset.project = projectName;
         menu.appendChild(link);
-
-        // Subproyectos indentados (solo en proyectos complejos)
-        if (projectName !== 'teatroPlantas' && projectData.tipo === 'complejo' && projectData.subproyectos) {
-            const submenu = document.createElement('div');
-            submenu.className = 'submenu';
-            projectData.subproyectos.forEach(([subName]) => {
-                const subLink = document.createElement('a');
-                subLink.href = '#' + projectName; // navega al proyecto padre
-                subLink.textContent = subName;
-                submenu.appendChild(subLink);
-            });
-            menu.appendChild(submenu);
-        }
     });
 }
 
