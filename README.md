@@ -64,8 +64,8 @@ este script:
 
 **código relevante**: `js/main.js` líneas 90-110
 
-### 2. nombres de proyectos en data.json
-**problema**: los nombres de proyectos deben coincidir exactamente con los nombres de las carpetas en `data/`.
+### 2. id de proyectos en data.json
+**problema**: el `id` de cada proyecto debe coincidir exactamente con el nombre de la carpeta en `data/`.
 
 **solución**: verifica que no haya espacios, mayúsculas inconsistentes o caracteres especiales.
 
@@ -82,9 +82,9 @@ este script:
     "sean": 48
   },
   "subproyectos": [
-    ["nuvol", {...}],
-    ["carasol", {...}],
-    ["sean", {...}]
+    { "id": "nuvol", ... },
+    { "id": "carasol", ... },
+    { "id": "sean", ... }
   ]
 }
 ```

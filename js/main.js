@@ -59,8 +59,8 @@ function renderProjects() {
     const container = document.getElementById('projects-container');
     container.innerHTML = '';
 
-    projectsData.proyectos.forEach(([name, data]) => {
-        container.appendChild(createProjectElement(name, data));
+    projectsData.proyectos.forEach(project => {
+        container.appendChild(createProjectElement(project));
     });
 }
 
@@ -70,7 +70,9 @@ function renderProjects() {
  *     <div class="gallery"> ... items + texto ... </div>
  *   </div>
  */
-function createProjectElement(projectName, projectData) {
+function createProjectElement(project) {
+    const projectName = project.id;
+    const projectData = project;
     const projectDiv = document.createElement('div');
     projectDiv.className = 'project';
     projectDiv.id = projectName;
@@ -85,7 +87,9 @@ function createProjectElement(projectName, projectData) {
 
     } else if (projectData.tipo === 'complejo') {
         // Proyecto complejo: [imgs sub1][texto sub1] ... [texto general]
-        projectData.subproyectos.forEach(([subName, subData]) => {
+        projectData.subproyectos.forEach(subProject => {
+            const subName = subProject.id;
+            const subData = subProject;
             const subImgCount = projectData.imgCount[subName] || 0;
             addImagesToGallery(gallery, projectName + '/' + subName, subImgCount);
 
@@ -287,7 +291,7 @@ function addTextToGallery(gallery, projectName, projectData) {
 
     // Título del proyecto/subproyecto
     const title = document.createElement('h2');
-    title.textContent = projectName;
+    title.textContent = projectData.nombre || projectName;
     textDiv.appendChild(title);
 
     // Párrafos de texto en el idioma actual
@@ -351,10 +355,12 @@ function initMenu() {
     const menu = document.getElementById('menu');
     menu.innerHTML = '';
 
-    projectsData.proyectos.forEach(([projectName, projectData]) => {
+    projectsData.proyectos.forEach(project => {
+        const projectName = project.id;
+        const projectData = project;
         const link = document.createElement('a');
         link.href = '#' + projectName;
-        link.textContent = projectName;
+        link.textContent = projectData.nombre || projectName;
         link.dataset.project = projectName;
         menu.appendChild(link);
 
@@ -362,10 +368,12 @@ function initMenu() {
         if (projectName !== 'teatroPlantas' && projectData.tipo === 'complejo' && projectData.subproyectos) {
             const submenu = document.createElement('div');
             submenu.className = 'submenu';
-            projectData.subproyectos.forEach(([subName]) => {
+            projectData.subproyectos.forEach(subProject => {
+                const subName = subProject.id;
+                const subData = subProject;
                 const subLink = document.createElement('a');
                 subLink.href = '#' + projectName;
-                subLink.textContent = subName;
+                subLink.textContent = (subData && subData.nombre) || subName;
                 submenu.appendChild(subLink);
             });
             menu.appendChild(submenu);
@@ -471,12 +479,12 @@ function updateAllTexts() {
  * tanto en proyectos principales como en subproyectos.
  */
 function findProjectData(name) {
-    for (const [projName, projData] of projectsData.proyectos) {
-        if (projName === name) return projData;
+    for (const projData of projectsData.proyectos) {
+        if (projData.id === name) return projData;
 
         if (projData.subproyectos) {
-            for (const [subName, subData] of projData.subproyectos) {
-                if (subName === name) return subData;
+            for (const subData of projData.subproyectos) {
+                if (subData.id === name) return subData;
             }
         }
     }

@@ -23,7 +23,8 @@ body {
     background-color: #fff;
     color: #000;
     overflow-x: hidden;
-    overscroll-behavior: none; /* evitar bounce al llegar al límite del scroll */
+    overscroll-behavior-x: none;
+    overscroll-behavior-y: auto; /* permite scroll vertical entre proyectos */
 }
 
 
@@ -222,7 +223,8 @@ body {
     height: 100dvh;
     position: relative;
     overflow: hidden;
-    overscroll-behavior: none; /* evitar bounce */
+    overscroll-behavior-x: none;
+    overscroll-behavior-y: auto;
 }
 
 
