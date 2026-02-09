@@ -91,9 +91,8 @@ body {
     background-color: rgba(255, 255, 255, 0.92);
     z-index: 2000;
     overflow-y: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* Quitar flex center para que el padding superior sea visible */
+    display: block;
     /* Transición suave de apertura/cierre */
     opacity: 1;
     visibility: visible;
@@ -107,12 +106,13 @@ body {
     pointer-events: none;
 }
 
-/* Contenido del about centrado */
+/* Contenido del about con padding visible arriba y abajo */
 #about-content {
     max-width: 560px;
-    padding: 20dvh 40px;
+    padding: 15dvh 40px; /* padding visible arriba y abajo */
     margin: 0 auto;
     text-align: center;
+    min-height: 100vh; /* asegura que ocupe al menos toda la pantalla */
 }
 
 #about-content h2 {
@@ -235,10 +235,12 @@ body {
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    gap: 20px;
+    gap: 4dvw; /* espaciado responsive en viewport width */
     /* Ocultar scrollbar en todos los navegadores */
     -ms-overflow-style: none;
     scrollbar-width: none;
+    /* Transición para el efecto de "correrse" después del loader */
+    transition: opacity 0.3s ease;
 }
 
 .gallery::-webkit-scrollbar {
@@ -251,12 +253,33 @@ body {
 .gallery-item {
     flex-shrink: 0;
     scroll-snap-align: center;
+    /* Transición suave para el efecto de "correrse" */
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
 }
 
-/* Las imágenes ocupan 80% de la altura del viewport, ancho automático */
+/* Estado de carga: todas las imágenes apiladas en posición 0 */
+.gallery.loading .gallery-item {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+}
+
+.gallery.loading .gallery-item.loaded {
+    opacity: 1;
+}
+
+/* Estado final: imágenes en su posición natural con transición */
+.gallery.loaded .gallery-item {
+    position: relative;
+    opacity: 1;
+}
+
+/* Las imágenes con tamaño adaptativo */
 .gallery-item img {
-    height: 80dvh;
+    max-height: 80dvh;
+    max-width: 85dvw; /* evita que imágenes panorámicas se salgan */
     width: auto;
+    height: auto;
     object-fit: contain;
     display: block;
 }
@@ -322,8 +345,13 @@ body {
         font-size: 12px;
     }
 
+    .gallery {
+        gap: 2dvw; /* espaciado más pequeño en móvil */
+    }
+
     .gallery-item img {
-        height: 70dvh;
+        max-height: 70dvh;
+        max-width: 90dvw; /* más espacio horizontal en móvil */
     }
 
     .gallery-text {
@@ -336,6 +364,6 @@ body {
     }
 
     #about-content {
-        padding: 20dvh 20px;
+        padding: 12dvh 20px; /* menos padding vertical en móvil */
     }
 }

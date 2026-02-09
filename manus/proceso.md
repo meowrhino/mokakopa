@@ -293,3 +293,198 @@ añadido `<link rel="canonical">` para evitar contenido duplicado.
 3. añadir navegación con teclado (flechas) para galerías
 4. implementar lazy loading más agresivo para proyectos fuera de viewport
 5. considerar añadir analytics (google analytics o plausible)
+
+
+## 2026-02-09 07:15 - loader con apilamiento, espaciado dvw y mejoras ux
+
+### sinopsis
+implementación de loader elegante con apilamiento de imágenes, cambio de espaciado a dvw, tamaño adaptativo de imágenes y correcciones del about overlay según feedback del usuario.
+
+### contexto
+el usuario había hecho mejoras significativas al código (header rediseñado, about overlay, menú reubicado, centrado dinámico, etc.) y solicitó:
+1. loader donde las imágenes se apilen y luego se "corran" a su posición
+2. espaciado en dvw (sin clamp)
+3. tamaño de imágenes adaptativo según aspect ratio
+4. padding superior visible en about
+5. about que siempre abra desde el principio
+
+### implementación detallada
+
+#### 1. loader con apilamiento y transición
+
+**concepto**: las imágenes cargan una sobre otra en posición 0, y cuando todas están listas se animan hacia su posición horizontal final.
+
+**css implementado**:
+```css
+.gallery-item {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+}
+
+/* estado de carga: apiladas */
+.gallery.loading .gallery-item {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+}
+
+.gallery.loading .gallery-item.loaded {
+    opacity: 1; /* se van mostrando a medida que cargan */
+}
+
+/* estado final: posición natural */
+.gallery.loaded .gallery-item {
+    position: relative;
+    opacity: 1;
+}
+```
+
+**javascript implementado**:
+
+**a) marcar imágenes como loaded**:
+```javascript
+// en addImagesToGallery()
+img.onload = function() {
+    item.classList.add('loaded');
+};
+```
+
+**b) nueva función `setupGalleryLoadingTransition()`**:
+- usa `MutationObserver` para detectar cuándo cada item se marca como 'loaded'
+- cuenta cuántas imágenes han cargado
+- cuando todas están listas, cambia la galería de `.loading` a `.loaded`
+- timeout de 5s para forzar transición si alguna imagen tarda mucho
+
+**c) integración en `createProjectElement()`**:
+```javascript
+gallery.className = 'gallery loading'; // inicia en loading
+setupGalleryLoadingTransition(gallery); // configura transición
+```
+
+**resultado**: efecto visual elegante donde las imágenes aparecen apiladas y luego se deslizan suavemente a su posición horizontal con easing `cubic-bezier(0.4, 0, 0.2, 1)`.
+
+#### 2. espaciado en dvw (sin clamp)
+
+**cambio en css**:
+```css
+.gallery {
+    gap: 4dvw; /* desktop */
+}
+
+@media (max-width: 768px) {
+    .gallery {
+        gap: 2dvw; /* móvil */
+    }
+}
+```
+
+**motivación**: el usuario prefiere valores explícitos en viewport width en lugar de `clamp()` para tener control directo sobre el espaciado.
+
+**resultado**: 
+- desktop: ~40-60px de gap (según tamaño de pantalla)
+- móvil: ~20-30px de gap
+
+#### 3. tamaño adaptativo de imágenes
+
+**cambio en css**:
+```css
+.gallery-item img {
+    max-height: 80dvh;
+    max-width: 85dvw; /* evita que panorámicas se salgan */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .gallery-item img {
+        max-height: 70dvh;
+        max-width: 90dvw; /* más espacio en móvil */
+    }
+}
+```
+
+**antes**: solo `height: 80dvh`, imágenes panorámicas se salían del viewport horizontalmente.
+
+**ahora**: combinación de `max-height` y `max-width` asegura que todas las imágenes quepan en pantalla independientemente de su aspect ratio.
+
+#### 4. about overlay: padding visible
+
+**cambios en css**:
+```css
+#about-overlay {
+    display: block; /* antes: flex con align-items: center */
+    overflow-y: auto;
+}
+
+#about-content {
+    padding: 15dvh 40px; /* padding visible arriba y abajo */
+    min-height: 100vh; /* ocupa al menos toda la pantalla */
+}
+
+@media (max-width: 768px) {
+    #about-content {
+        padding: 12dvh 20px; /* menos en móvil */
+    }
+}
+```
+
+**antes**: con `display: flex; align-items: center`, el contenido estaba centrado verticalmente y el padding superior no era visible al abrir.
+
+**ahora**: con `display: block`, el padding de 15dvh arriba es claramente visible y el contenido empieza desde arriba.
+
+#### 5. about siempre abre desde el principio
+
+**cambio en javascript**:
+```javascript
+siteName.addEventListener('click', () => {
+    renderAboutContent();
+    overlay.classList.remove('hidden');
+    overlay.scrollTop = 0; // ⭐ resetear scroll
+});
+```
+
+**antes**: si scrolleabas dentro del about y lo cerrabas, al reabrirlo mantenía el scroll.
+
+**ahora**: siempre abre desde el principio (scroll = 0).
+
+### decisiones técnicas
+
+1. **mutationobserver para loader**: más eficiente que polling con `setInterval`, detecta cambios de clase en tiempo real.
+
+2. **timeout de 5s**: balance entre esperar a que carguen todas las imágenes y no dejar al usuario esperando indefinidamente si alguna falla.
+
+3. **cubic-bezier easing**: `(0.4, 0, 0.2, 1)` es el "ease-out" de material design, da una sensación fluida y natural.
+
+4. **dvw para gap**: responsive automático sin necesidad de media queries adicionales (aunque añadimos uno para móvil para mayor control).
+
+5. **max-width y max-height**: solución simple y efectiva para manejar todas las relaciones de aspecto sin javascript adicional.
+
+### archivos modificados
+
+- `css/style.css`: 
+  - gap en dvw
+  - estilos de loader (.loading, .loaded)
+  - tamaño adaptativo de imágenes
+  - about con display: block
+  
+- `js/main.js`:
+  - `setupGalleryLoadingTransition()` nueva función
+  - `finishLoading()` helper
+  - `img.onload` en `addImagesToGallery()`
+  - `overlay.scrollTop = 0` en about
+  - clase 'loading' inicial en galerías
+
+### testing recomendado
+
+1. **loader**: abrir en conexión lenta (throttling en devtools) para ver el efecto de apilamiento
+2. **espaciado**: probar en diferentes tamaños de pantalla para verificar gap responsive
+3. **imágenes panorámicas**: verificar que no se salen del viewport
+4. **about**: abrir, scrollear, cerrar, reabrir → debe volver arriba
+5. **about padding**: verificar que hay espacio visible arriba al abrir
+
+### próximos pasos sugeridos
+
+1. ajustar timing del loader si 5s es demasiado o poco
+2. considerar añadir un indicador de progreso (ej: "3/10 imágenes cargadas")
+3. optimizar imágenes para carga más rápida
+4. considerar lazy loading más agresivo (solo cargar proyecto visible)

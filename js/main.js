@@ -75,7 +75,7 @@ function createProjectElement(projectName, projectData) {
     projectDiv.id = projectName;
 
     const gallery = document.createElement('div');
-    gallery.className = 'gallery';
+    gallery.className = 'gallery loading'; // ⭐ inicia en estado loading
 
     if (projectData.tipo === 'simple') {
         // Proyecto simple: secuencia de imágenes + bloque de texto
@@ -103,6 +103,9 @@ function createProjectElement(projectName, projectData) {
     // Registrar galería para centrado dinámico
     galleries.push(gallery);
     setupFirstImageCentering(gallery);
+
+    // ⭐ Configurar transición de loader: apilamiento → posición final
+    setupGalleryLoadingTransition(gallery);
 
     return projectDiv;
 }
@@ -171,6 +174,51 @@ function initResizeHandler() {
 
 
 // ============================================================================
+// TRANSICIÓN DE LOADER: APILAMIENTO → POSICIÓN FINAL
+//
+// Las imágenes empiezan apiladas (position: absolute, left: 0) y se van
+// mostrando a medida que cargan. Cuando todas están listas (o después de
+// un timeout), la galería cambia a estado 'loaded' y las imágenes se
+// animan hacia su posición horizontal final.
+// ============================================================================
+
+function setupGalleryLoadingTransition(gallery) {
+    const items = gallery.querySelectorAll('.gallery-item');
+    const totalItems = items.length;
+    let loadedCount = 0;
+
+    // Timeout máximo: si no cargan todas en 5s, forzar transición
+    const maxWaitTime = 5000;
+    const forceTransition = setTimeout(() => {
+        finishLoading(gallery);
+    }, maxWaitTime);
+
+    // Observar cada item para detectar cuándo se marca como 'loaded'
+    const observer = new MutationObserver(() => {
+        loadedCount = gallery.querySelectorAll('.gallery-item.loaded').length;
+        
+        // Si todas las imágenes cargaron, hacer transición
+        if (loadedCount >= totalItems) {
+            clearTimeout(forceTransition);
+            finishLoading(gallery);
+            observer.disconnect();
+        }
+    });
+
+    // Observar cambios de clase en cada item
+    items.forEach(item => {
+        observer.observe(item, { attributes: true, attributeFilter: ['class'] });
+    });
+}
+
+function finishLoading(gallery) {
+    // Cambiar de estado 'loading' a 'loaded'
+    gallery.classList.remove('loading');
+    gallery.classList.add('loaded');
+}
+
+
+// ============================================================================
 // CARGA DE IMÁGENES
 //
 // Intenta cargar cada imagen como .jpg primero.
@@ -192,6 +240,11 @@ function addImagesToGallery(gallery, path, count) {
         // Índice de extensión actual (empieza en 0 = jpg)
         let extIndex = 0;
         img.src = 'data/' + path + '/' + i + '.' + IMG_EXTENSIONS[extIndex];
+
+        // ⭐ Marcar item como loaded cuando la imagen carga exitosamente
+        img.onload = function() {
+            item.classList.add('loaded');
+        };
 
         img.onerror = function tryNext() {
             extIndex++;
@@ -441,6 +494,7 @@ function initAboutOverlay() {
     siteName.addEventListener('click', () => {
         renderAboutContent();
         overlay.classList.remove('hidden');
+        overlay.scrollTop = 0; // ⭐ resetear scroll al principio
     });
 
     // Cerrar con botón ×
