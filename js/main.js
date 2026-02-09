@@ -6,16 +6,17 @@
 //   - data.json contiene todos los proyectos, textos (ES/EN/CAT) y about
 //   - Cada proyecto se renderiza como una sección fullscreen con scroll horizontal
 //   - Las imágenes se prueban en orden: .jpg → .png → .jpeg → .webp → .gif
-//   - El menú (abajo-izq) usa mix-blend-mode: difference (CSS)
+//   - Header y menú usan mix-blend-mode: difference (CSS)
 //   - "mokakopa" (arriba-izq) abre el overlay del about
 //   - Debajo de "mokakopa" están los 3 idiomas, el activo en negrita
+//   - Loader: cada imagen hace fade-in individual al cargar (solo CSS + .loaded)
 // ============================================================================
 
 // --- Estado global ---
 let currentLang = 'ES';
 let projectsData = null;
 
-// Todas las galerías, para recalcular padding en resize
+// Todas las galerías registradas, para recalcular padding en resize
 const galleries = [];
 
 
@@ -100,7 +101,7 @@ function createProjectElement(projectName, projectData) {
 
     projectDiv.appendChild(gallery);
 
-    // Registrar galería para centrado dinámico
+    // Registrar galería y configurar centrado dinámico de primera imagen
     galleries.push(gallery);
     setupFirstImageCentering(gallery);
 
@@ -126,8 +127,7 @@ function setupFirstImageCentering(gallery) {
     }
 
     /**
-     * Una vez la primera imagen tiene dimensiones reales,
-     * calcula: padding = (viewport_width - img_width) / 2
+     * Calcula: padding = (viewport_width - img_width) / 2
      * con un mínimo de 20px para no pegar al borde.
      */
     const applyPadding = () => {
@@ -148,8 +148,8 @@ function setupFirstImageCentering(gallery) {
 }
 
 /**
- * Un solo listener de resize global que recalcula el padding
- * de todas las galerías, en vez de N listeners individuales.
+ * Un solo listener de resize global con debounce que recalcula
+ * el padding de todas las galerías registradas.
  */
 function initResizeHandler() {
     let resizeTimer;
@@ -171,15 +171,55 @@ function initResizeHandler() {
 
 
 // ============================================================================
-// LOADER SIMPLE: FADE IN
+// TRANSICIÓN DE LOADER: APILAMIENTO → POSICIÓN FINAL
 //
-// Cada imagen empieza con opacity: 0 y cuando carga se marca como .loaded
-// para hacer fade in automáticamente con CSS. No necesita lógica compleja.
+// Las imágenes empiezan apiladas (transform: translateX(0)) y se van
+// mostrando a medida que cargan. Cuando todas están listas (o después de
+// un timeout), se quita el transform y vuelven a su posición natural en el flex.
 // ============================================================================
 
-// Ya no necesitamos setupGalleryLoadingTransition ni finishLoading
-// El fade in se maneja completamente con CSS + la clase .loaded que se
-// añade en img.onload dentro de addImagesToGallery()
+function setupGalleryLoadingTransition(gallery) {
+    const items = gallery.querySelectorAll('.gallery-item');
+    const totalItems = items.length;
+    
+    if (totalItems === 0) {
+        gallery.classList.remove('loading');
+        gallery.classList.add('loaded');
+        return;
+    }
+
+    let loadedCount = 0;
+
+    // Timeout máximo: si no cargan todas en 3s, forzar transición
+    const maxWaitTime = 3000;
+    const forceTransition = setTimeout(() => {
+        finishLoading(gallery);
+    }, maxWaitTime);
+
+    // Observar cada item para detectar cuándo se marca como 'loaded'
+    const observer = new MutationObserver(() => {
+        loadedCount = gallery.querySelectorAll('.gallery-item.loaded').length;
+        
+        // Si todas las imágenes cargaron, hacer transición
+        if (loadedCount >= totalItems) {
+            clearTimeout(forceTransition);
+            finishLoading(gallery);
+            observer.disconnect();
+        }
+    });
+
+    // Observar cambios de clase en cada item
+    items.forEach(item => {
+        observer.observe(item, { attributes: true, attributeFilter: ['class'] });
+    });
+}
+
+function finishLoading(gallery) {
+    // Cambiar de estado 'loading' a 'loaded'
+    // El CSS se encargará de quitar el transform y animar
+    gallery.classList.remove('loading');
+    gallery.classList.add('loaded');
+}
 
 
 // ============================================================================
@@ -188,6 +228,7 @@ function initResizeHandler() {
 // Intenta cargar cada imagen como .jpg primero.
 // Si falla, prueba .png → .jpeg → .webp → .gif en orden.
 // Si ninguna funciona, oculta el item.
+// Al cargar exitosamente, añade .loaded al item → CSS hace fade-in.
 // ============================================================================
 
 const IMG_EXTENSIONS = ['jpg', 'png', 'jpeg', 'webp', 'gif'];
@@ -199,21 +240,25 @@ function addImagesToGallery(gallery, path, count) {
 
         const img = document.createElement('img');
         img.alt = path + ' ' + i;
-        img.loading = 'lazy';
+        // Primera imagen de cada galería: eager para que cargue inmediato
+        // y el cálculo de padding de centrado funcione bien.
+        // El resto: lazy para no cargar todo de golpe.
+        img.loading = (i === 1) ? 'eager' : 'lazy';
 
-        // Índice de extensión actual (empieza en 0 = jpg)
+        // Empezar con .jpg
         let extIndex = 0;
         img.src = 'data/' + path + '/' + i + '.' + IMG_EXTENSIONS[extIndex];
 
-        // ⭐ Marcar item como loaded cuando la imagen carga exitosamente
-        img.onload = function() {
+        // Al cargar exitosamente → fade-in via CSS (.loaded)
+        img.onload = () => {
             item.classList.add('loaded');
         };
 
+        // Si falla, probar siguiente extensión
         img.onerror = function tryNext() {
             extIndex++;
             if (extIndex < IMG_EXTENSIONS.length) {
-                img.onerror = tryNext; // reasignar antes de cambiar src
+                img.onerror = tryNext;
                 img.src = 'data/' + path + '/' + i + '.' + IMG_EXTENSIONS[extIndex];
             } else {
                 img.onerror = null;
@@ -271,7 +316,6 @@ function addTextToGallery(gallery, projectName, projectData) {
  *   ≥ 2000 chars → 12px
  */
 function adjustTextSize(textDiv, textos) {
-    // Extraer solo texto visible, sin tags HTML
     const totalChars = textos.reduce((sum, t) => {
         return sum + t.replace(/<[^>]*>/g, '').length;
     }, 0);
@@ -314,13 +358,13 @@ function initMenu() {
         link.dataset.project = projectName;
         menu.appendChild(link);
 
-        // Subproyectos indentados (solo en proyectos complejos)
+        // Subproyectos indentados (solo en proyectos complejos, excepto teatroPlantas)
         if (projectName !== 'teatroPlantas' && projectData.tipo === 'complejo' && projectData.subproyectos) {
             const submenu = document.createElement('div');
             submenu.className = 'submenu';
             projectData.subproyectos.forEach(([subName]) => {
                 const subLink = document.createElement('a');
-                subLink.href = '#' + projectName; // navega al proyecto padre
+                subLink.href = '#' + projectName;
                 subLink.textContent = subName;
                 submenu.appendChild(subLink);
             });
@@ -430,7 +474,6 @@ function findProjectData(name) {
     for (const [projName, projData] of projectsData.proyectos) {
         if (projName === name) return projData;
 
-        // Buscar en subproyectos
         if (projData.subproyectos) {
             for (const [subName, subData] of projData.subproyectos) {
                 if (subName === name) return subData;
@@ -445,7 +488,8 @@ function findProjectData(name) {
 // ABOUT OVERLAY
 //
 // Al hacer click en "mokakopa" se abre un velo blanco semitransparente
-// con el texto del about en el idioma actual.
+// con el texto del about en el idioma actual. Contenido centrado con
+// padding 20dvh arriba y abajo.
 // Se cierra con: botón ×, click fuera del contenido, o tecla Escape.
 // ============================================================================
 
@@ -458,7 +502,7 @@ function initAboutOverlay() {
     siteName.addEventListener('click', () => {
         renderAboutContent();
         overlay.classList.remove('hidden');
-        overlay.scrollTop = 0; // ⭐ resetear scroll al principio
+        overlay.scrollTop = 0; // resetear scroll al principio
     });
 
     // Cerrar con botón ×

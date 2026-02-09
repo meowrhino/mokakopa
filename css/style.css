@@ -23,11 +23,16 @@ body {
     background-color: #fff;
     color: #000;
     overflow-x: hidden;
-    overscroll-behavior: none; /* elimina bounce en scroll */
+    overscroll-behavior: none; /* evitar bounce al llegar al límite del scroll */
 }
 
 
 /* === HEADER: NOMBRE + SELECTOR DE IDIOMAS (arriba izquierda) ============== */
+/*
+   mix-blend-mode: difference con color: #fff en el contenedor.
+   Sobre fondo blanco se ven negros, sobre imágenes oscuras se ven claros.
+   Mismo efecto que el menú de abajo.
+*/
 
 #site-header {
     position: fixed;
@@ -37,7 +42,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    /* Mismo efecto de contraste dinámico que el menú */
     mix-blend-mode: difference;
     color: #fff;
 }
@@ -56,7 +60,7 @@ body {
     opacity: 1;
 }
 
-/* ES  EN  CAT — el activo va en negrita */
+/* ES  EN  CAT — el activo va en negrita y opacity 1 */
 #language-selector {
     display: flex;
     gap: 8px;
@@ -92,7 +96,6 @@ body {
     background-color: rgba(255, 255, 255, 0.92);
     z-index: 2000;
     overflow-y: auto;
-    /* Quitar flex center para que el padding superior sea visible */
     display: block;
     /* Transición suave de apertura/cierre */
     opacity: 1;
@@ -107,13 +110,12 @@ body {
     pointer-events: none;
 }
 
-/* Contenido del about con padding visible arriba y abajo */
+/* Contenido del about centrado con padding 20dvh arriba y abajo */
 #about-content {
     max-width: 560px;
-    padding: 15dvh 40px; /* padding visible arriba y abajo */
+    padding: 20dvh 40px;
     margin: 0 auto;
     text-align: center;
-    min-height: 100vh; /* asegura que ocupe al menos toda la pantalla */
 }
 
 #about-content h2 {
@@ -156,7 +158,7 @@ body {
 /* === MENÚ DE PROYECTOS (abajo izquierda, texto pelao, blend-mode) ========= */
 /*
    Sin fondo, sin blur, sin bordes.
-   mix-blend-mode: difference en el contenedor con color: #fff en los links
+   mix-blend-mode: difference con color: #fff en los links
    → sobre fondo blanco se ven negros, sobre imágenes oscuras se ven claros.
 */
 
@@ -179,6 +181,7 @@ body {
     transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
+/* Links no activos en baja opacidad */
 #menu a:not(.active) {
     opacity: 0.6;
 }
@@ -219,7 +222,7 @@ body {
     height: 100dvh;
     position: relative;
     overflow: hidden;
-    overscroll-behavior: none; /* elimina bounce en scroll */
+    overscroll-behavior: none; /* evitar bounce */
 }
 
 
@@ -238,7 +241,6 @@ body {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     gap: 4dvw; /* espaciado responsive en viewport width */
-    overscroll-behavior: none; /* elimina bounce en scroll */
     /* Ocultar scrollbar en todos los navegadores */
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -251,6 +253,7 @@ body {
 
 /* === ITEMS DE LA GALERÍA (imágenes y bloque de texto) ===================== */
 
+/* Loader simplificado: cada imagen hace fade-in individual al cargar */
 .gallery-item {
     flex-shrink: 0;
     scroll-snap-align: center;
@@ -258,7 +261,7 @@ body {
     transition: opacity 0.4s ease;
 }
 
-/* Cuando la imagen carga, fade in simple */
+/* Cuando la imagen carga, JS añade .loaded → fade in */
 .gallery-item.loaded {
     opacity: 1;
 }
