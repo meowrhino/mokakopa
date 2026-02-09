@@ -75,7 +75,7 @@ function createProjectElement(projectName, projectData) {
     projectDiv.id = projectName;
 
     const gallery = document.createElement('div');
-    gallery.className = 'gallery loading'; // ⭐ inicia en estado loading
+    gallery.className = 'gallery';
 
     if (projectData.tipo === 'simple') {
         // Proyecto simple: secuencia de imágenes + bloque de texto
@@ -103,9 +103,6 @@ function createProjectElement(projectName, projectData) {
     // Registrar galería para centrado dinámico
     galleries.push(gallery);
     setupFirstImageCentering(gallery);
-
-    // ⭐ Configurar transición de loader: apilamiento → posición final
-    setupGalleryLoadingTransition(gallery);
 
     return projectDiv;
 }
@@ -174,55 +171,15 @@ function initResizeHandler() {
 
 
 // ============================================================================
-// TRANSICIÓN DE LOADER: APILAMIENTO → POSICIÓN FINAL
+// LOADER SIMPLE: FADE IN
 //
-// Las imágenes empiezan apiladas (transform: translateX(0)) y se van
-// mostrando a medida que cargan. Cuando todas están listas (o después de
-// un timeout), se quita el transform y vuelven a su posición natural en el flex.
+// Cada imagen empieza con opacity: 0 y cuando carga se marca como .loaded
+// para hacer fade in automáticamente con CSS. No necesita lógica compleja.
 // ============================================================================
 
-function setupGalleryLoadingTransition(gallery) {
-    const items = gallery.querySelectorAll('.gallery-item');
-    const totalItems = items.length;
-    
-    if (totalItems === 0) {
-        gallery.classList.remove('loading');
-        gallery.classList.add('loaded');
-        return;
-    }
-
-    let loadedCount = 0;
-
-    // Timeout máximo: si no cargan todas en 3s, forzar transición
-    const maxWaitTime = 3000;
-    const forceTransition = setTimeout(() => {
-        finishLoading(gallery);
-    }, maxWaitTime);
-
-    // Observar cada item para detectar cuándo se marca como 'loaded'
-    const observer = new MutationObserver(() => {
-        loadedCount = gallery.querySelectorAll('.gallery-item.loaded').length;
-        
-        // Si todas las imágenes cargaron, hacer transición
-        if (loadedCount >= totalItems) {
-            clearTimeout(forceTransition);
-            finishLoading(gallery);
-            observer.disconnect();
-        }
-    });
-
-    // Observar cambios de clase en cada item
-    items.forEach(item => {
-        observer.observe(item, { attributes: true, attributeFilter: ['class'] });
-    });
-}
-
-function finishLoading(gallery) {
-    // Cambiar de estado 'loading' a 'loaded'
-    // El CSS se encargará de quitar el transform y animar
-    gallery.classList.remove('loading');
-    gallery.classList.add('loaded');
-}
+// Ya no necesitamos setupGalleryLoadingTransition ni finishLoading
+// El fade in se maneja completamente con CSS + la clase .loaded que se
+// añade en img.onload dentro de addImagesToGallery()
 
 
 // ============================================================================
