@@ -176,19 +176,25 @@ function initResizeHandler() {
 // ============================================================================
 // TRANSICIÓN DE LOADER: APILAMIENTO → POSICIÓN FINAL
 //
-// Las imágenes empiezan apiladas (position: absolute, left: 0) y se van
+// Las imágenes empiezan apiladas (transform: translateX(0)) y se van
 // mostrando a medida que cargan. Cuando todas están listas (o después de
-// un timeout), la galería cambia a estado 'loaded' y las imágenes se
-// animan hacia su posición horizontal final.
+// un timeout), se quita el transform y vuelven a su posición natural en el flex.
 // ============================================================================
 
 function setupGalleryLoadingTransition(gallery) {
     const items = gallery.querySelectorAll('.gallery-item');
     const totalItems = items.length;
+    
+    if (totalItems === 0) {
+        gallery.classList.remove('loading');
+        gallery.classList.add('loaded');
+        return;
+    }
+
     let loadedCount = 0;
 
-    // Timeout máximo: si no cargan todas en 5s, forzar transición
-    const maxWaitTime = 5000;
+    // Timeout máximo: si no cargan todas en 3s, forzar transición
+    const maxWaitTime = 3000;
     const forceTransition = setTimeout(() => {
         finishLoading(gallery);
     }, maxWaitTime);
@@ -213,6 +219,7 @@ function setupGalleryLoadingTransition(gallery) {
 
 function finishLoading(gallery) {
     // Cambiar de estado 'loading' a 'loaded'
+    // El CSS se encargará de quitar el transform y animar
     gallery.classList.remove('loading');
     gallery.classList.add('loaded');
 }

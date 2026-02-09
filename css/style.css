@@ -257,20 +257,18 @@ body {
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
 }
 
-/* Estado de carga: todas las imágenes apiladas en posición 0 */
+/* Estado de carga: imágenes apiladas usando transform */
 .gallery.loading .gallery-item {
-    position: absolute;
-    left: 0;
     opacity: 0;
+    transform: translateX(0) !important;
 }
 
 .gallery.loading .gallery-item.loaded {
     opacity: 1;
 }
 
-/* Estado final: imágenes en su posición natural con transición */
+/* Estado final: imágenes en su posición natural */
 .gallery.loaded .gallery-item {
-    position: relative;
     opacity: 1;
 }
 
