@@ -154,18 +154,6 @@ function initResizeHandler() {
 
 
 // ============================================================================
-// LOADER SIMPLE: FADE IN
-//
-// Cada imagen empieza con opacity: 0 y cuando carga se marca como .loaded
-// para hacer fade in automáticamente con CSS. No necesita lógica compleja.
-// ============================================================================
-
-// Ya no necesitamos setupGalleryLoadingTransition ni finishLoading
-// El fade in se maneja completamente con CSS + la clase .loaded que se
-// añade en img.onload dentro de addImagesToGallery()
-
-
-// ============================================================================
 // CARGA DE IMÁGENES
 //
 // Intenta cargar cada imagen como .jpg primero.
@@ -223,9 +211,9 @@ function addTextToGallery(gallery, projectName, projectData) {
     textDiv.className = 'gallery-text';
     textDiv.dataset.project = projectName;
 
-    // Título del proyecto/subproyecto
+    // Título del proyecto (usa el campo titulo del JSON)
     const title = document.createElement('h2');
-    title.textContent = projectName;
+    title.textContent = projectData.titulo || projectName;
     textDiv.appendChild(title);
 
     // Párrafos de texto en el idioma actual
@@ -281,8 +269,7 @@ function getTextsByLang(projectData) {
 // ============================================================================
 // MENÚ DE NAVEGACIÓN (abajo izquierda)
 //
-// Lista de nombres de proyecto como links ancla (#proyecto).
-// Los proyectos complejos muestran subproyectos indentados.
+// Lista de títulos de proyecto como links ancla (#proyecto).
 // El proyecto visible se resalta con clase .active (scroll spy).
 // ============================================================================
 
@@ -293,7 +280,7 @@ function initMenu() {
     projectsData.proyectos.forEach(([projectName, projectData]) => {
         const link = document.createElement('a');
         link.href = '#' + projectName;
-        link.textContent = projectName;
+        link.textContent = projectData.titulo || projectName;
         link.dataset.project = projectName;
         menu.appendChild(link);
     });
@@ -393,19 +380,11 @@ function updateAllTexts() {
 }
 
 /**
- * Busca los datos de un proyecto por nombre,
- * tanto en proyectos principales como en subproyectos.
+ * Busca los datos de un proyecto por nombre.
  */
 function findProjectData(name) {
     for (const [projName, projData] of projectsData.proyectos) {
         if (projName === name) return projData;
-
-        // Buscar en subproyectos
-        if (projData.subproyectos) {
-            for (const [subName, subData] of projData.subproyectos) {
-                if (subName === name) return subData;
-            }
-        }
     }
     return null;
 }

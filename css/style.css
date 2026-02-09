@@ -197,20 +197,6 @@ body {
     text-decoration: none;
 }
 
-/* Subproyectos indentados (ej: nuvol, carasol, sean dentro de teatroPlantas) */
-#menu .submenu {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding-left: 12px;
-}
-
-#menu .submenu a {
-    font-size: 12px;
-    font-weight: normal;
-}
-
-
 /* === CONTENEDOR DE PROYECTOS ============================================== */
 
 #projects-container {

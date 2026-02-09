@@ -3,7 +3,7 @@
     [
       "patoCeramics",
       {
-        "tipo": "simple",
+        "titulo": "pato ceramics",
         "textosES": [],
         "textosEN": [],
         "textosCAT": [],
@@ -13,7 +13,7 @@
     [
       "porSiglos",
       {
-        "tipo": "simple",
+        "titulo": "por siglos en eros",
         "textosES": [
           "Por Siglos en Eros se presentó en el Espai Jove Boca Nord el día de Sant Jordi en el marco de la primera edición del Festival de Poesia Jove del Carmel. Esta performance presenta una historia de amor cargada de emoción entre la diosa Atenea y una artista mortal que se prolonga por siglos debido a una situación que inquieta a cuatro de los Perpetuos: Muerte, Eros, Porvenir y Locura (personificaciones eternas de las pasiones humanas).",
           "Buscando la manera de revertir los mitos griegos que muestran dioses del Olimpo persiguiendo ninfas y tramando planes inverosímiles para seducirlas, Por siglos en Eros reivindica el amor entre mujeres. Un amor arriesgado e incondicional que se materializa a través de un personaje alegórico sin nombre, la artista; e invierte el papel de la diosa Atenea como heroína trágica.",
@@ -44,7 +44,7 @@
     [
       "abuelo",
       {
-        "tipo": "simple",
+        "titulo": "hasta su abuelo lo era",
         "textosES": [],
         "textosEN": [],
         "textosCAT": [],
@@ -54,7 +54,7 @@
     [
       "otrosCuentos",
       {
-        "tipo": "simple",
+        "titulo": "y otros cuentos",
         "textosES": [
           "La búsqueda en las profundidades del subconsciente es un viaje opaco y misterioso que saca racional. a la luz historias recónditas. Y otros cuentos nace al margen de la realidad palpable, Creada a partir del método crítico paranoico inventado por Salvador Dalí, basa toda su composición y apariencia global en trazos nacidos del automatismo inconsciente.",
           "Dibujos que pueden ser leídos del derecho y del revés, formas pequeñas que resultan en componentes de grandes figuras, personajes secundarios y símbolos animales y humanos se mezclan en esta dinámica sucesión de acontecimientos fantásticos.",
@@ -82,7 +82,7 @@
     [
       "pommeTerre",
       {
-        "tipo": "simple",
+        "titulo": "l'univers de la pomme de terre",
         "textosES": [
           "Nacemos y crecemos con los ojos abiertos; al principio, los primeros meses en este mundo, no somos más que imágenes y sensaciones: entre mis primeros recuerdos hay un cristal grueso texturizado tan amarillo como los ojos de un tigre. Sé que mi madre está detrás de él, en el comedor, aunque aún no sé lo que es un comedor. No sé hablar. Soy todo ojos enormes y vientos de emociones. No existen los símbolos. Nada remite a nada. El mundo se presenta en imágenes que se nombran a sí mismas. Son, únicamente, su propia forma y color. Algo que recuperaré más tarde, cuando sepa sostener un pincel, con el arte abstracto.",
           "L’univers de le pomme de terre define algunas de estas formas esenciales: Baby tooth se alza orgulloso sobre sus suaves patas desplegando toda su inocencia con su lisa piel de pino centenario. Sus amigos lo esperan en el parque de atracciones. Él vive en un mundo dibujado por los vínculos. Nuestro mundo.",
@@ -104,7 +104,7 @@
     [
       "teatroPlantas",
       {
-        "tipo": "simple",
+        "titulo": "el teatro de las plantas",
         "textosES": [
           "El teatro de las plantas es un trabajo en curso que investiga la vida en los ecosistemas de Collserola a partir de la observación, el dibujo y la imaginación. Seleccionado inicialmente para la convocatoria Art i Ciutat Sant Cugat 2022, se inspiró en las revolucionarias ideas mediante las cuales diversos autores, desde Demócrito, pasando por Darwin, y desembocando en actuales neuropbiólogos del mundo vegetal como Monica Gagliano o Stefano Mancuso, han expresado su convicción de que las plantas están dotadas de habilidades y sensibilidades mucho más refinadas de las que comúnmente se observan.",
           "El proyecto parte de la voluntad de explorar las posibilidades narrativas y poéticas cuando imaginamos la existencia desde percepciones diferentes a la temporalidad y el desplazamiento humano habitual. Comienza observando la naturaleza de Collserola para desembocar en dibujos que expresan los patrones de crecimiento de plantas e insectos. Las líneas que los conforman dan información sobre su desarrollo ordenado en el tiempo. Estos patrones remiten a ideas y símbolos presentes en nuestro subconsciente y, por ende, en el arte y la literatura de autores contemporáneos y anteriores a nosotras. Muchas piezas experimentan también con escenas narrativas y asociaciones. A lo largo de este recorrido, encontramos una contemplación reiterada de lo desconocido mediante personajes que descubren diminutos mundos de fantasía.",
@@ -141,7 +141,7 @@
     [
       "bacanales",
       {
-        "tipo": "simple",
+        "titulo": "se acabaron las bacanales",
         "textosES": [
           "Esta exposición enlaza las creaciones que tuvieron lugar entre Agosto y Septiembre de 2020, de dos artistas que comparten estudio y entorno: las acuarelas de medio formato de Monica Kopatschek y los poemas de Ana López.",
           "'Se acabaron las bacanales' brota de una feroz voluntad de reivindicar las pasadas celebraciones de la vida de las personas, las relaciones entre ellas, las reuniones, y en definitiva, todo aquello que arrebató las medidas contra la crisis mundial de 2020. El primer verano en estas circunstancias, en lo que en la cultura mediterránea solía ser una época de explosión de alegría, sol, y atardeceres infinitos, nació a medias tintas y bajo el control estricto de las medidas anti-contacto. En esta exposición revisamos cómo, durante aquel final de verano, contemplamos también como había sido el final de la vida en sociedad tal y cómo la habíamos conocido, y el inicio de un otoño que empezaba con nuevas medidas. Rabia, decepción, y profunda reflexión, empujaron aquellas creaciones que hoy reunimos en vistas a un nuevo verano tras la crisis. Las escenas de las acuarelas se suceden en complejas composiciones de gente que ríe y se regocija sobre la hierba sin querer despertar. Pero ya es tarde: se han acabado las bacanales y tan solo nos queda la crítica nostálgica plagada de recuerdos de cuando se vivía, se respiraba y se bailaba en libertad.",
@@ -169,7 +169,7 @@
   ],
   "about": [
     {
-      "titulo": "ABOUT",
+      "titulo": "Monica Kopatschek",
       "subtitulo": "Monica Kopatschek (San Francisco, 1993)",
       "textosES": [
         "Mi práctica se centra en la pintura figurativa como un lugar donde se cruzan poder, intimidad y ficción. Construyo escenas habitadas por personajes que oscilan entre formas humanas, animales y biomórficas, cohabitando en espacios compartidos y entablando relaciones que sugieren narrativas sin resolución. Estas pinturas funcionan como escenarios--cuidadosamente compuestos y visiblemente construidos--mientras se apoyan en gestos y dinámicas que parecen instintivas o naturales.",
