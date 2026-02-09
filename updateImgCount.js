@@ -44,7 +44,8 @@ const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 console.log('Actualizando imgCount para cada proyecto...\n');
 
 // Actualizar imgCount para cada proyecto
-data.proyectos.forEach(([projectName, projectData]) => {
+data.proyectos.forEach(projectData => {
+    const projectName = projectData.id;
     const projectPath = path.join(__dirname, 'data', projectName);
     
     if (projectData.tipo === 'simple') {
