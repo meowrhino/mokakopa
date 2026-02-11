@@ -173,48 +173,45 @@ body {
 }
 
 
-/* === MENÚ DE PROYECTOS (bottom, barra fina horizontal) =================== */
+/* === MENÚ DE PROYECTOS (abajo izquierda, texto pelao, blend-mode) ========= */
 /*
-   Barra fina pegada al bottom, fija, con botones horizontales.
-   mix-blend-mode: difference con color: #fff en los links.
-   Los botones activos se ponen en blanco (#fff).
+   Sin fondo, sin blur, sin bordes.
+   mix-blend-mode: difference con color: #fff en los links
+   → sobre fondo blanco se ven negros, sobre imágenes oscuras se ven claros.
 */
 
 #menu {
     position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 2px;
-    background: rgba(0, 0, 0, 0.15);
-    z-index: 1000;
+    left: 20px;
+    bottom: 20px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 0 20px;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 1000;
     mix-blend-mode: difference;
 }
 
 #menu a {
     text-decoration: none;
     color: #fff;
-    font-size: 12px;
-    font-weight: normal;
-    transition: color 0.3s ease, font-weight 0.3s ease;
+    font-size: 14px;
+    font-weight: bold;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+/* Links no activos en baja opacidad */
+#menu a:not(.active) {
     opacity: 0.6;
-    white-space: nowrap;
 }
 
 #menu a:hover {
     opacity: 1;
+    transform: translateX(5px);
 }
 
-/* Proyecto activo: blanco y negrita */
+/* Proyecto activo (detectado por scroll spy) */
 #menu a.active {
-    color: #fff;
-    font-weight: bold;
-    opacity: 1;
+    text-decoration: none;
 }
 
 /* === CONTENEDOR DE PROYECTOS ============================================== */
@@ -233,18 +230,24 @@ body {
     overscroll-behavior-y: auto;
 }
 
-/* Scrollbar custom — barra fija abajo, arrastrable como un scrollbar nativo */
+/* Barra de navegación de imágenes — indicador de progreso bottom */
 .scrollbar-track {
     position: absolute;
-    bottom: 12px;
+    bottom: 8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 30%;
-    height: 4px;
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 2px;
+    width: 40%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
     z-index: 10;
     cursor: pointer;
+    transition: height 0.2s ease, background 0.2s ease;
+}
+
+.scrollbar-track:hover {
+    height: 3px;
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .scrollbar-thumb {
@@ -252,17 +255,22 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-    min-width: 20px;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 2px;
+    min-width: 30px;
+    background: rgba(255, 255, 255, 0.8);
     cursor: grab;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
-.scrollbar-thumb:hover,
+.scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+}
+
 .scrollbar-thumb.dragging {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 1);
     cursor: grabbing;
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.8);
 }
 
 
@@ -368,12 +376,13 @@ body {
     }
 
     #menu {
-        gap: 12px;
-        padding: 0 10px;
+        left: 15px;
+        bottom: 15px;
+        gap: 2px;
     }
 
     #menu a {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .gallery {
