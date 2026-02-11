@@ -230,9 +230,9 @@ body {
     overscroll-behavior-y: auto;
 }
 
-/* Barra de navegación de imágenes — indicador de progreso bottom */
-.scrollbar-track {
-    position: absolute;
+/* Barra de navegación de imágenes — indicador de progreso bottom (global y fija) */
+#global-scrollbar-track {
+    position: fixed;
     bottom: 8px;
     left: 50%;
     transform: translateX(-50%);
@@ -240,17 +240,17 @@ body {
     height: 2px;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(4px);
-    z-index: 10;
+    z-index: 1000;
     cursor: pointer;
     transition: height 0.2s ease, background 0.2s ease;
 }
 
-.scrollbar-track:hover {
+#global-scrollbar-track:hover {
     height: 3px;
     background: rgba(255, 255, 255, 0.3);
 }
 
-.scrollbar-thumb {
+#global-scrollbar-thumb {
     position: absolute;
     top: 0;
     left: 0;
@@ -262,12 +262,12 @@ body {
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
-.scrollbar-thumb:hover {
+#global-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 1);
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
 }
 
-.scrollbar-thumb.dragging {
+#global-scrollbar-thumb.dragging {
     background: rgba(255, 255, 255, 1);
     cursor: grabbing;
     box-shadow: 0 0 16px rgba(255, 255, 255, 0.8);
