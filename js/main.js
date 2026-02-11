@@ -290,8 +290,10 @@ function initMenu() {
         link.textContent = projectData.titulo || projectName;
         link.dataset.project = projectName;
         
-        // Todos empiezan en negro (inactivos)
-        link.style.color = '#000';
+        // Asignar el color del proyecto (inactivos)
+        if (projectData.color) {
+            link.style.color = projectData.color;
+        }
         
         menu.appendChild(link);
     });
@@ -314,15 +316,15 @@ function initScrollSpy() {
                     const isActive = a.dataset.project === activeId;
                     a.classList.toggle('active', isActive);
                     
-                    // Si es activo, asignar el color del proyecto
+                    const projectData = findProjectData(a.dataset.project);
+                    
+                    // Si es activo, negro; si es inactivo, color del proyecto
                     if (isActive) {
-                        const projectData = findProjectData(a.dataset.project);
+                        a.style.color = '#000';
+                    } else {
                         if (projectData && projectData.color) {
                             a.style.color = projectData.color;
                         }
-                    } else {
-                        // Si es inactivo, volver a negro
-                        a.style.color = '#000';
                     }
                 });
             }

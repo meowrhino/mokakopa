@@ -193,8 +193,9 @@ body {
 
 #menu a {
     text-decoration: none;
-    /* Inactivos: negro */
-    color: #000;
+    /* El color se asigna dinámicamente desde JS según el estado */
+    /* Inactivos: color del proyecto */
+    /* Activo: negro (#000) */
     font-size: 14px;
     font-weight: bold;
     transition: opacity 0.3s ease, transform 0.2s ease, color 0.3s ease;
@@ -210,10 +211,9 @@ body {
     transform: translateX(5px);
 }
 
-/* Proyecto activo: color del proyecto (asignado dinámicamente desde JS) */
+/* Proyecto activo: negro → con difference se invierte al color complementario */
 #menu a.active {
     text-decoration: none;
-    /* El color se asigna dinámicamente desde JS */
     opacity: 1;
 }
 
