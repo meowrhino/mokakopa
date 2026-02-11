@@ -488,3 +488,149 @@ siteName.addEventListener('click', () => {
 2. considerar añadir un indicador de progreso (ej: "3/10 imágenes cargadas")
 3. optimizar imágenes para carga más rápida
 4. considerar lazy loading más agresivo (solo cargar proyecto visible)
+
+
+## 2026-02-11 06:15 - cambios de diseño: tipografía, colores, menú bottom y link meowrhino
+
+### sinopsis
+implementación de cambios de diseño solicitados: cambio de tipografía a Times New Roman, asignación de colores de fondo por proyecto, reubicación del menú de navegación al bottom como barra horizontal, y adición de link a meowrhino.studio en el modal about.
+
+### proceso detallado
+
+#### 1. cambio de tipografía
+**archivo modificado**: `css/style.css`
+
+cambio de fuente principal de `'Courier New', monospace` a `'Times New Roman', Times, serif` en el selector `body`. esto afecta a todo el sitio manteniendo una estética más clásica y editorial.
+
+#### 2. asignación de colores por proyecto
+**archivo modificado**: `data.json`
+
+se añadió un campo `color` a cada proyecto con una paleta de colores pastel suaves que funcionan bien con el efecto `mix-blend-mode: difference`:
+
+- **patoCeramics**: `#E8D5C4` (beige cálido)
+- **porSiglos**: `#D4A5A5` (rosa suave)
+- **abuelo**: `#C4D5E8` (azul pastel)
+- **otrosCuentos**: `#E8E4C4` (amarillo crema)
+- **pommeTerre**: `#D4E8D4` (verde menta)
+- **bacanales**: `#E8C4D5` (rosa lavanda)
+- **teatroPlantas**: `#D4E8D9` (verde salvia)
+
+**archivo modificado**: `js/main.js`
+
+en la función `createProjectElement()`, se añadió lógica para aplicar el color de fondo a cada sección de proyecto:
+
+```javascript
+// Aplicar color de fondo si existe
+if (projectData.color) {
+    projectDiv.style.backgroundColor = projectData.color;
+}
+```
+
+esto crea una experiencia visual distintiva donde cada proyecto tiene su propia identidad cromática en su sección de 100dvh x 100dvw.
+
+#### 3. reubicación del menú al bottom
+**archivo modificado**: `css/style.css`
+
+el menú de navegación se movió desde la posición `bottom: 20px; left: 20px` (esquina inferior izquierda) a una barra horizontal completa pegada al bottom:
+
+cambios principales:
+- `position: fixed; left: 0; right: 0; bottom: 0;`
+- `height: 2px;` (barra muy fina)
+- `display: flex; justify-content: center; gap: 20px;`
+- cambio de `flex-direction: column` a layout horizontal
+- reducción de `font-size` de 14px a 12px
+- los enlaces mantienen `mix-blend-mode: difference` heredado del contenedor
+
+**comportamiento de botones activos**:
+- botones no activos: `opacity: 0.6`, `font-weight: normal`
+- botón activo: `opacity: 1`, `font-weight: bold`, `color: #fff`
+
+el efecto `mix-blend-mode: difference` hace que los textos se inviertan sobre los fondos de color, creando un contraste dinámico.
+
+#### 4. link meowrhino en about modal
+**archivo modificado**: `css/style.css`
+
+se añadieron estilos para el footer del about:
+
+```css
+#about-content .about-footer {
+    margin-top: 40px;
+    font-size: 11px;
+    color: #666;
+}
+
+#about-content .about-footer a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#about-content .about-footer a:hover {
+    color: #000;
+}
+```
+
+**archivo modificado**: `js/main.js`
+
+en la función `renderAboutContent()`, se añadió:
+
+1. limpieza de elementos `.about-footer` anteriores para evitar duplicados
+2. creación dinámica del footer con el link:
+
+```javascript
+// Añadir link pequeño al final
+const footer = document.createElement('div');
+footer.className = 'about-footer';
+footer.innerHTML = '<a href="https://meowrhino.studio" target="_blank" rel="noopener noreferrer">web:meowrhino</a>';
+content.appendChild(footer);
+```
+
+el link aparece al final del contenido del about con un `margin-top: 40px` para separarlo del texto principal.
+
+#### 5. ajustes responsive
+**archivo modificado**: `css/style.css`
+
+se actualizaron los estilos responsive del menú para móvil:
+- reducción de `gap` de 20px a 12px
+- reducción de `font-size` de 12px a 10px
+- ajuste de `padding` de 20px a 10px
+
+esto asegura que todos los nombres de proyectos quepan en pantallas pequeñas sin overflow.
+
+### pruebas realizadas
+
+se levantó un servidor local con `python3.11 -m http.server 8080` y se probó el sitio en el navegador:
+
+**verificaciones exitosas**:
+- ✅ tipografía Times New Roman aplicada correctamente
+- ✅ colores de fondo visibles en cada proyecto
+- ✅ menú bottom horizontal funcionando
+- ✅ efecto `mix-blend-mode: difference` activo en header y menú
+- ✅ modal about con link "web:meowrhino" al final
+- ✅ transiciones suaves entre proyectos con cambios de color
+- ✅ scroll vertical entre proyectos y horizontal dentro de galerías
+
+### commit y push
+
+se realizó un único commit agrupando todos los cambios:
+
+```
+feat: cambios de diseño - Times New Roman, colores por proyecto, menú bottom y link meowrhino
+
+- Cambiar tipografía a Times New Roman en todo el sitio
+- Añadir campo 'color' a cada proyecto en data.json con paleta pastel
+- Aplicar color de fondo a cada sección de proyecto (100x100)
+- Mover menú de navegación al bottom como barra horizontal fina
+- Botones activos en blanco con negrita
+- Mantener efecto mix-blend-mode: difference en todos los textos del menú
+- Añadir link 'web:meowrhino' al final del modal about
+```
+
+**commit hash**: `39af102`
+
+**archivos modificados**:
+- `css/style.css`: 63 cambios (tipografía, menú bottom, footer about, responsive)
+- `data.json`: 7 colores añadidos (uno por proyecto)
+- `js/main.js`: aplicación de colores de fondo y generación de footer about
+
+push exitoso a `origin/main`.
