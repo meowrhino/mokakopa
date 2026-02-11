@@ -634,3 +634,114 @@ feat: cambios de diseño - Times New Roman, colores por proyecto, menú bottom y
 - `js/main.js`: aplicación de colores de fondo y generación de footer about
 
 push exitoso a `origin/main`.
+
+
+## 2026-02-11 07:00 - corrección: revertir menú y mejorar barra de navegación de imágenes
+
+### sinopsis
+corrección de la implementación anterior: el menú de proyectos se revirtió a su posición original (abajo izquierda, vertical) y se mejoró el diseño de la barra de navegación de imágenes en el bottom center para que funcione como un indicador de progreso más bonito y diseñado.
+
+### proceso detallado
+
+#### 1. aclaración del malentendido
+
+en la implementación anterior se interpretó erróneamente que el menú de proyectos debía moverse al bottom como barra horizontal. el usuario aclaró que:
+
+- el **menú de proyectos** debe permanecer en su posición original (abajo izquierda, vertical)
+- la **barra de navegación** que se solicitaba era para navegar entre las imágenes de cada proyecto, no entre proyectos
+
+#### 2. reversión del menú a posición original
+
+**archivo modificado**: `css/style.css`
+
+se revirtieron los cambios del menú de proyectos a su estado original:
+
+```css
+#menu {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 1000;
+    mix-blend-mode: difference;
+}
+```
+
+características restauradas:
+- posición fija en `left: 20px; bottom: 20px`
+- layout vertical con `flex-direction: column`
+- `gap: 4px` entre enlaces
+- mantiene `mix-blend-mode: difference`
+
+estilos de enlaces:
+- `font-size: 14px` y `font-weight: bold`
+- enlaces no activos con `opacity: 0.6`
+- hover con `opacity: 1` y `transform: translateX(5px)`
+
+#### 3. mejora del diseño de la barra de navegación de imágenes
+
+**archivo modificado**: `css/style.css`
+
+la barra de navegación de imágenes (`.scrollbar-track` y `.scrollbar-thumb`) ya existía funcionalmente, pero se mejoró su diseño para hacerla más bonita y visible:
+
+**cambios en `.scrollbar-track`**:
+- reducción de altura de `4px` a `2px` para hacerla más fina
+- cambio de color de `rgba(0, 0, 0, 0.1)` a `rgba(255, 255, 255, 0.2)` (blanco semitransparente)
+- añadido `backdrop-filter: blur(4px)` para efecto de cristal esmerilado
+- incremento de ancho de `30%` a `40%` para mejor visibilidad
+- transiciones suaves en `height` y `background` para hover
+- en hover: altura aumenta a `3px` y opacidad a `0.3`
+
+**cambios en `.scrollbar-thumb`**:
+- incremento de `min-width` de `20px` a `30px` para mejor agarre
+- cambio de color de `rgba(0, 0, 0, 0.3)` a `rgba(255, 255, 255, 0.8)` (blanco brillante)
+- añadido `box-shadow: 0 0 8px rgba(255, 255, 255, 0.4)` para efecto glow
+- en hover: opacidad completa y glow más intenso (`0 0 12px`)
+- en dragging: máxima intensidad de glow (`0 0 16px`)
+
+**resultado visual**:
+- barra muy fina y elegante en el bottom center
+- efecto luminoso blanco que contrasta con los fondos de color
+- transiciones suaves que responden al hover y al drag
+- indicador de progreso claro y funcional para navegar entre imágenes
+
+#### 4. ajustes responsive
+
+se actualizaron los estilos responsive del menú para móvil:
+- `left: 15px; bottom: 15px` (ajuste de márgenes)
+- `gap: 2px` (reducción de espacio entre enlaces)
+- `font-size: 12px` (reducción de tamaño de fuente)
+
+### pruebas realizadas
+
+se levantó un servidor local en el puerto 8081 y se verificó:
+
+**verificaciones exitosas**:
+- ✅ menú de proyectos en posición original (abajo izquierda, vertical)
+- ✅ barra de navegación de imágenes visible en bottom center
+- ✅ efecto glow blanco funcionando correctamente
+- ✅ transiciones suaves en hover y drag
+- ✅ colores de fondo de proyectos manteniéndose correctamente
+- ✅ efecto `mix-blend-mode: difference` activo en header y menú
+
+### commit y push
+
+**commit hash**: `ec16662`
+
+**mensaje del commit**:
+```
+fix: revertir menú a posición original y mejorar diseño de barra de navegación
+
+- Revertir menú a posición abajo izquierda vertical
+- Mejorar diseño de barra de navegación de imágenes (bottom center)
+- Barra más fina (2px) con efecto glow blanco semitransparente
+- Añadir transiciones suaves en hover y drag
+- Mantener funcionalidad de navegación entre imágenes
+```
+
+**archivo modificado**:
+- `css/style.css`: 46 inserciones, 37 eliminaciones
+
+push exitoso a `origin/main`.
