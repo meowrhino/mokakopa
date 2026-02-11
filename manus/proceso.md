@@ -745,3 +745,222 @@ fix: revertir menú a posición original y mejorar diseño de barra de navegaci�
 - `css/style.css`: 46 inserciones, 37 eliminaciones
 
 push exitoso a `origin/main`.
+
+
+## 2026-02-11 07:10 - implementación de barra de navegación única y global
+
+### sinopsis
+implementación de una única barra de navegación fija en el bottom center que se actualiza dinámicamente según el proyecto activo, permitiendo navegar entre las imágenes del proyecto actual. eliminación de las barras individuales por proyecto y refactorización del código para una arquitectura más limpia.
+
+### proceso detallado
+
+#### 1. aclaración del requisito
+
+el usuario aclaró que la barra de navegación debe ser:
+- **una sola barra fija** en el bottom (no una por proyecto)
+- se **actualiza dinámicamente** con los datos del proyecto en el que estés
+- cuando cambias de proyecto (scroll vertical), la barra se recarga con la nueva información
+
+#### 2. modificaciones en el HTML
+
+**archivo modificado**: `index.html`
+
+se añadió una barra de navegación global en el HTML, fuera del contenedor de proyectos:
+
+```html
+<!-- Barra de navegación de imágenes (bottom center, única y fija) -->
+<div id="global-scrollbar-track" class="scrollbar-track">
+    <div id="global-scrollbar-thumb" class="scrollbar-thumb"></div>
+</div>
+```
+
+esta barra es única y está en el DOM principal, no dentro de cada proyecto.
+
+#### 3. modificaciones en el CSS
+
+**archivo modificado**: `css/style.css`
+
+se cambió el selector de `.scrollbar-track` a `#global-scrollbar-track` para aplicar estilos solo a la barra global:
+
+```css
+#global-scrollbar-track {
+    position: fixed;  /* Cambio de absolute a fixed */
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    z-index: 1000;  /* z-index alto para estar siempre visible */
+    cursor: pointer;
+    transition: height 0.2s ease, background 0.2s ease;
+}
+```
+
+cambios clave:
+- `position: fixed` en lugar de `absolute` para que sea fija en la pantalla
+- `z-index: 1000` para que esté siempre visible sobre los proyectos
+- selectores específicos `#global-scrollbar-track` y `#global-scrollbar-thumb`
+
+#### 4. refactorización del JavaScript
+
+**archivo modificado**: `js/main.js`
+
+**eliminación de `setupScrollbar()`**:
+- se eliminó completamente la función `setupScrollbar()` que creaba barras individuales por proyecto
+- se eliminó la llamada a `setupScrollbar()` en `createProjectElement()`
+
+**creación de `initGlobalScrollbar()`**:
+nueva función que gestiona una única barra global con las siguientes características:
+
+**a) detección del proyecto activo**:
+```javascript
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const projectDiv = entry.target;
+            const gallery = projectDiv.querySelector('.gallery');
+            
+            // Remover listener del anterior
+            if (currentGallery) {
+                currentGallery.removeEventListener('scroll', updateThumb);
+            }
+            
+            // Actualizar galería activa
+            currentGallery = gallery;
+            
+            // Añadir listener al nuevo
+            if (currentGallery) {
+                currentGallery.addEventListener('scroll', updateThumb);
+                updateThumb();
+            }
+        }
+    });
+}, { threshold: 0.5 });
+```
+
+usa `IntersectionObserver` para detectar qué proyecto está visible en el viewport y actualiza `currentGallery` dinámicamente.
+
+**b) actualización dinámica del thumb**:
+```javascript
+const updateThumb = () => {
+    if (!currentGallery) {
+        track.style.display = 'none';
+        return;
+    }
+
+    const scrollW = currentGallery.scrollWidth;
+    const clientW = currentGallery.clientWidth;
+    
+    if (scrollW <= clientW) {
+        track.style.display = 'none';
+        return;
+    }
+    
+    track.style.display = '';
+    
+    const ratio = clientW / scrollW;
+    const thumbWidth = Math.max(30, ratio * track.offsetWidth);
+    thumb.style.width = thumbWidth + 'px';
+    
+    const maxScroll = scrollW - clientW;
+    const maxThumbLeft = track.offsetWidth - thumbWidth;
+    const pct = maxScroll > 0 ? currentGallery.scrollLeft / maxScroll : 0;
+    thumb.style.left = (pct * maxThumbLeft) + 'px';
+};
+```
+
+la función `updateThumb()` se ejecuta cada vez que:
+- cambia el proyecto activo (via `IntersectionObserver`)
+- se hace scroll horizontal en la galería activa
+- se redimensiona la ventana
+
+**c) interacción con la barra**:
+- **drag**: permite arrastrar el thumb para navegar
+- **click**: permite hacer click en el track para saltar a una posición
+- **touch**: soporte completo para dispositivos táctiles
+
+todas las interacciones operan sobre `currentGallery`, que se actualiza dinámicamente.
+
+**d) inicialización**:
+se añadió la llamada a `initGlobalScrollbar()` en la función `init()`:
+
+```javascript
+renderProjects();
+initMenu();
+initLanguageSelector();
+initAboutOverlay();
+initScrollSpy();
+initGlobalScrollbar();  // Nueva función
+initResizeHandler();
+```
+
+#### 5. verificación del mix-blend-mode
+
+se verificó que el `mix-blend-mode: difference` está correctamente aplicado en el menú:
+
+```css
+#menu {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 1000;
+    mix-blend-mode: difference;  /* ✅ Presente */
+}
+
+#menu a {
+    text-decoration: none;
+    color: #fff;  /* Blanco que se invierte sobre fondos */
+    font-size: 14px;
+    font-weight: bold;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+```
+
+el efecto funciona correctamente: los textos blancos se invierten sobre los fondos de color.
+
+### ventajas de la arquitectura refactorizada
+
+1. **una sola barra**: más limpio visualmente y menos elementos en el DOM
+2. **actualización dinámica**: se adapta automáticamente al proyecto activo
+3. **mejor rendimiento**: solo un conjunto de event listeners en lugar de uno por proyecto
+4. **código más mantenible**: lógica centralizada en una sola función
+5. **separación de responsabilidades**: `IntersectionObserver` para detección, `updateThumb()` para renderizado
+
+### pruebas realizadas
+
+se levantó un servidor local en el puerto 8082 y se verificó:
+
+**verificaciones exitosas**:
+- ✅ una sola barra visible en el bottom center
+- ✅ menú de proyectos en posición original (abajo izquierda)
+- ✅ `mix-blend-mode: difference` funcionando en el menú
+- ✅ colores de fondo de proyectos correctos
+- ✅ barra con diseño mejorado (glow blanco semitransparente)
+
+### commit y push
+
+**commit hash**: `84f0dae`
+
+**mensaje del commit**:
+```
+feat: implementar barra de navegación única y global
+
+- Crear una única barra de navegación fija en el bottom center
+- La barra se actualiza dinámicamente según el proyecto activo
+- Permite navegar entre las imágenes del proyecto actual
+- Eliminar barras individuales por proyecto
+- Mantener funcionalidad de drag, click y touch
+- Mejorar diseño con efecto glow blanco semitransparente
+```
+
+**archivos modificados**:
+- `css/style.css`: selectores específicos para barra global
+- `index.html`: añadir barra global en el DOM principal
+- `js/main.js`: 155 inserciones, 125 eliminaciones (refactorización completa)
+
+push exitoso a `origin/main`.
