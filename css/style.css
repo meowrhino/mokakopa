@@ -188,7 +188,7 @@ body {
     flex-direction: column;
     gap: 4px;
     z-index: 1000;
-    mix-blend-mode: soft-light;
+    mix-blend-mode: difference;
 }
 
 #menu a {
@@ -236,7 +236,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100dvw;
-    height: 1dvh;
+    height: 2dvh;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(4px);
     z-index: 1000;
