@@ -289,6 +289,12 @@ function initMenu() {
         link.href = '#' + projectName;
         link.textContent = projectData.titulo || projectName;
         link.dataset.project = projectName;
+        
+        // Asignar color de fondo del proyecto
+        if (projectData.color) {
+            link.style.color = projectData.color;
+        }
+        
         menu.appendChild(link);
     });
 }

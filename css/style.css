@@ -193,10 +193,10 @@ body {
 
 #menu a {
     text-decoration: none;
-    color: #fff;
+    /* El color se asigna dinámicamente desde JS según el color del proyecto */
     font-size: 14px;
     font-weight: bold;
-    transition: opacity 0.3s ease, transform 0.2s ease;
+    transition: opacity 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
 
 /* Links no activos en baja opacidad */
@@ -209,9 +209,11 @@ body {
     transform: translateX(5px);
 }
 
-/* Proyecto activo (detectado por scroll spy) */
+/* Proyecto activo: negro → con difference se invierte al color complementario */
 #menu a.active {
     text-decoration: none;
+    color: #000 !important;
+    opacity: 1;
 }
 
 /* === CONTENEDOR DE PROYECTOS ============================================== */
