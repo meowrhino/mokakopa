@@ -54,7 +54,7 @@ body {
     cursor: pointer;
     color: inherit;
     transition: opacity 0.3s ease;
-    opacity: 0.6;
+    opacity: 1;
 }
 
 #site-name:hover {
@@ -73,7 +73,7 @@ body {
     color: inherit;
     font-weight: normal;
     transition: opacity 0.3s ease;
-    opacity: 0.6;
+    opacity: 1;
 }
 
 #language-selector span:hover {
@@ -193,7 +193,8 @@ body {
 
 #menu a {
     text-decoration: none;
-    /* El color se asigna dinámicamente desde JS según el color del proyecto */
+    /* Inactivos: negro */
+    color: #000;
     font-size: 14px;
     font-weight: bold;
     transition: opacity 0.3s ease, transform 0.2s ease, color 0.3s ease;
@@ -209,10 +210,10 @@ body {
     transform: translateX(5px);
 }
 
-/* Proyecto activo: negro → con difference se invierte al color complementario */
+/* Proyecto activo: color del proyecto (asignado dinámicamente desde JS) */
 #menu a.active {
     text-decoration: none;
-    color: #000 !important;
+    /* El color se asigna dinámicamente desde JS */
     opacity: 1;
 }
 

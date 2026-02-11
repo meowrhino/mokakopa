@@ -290,10 +290,8 @@ function initMenu() {
         link.textContent = projectData.titulo || projectName;
         link.dataset.project = projectName;
         
-        // Asignar color de fondo del proyecto
-        if (projectData.color) {
-            link.style.color = projectData.color;
-        }
+        // Todos empiezan en negro (inactivos)
+        link.style.color = '#000';
         
         menu.appendChild(link);
     });
@@ -313,7 +311,19 @@ function initScrollSpy() {
             if (entry.isIntersecting) {
                 const activeId = entry.target.id;
                 document.querySelectorAll('#menu > a').forEach(a => {
-                    a.classList.toggle('active', a.dataset.project === activeId);
+                    const isActive = a.dataset.project === activeId;
+                    a.classList.toggle('active', isActive);
+                    
+                    // Si es activo, asignar el color del proyecto
+                    if (isActive) {
+                        const projectData = findProjectData(a.dataset.project);
+                        if (projectData && projectData.color) {
+                            a.style.color = projectData.color;
+                        }
+                    } else {
+                        // Si es inactivo, volver a negro
+                        a.style.color = '#000';
+                    }
                 });
             }
         });
