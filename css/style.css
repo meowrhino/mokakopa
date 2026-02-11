@@ -188,7 +188,7 @@ body {
     flex-direction: column;
     gap: 4px;
     z-index: 1000;
-    mix-blend-mode: difference;
+    /* No blend mode en el contenedor, solo en el botón activo */
 }
 
 #menu a {
@@ -211,10 +211,12 @@ body {
     transform: translateX(5px);
 }
 
-/* Proyecto activo: negro → con difference se invierte al color complementario */
+/* Proyecto activo: blanco con blend mode difference (como el título y los idiomas) */
 #menu a.active {
     text-decoration: none;
     opacity: 1;
+    color: #fff !important;
+    mix-blend-mode: difference;
 }
 
 /* === CONTENEDOR DE PROYECTOS ============================================== */

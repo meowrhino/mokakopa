@@ -316,12 +316,10 @@ function initScrollSpy() {
                     const isActive = a.dataset.project === activeId;
                     a.classList.toggle('active', isActive);
                     
-                    const projectData = findProjectData(a.dataset.project);
-                    
-                    // Si es activo, negro; si es inactivo, color del proyecto
-                    if (isActive) {
-                        a.style.color = '#000';
-                    } else {
+                    // El color del activo se maneja con CSS (.active)
+                    // Solo asignamos color a los inactivos
+                    if (!isActive) {
+                        const projectData = findProjectData(a.dataset.project);
                         if (projectData && projectData.color) {
                             a.style.color = projectData.color;
                         }
