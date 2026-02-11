@@ -3,30 +3,28 @@
    Portfolio de proyectos artísticos de Monica Kopatschek
    ============================================================================ */
 
-
 /* === RESET Y CONFIGURACIÓN GLOBAL ========================================= */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 16px;
-    line-height: 1.6;
-    background-color: #fff;
-    color: #000;
-    overflow-x: hidden;
-    overscroll-behavior-x: none;
-    overscroll-behavior-y: auto; /* permite scroll vertical entre proyectos */
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: #fff;
+  color: #000;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: auto; /* permite scroll vertical entre proyectos */
 }
-
 
 /* === HEADER: NOMBRE + SELECTOR DE IDIOMAS (arriba izquierda) ============== */
 /*
@@ -36,142 +34,142 @@ body {
 */
 
 #site-header {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    mix-blend-mode: difference;
-    color: #fff;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  mix-blend-mode: difference;
+  color: #fff;
 }
 
 /* "mokakopa" — clickable, abre el about */
 #site-name {
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    color: inherit;
-    transition: opacity 0.3s ease;
-    opacity: 1;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: inherit;
+  transition: opacity 0.3s ease;
+  opacity: 1;
 }
 
 #site-name:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 /* ES  EN  CAT — el activo va en negrita y opacity 1 */
 #language-selector {
-    display: flex;
-    gap: 8px;
-    font-size: 13px;
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
 }
 
 #language-selector span {
-    cursor: pointer;
-    color: inherit;
-    font-weight: normal;
-    transition: opacity 0.3s ease;
-    opacity: 1;
+  cursor: pointer;
+  color: inherit;
+  font-weight: normal;
+  transition: opacity 0.3s ease;
+  opacity: 1;
 }
 
 #language-selector span:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 #language-selector span.active {
-    font-weight: bold;
-    opacity: 1;
+  font-weight: bold;
+  opacity: 1;
 }
-
 
 /* === ABOUT OVERLAY (velo blanco semitransparente a pantalla completa) ====== */
 
 #about-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(255, 255, 255, 0.92);
-    z-index: 2000;
-    overflow-y: auto;
-    display: block;
-    /* Transición suave de apertura/cierre */
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.92);
+  z-index: 2000;
+  overflow-y: auto;
+  display: block;
+  /* Transición suave de apertura/cierre */
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
 }
 
 /* Estado oculto del overlay */
 #about-overlay.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 /* Contenido del about centrado con padding 20dvh arriba y abajo */
 #about-content {
-    max-width: 560px;
-    padding: 20dvh 40px;
-    margin: 0 auto;
-    text-align: center;
+  max-width: 560px;
+  padding: 20dvh 40px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 #about-content h2 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 4px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 4px;
 }
 
 #about-content .about-subtitle {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 30px;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 30px;
 }
 
 #about-content p {
-    margin-bottom: 16px;
-    line-height: 1.8;
-    font-size: 14px;
+  margin-bottom: 16px;
+  line-height: 1.8;
+  font-size: 14px;
 }
 
 /* Link pequeño al final del about */
 #about-content .about-footer {
-    margin-top: 40px;
-    font-size: 11px;
-    color: #666;
+  margin-top: 40px;
+  font-size: 11px;
+  color: #666;
 }
 
 #about-content .about-footer a {
-    color: #666;
-    text-decoration: none;
-    transition: color 0.3s ease;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 #about-content .about-footer a:hover {
-    color: #000;
+  color: #000;
 }
 
 /* Botón cerrar (×) arriba derecha del overlay */
 #close-about {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    font-size: 28px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #000;
-    z-index: 2001;
-    line-height: 1;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  z-index: 2001;
+  line-height: 1;
 }
 
 #close-about:hover {
-    color: #666;
+  color: #666;
 }
-
 
 /* === MENÚ DE PROYECTOS (abajo izquierda, texto pelao, blend-mode) ========= */
 /*
@@ -181,101 +179,106 @@ body {
 */
 
 #menu {
-    position: fixed;
-    left: 20px;
-    bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    z-index: 1000;
-    /* No blend mode en el contenedor, solo en el botón activo */
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 1000;
+  /* No blend mode en el contenedor, solo en el botón activo */
 }
 
 #menu a {
-    text-decoration: none;
-    /* El color se asigna dinámicamente desde JS según el estado */
-    /* Inactivos: color del proyecto */
-    /* Activo: negro (#000) */
-    font-size: 14px;
-    font-weight: bold;
-    transition: opacity 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  text-decoration: none;
+  /* El color se asigna dinámicamente desde JS según el estado */
+  /* Inactivos: color del proyecto */
+  /* Activo: negro (#000) */
+  font-size: 14px;
+  font-weight: bold;
+  transition:
+    opacity 0.3s ease,
+    transform 0.2s ease,
+    color 0.3s ease;
+    mix-blend-mode: difference;
 }
 
 /* Links no activos en baja opacidad */
 #menu a:not(.active) {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 #menu a:hover {
-    opacity: 1;
-    transform: translateX(5px);
+  opacity: 1;
+  transform: translateX(5px);
 }
 
 /* Proyecto activo: blanco con blend mode difference (como el título y los idiomas) */
 #menu a.active {
-    text-decoration: none;
-    opacity: 1;
-    color: #fff !important;
-    mix-blend-mode: difference;
+  text-decoration: none;
+  opacity: 1;
+  color: #000 !important;
+  mix-blend-mode: difference;
 }
 
 /* === CONTENEDOR DE PROYECTOS ============================================== */
 
 #projects-container {
-    width: 100%;
+  width: 100%;
 }
 
 /* Cada proyecto ocupa toda la pantalla (scroll vertical entre proyectos) */
 .project {
-    width: 100dvw;
-    height: 100dvh;
-    position: relative;
-    overflow: hidden;
-    overscroll-behavior-x: none;
-    overscroll-behavior-y: auto;
+  width: 100dvw;
+  height: 100dvh;
+  position: relative;
+  overflow: hidden;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: auto;
 }
 
 /* Barra de navegación de imágenes — indicador de progreso bottom (global y fija) */
 #global-scrollbar-track {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100dvw;
-    height: 2dvh;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(4px);
-    z-index: 1000;
-    cursor: pointer;
-    transition: background 0.2s ease;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100dvw;
+  height: 2dvh;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 #global-scrollbar-track:hover {
-    background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 #global-scrollbar-thumb {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    min-width: 30px;
-    background: rgba(255, 255, 255, 0.8);
-    cursor: grab;
-    transition: background 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  min-width: 30px;
+  background: rgba(255, 255, 255, 0.8);
+  cursor: grab;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
 #global-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 1);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
 }
 
 #global-scrollbar-thumb.dragging {
-    background: rgba(255, 255, 255, 1);
-    cursor: grabbing;
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 1);
+  cursor: grabbing;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.8);
 }
-
 
 /* === GALERÍA HORIZONTAL SCROLLEABLE ======================================= */
 /*
@@ -284,129 +287,127 @@ body {
 */
 
 .gallery {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    gap: 4dvw; /* espaciado responsive en viewport width */
-    /* Ocultar scrollbar en todos los navegadores */
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 4dvw; /* espaciado responsive en viewport width */
+  /* Ocultar scrollbar en todos los navegadores */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .gallery::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
-
 
 /* === ITEMS DE LA GALERÍA (imágenes y bloque de texto) ===================== */
 
 /* Loader simplificado: cada imagen hace fade-in individual al cargar */
 .gallery-item {
-    flex-shrink: 0;
-    scroll-snap-align: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 /* Cuando la imagen carga, JS añade .loaded → fade in */
 .gallery-item.loaded {
-    opacity: 1;
+  opacity: 1;
 }
 
 /* Las imágenes con tamaño adaptativo */
 .gallery-item img {
-    max-height: 80dvh;
-    max-width: 85dvw; /* evita que imágenes panorámicas se salgan */
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    display: block;
+  max-height: 80dvh;
+  max-width: 85dvw; /* evita que imágenes panorámicas se salgan */
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
 /* Bloque de texto al final de cada galería */
 .gallery-text {
-    flex-shrink: 0;
-    width: 80dvw;
-    max-width: 560px;
-    padding: 40px;
-    scroll-snap-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    /* El font-size se ajusta dinámicamente en JS según la cantidad de texto */
+  flex-shrink: 0;
+  width: 80dvw;
+  max-width: 560px;
+  padding: 40px;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  /* El font-size se ajusta dinámicamente en JS según la cantidad de texto */
 }
 
 .gallery-text h2 {
-    font-size: 18px;
-    margin-bottom: 16px;
-    font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 16px;
+  font-weight: bold;
 }
 
 .gallery-text p {
-    margin-bottom: 12px;
-    line-height: 1.7;
+  margin-bottom: 12px;
+  line-height: 1.7;
 }
 
 .gallery-text a {
-    color: #000;
-    text-decoration: underline;
+  color: #000;
+  text-decoration: underline;
 }
 
 .gallery-text a:hover {
-    color: #666;
+  color: #666;
 }
-
 
 /* === RESPONSIVE (móvil < 768px) =========================================== */
 
 @media (max-width: 768px) {
-    #site-header {
-        top: 15px;
-        left: 15px;
-    }
+  #site-header {
+    top: 15px;
+    left: 15px;
+  }
 
-    #site-name {
-        font-size: 18px;
-    }
+  #site-name {
+    font-size: 18px;
+  }
 
-    #language-selector {
-        font-size: 11px;
-    }
+  #language-selector {
+    font-size: 11px;
+  }
 
-    #menu {
-        left: 15px;
-        bottom: 15px;
-        gap: 2px;
-    }
+  #menu {
+    left: 15px;
+    bottom: 15px;
+    gap: 2px;
+  }
 
-    #menu a {
-        font-size: 12px;
-    }
+  #menu a {
+    font-size: 12px;
+  }
 
-    .gallery {
-        gap: 2dvw; /* espaciado más pequeño en móvil */
-    }
+  .gallery {
+    gap: 2dvw; /* espaciado más pequeño en móvil */
+  }
 
-    .gallery-item img {
-        max-height: 70dvh;
-        max-width: 90dvw; /* más espacio horizontal en móvil */
-    }
+  .gallery-item img {
+    max-height: 70dvh;
+    max-width: 90dvw; /* más espacio horizontal en móvil */
+  }
 
-    .gallery-text {
-        width: 90dvw;
-        padding: 20px;
-    }
+  .gallery-text {
+    width: 90dvw;
+    padding: 20px;
+  }
 
-    .gallery-text h2 {
-        font-size: 16px;
-    }
+  .gallery-text h2 {
+    font-size: 16px;
+  }
 
-    #about-content {
-        padding: 12dvh 20px; /* menos padding vertical en móvil */
-    }
+  #about-content {
+    padding: 12dvh 20px; /* menos padding vertical en móvil */
+  }
 }
