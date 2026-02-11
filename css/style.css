@@ -17,7 +17,7 @@ html {
 }
 
 body {
-    font-family: 'Courier New', monospace;
+    font-family: 'Times New Roman', Times, serif;
     font-size: 16px;
     line-height: 1.6;
     background-color: #fff;
@@ -137,6 +137,23 @@ body {
     font-size: 14px;
 }
 
+/* Link pequeño al final del about */
+#about-content .about-footer {
+    margin-top: 40px;
+    font-size: 11px;
+    color: #666;
+}
+
+#about-content .about-footer a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#about-content .about-footer a:hover {
+    color: #000;
+}
+
 /* Botón cerrar (×) arriba derecha del overlay */
 #close-about {
     position: fixed;
@@ -156,45 +173,48 @@ body {
 }
 
 
-/* === MENÚ DE PROYECTOS (abajo izquierda, texto pelao, blend-mode) ========= */
+/* === MENÚ DE PROYECTOS (bottom, barra fina horizontal) =================== */
 /*
-   Sin fondo, sin blur, sin bordes.
-   mix-blend-mode: difference con color: #fff en los links
-   → sobre fondo blanco se ven negros, sobre imágenes oscuras se ven claros.
+   Barra fina pegada al bottom, fija, con botones horizontales.
+   mix-blend-mode: difference con color: #fff en los links.
+   Los botones activos se ponen en blanco (#fff).
 */
 
 #menu {
     position: fixed;
-    left: 20px;
-    bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.15);
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 20px;
     mix-blend-mode: difference;
 }
 
 #menu a {
     text-decoration: none;
     color: #fff;
-    font-size: 14px;
-    font-weight: bold;
-    transition: opacity 0.3s ease, transform 0.2s ease;
-}
-
-/* Links no activos en baja opacidad */
-#menu a:not(.active) {
+    font-size: 12px;
+    font-weight: normal;
+    transition: color 0.3s ease, font-weight 0.3s ease;
     opacity: 0.6;
+    white-space: nowrap;
 }
 
 #menu a:hover {
     opacity: 1;
-    transform: translateX(5px);
 }
 
-/* Proyecto activo (detectado por scroll spy) */
+/* Proyecto activo: blanco y negrita */
 #menu a.active {
-    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    opacity: 1;
 }
 
 /* === CONTENEDOR DE PROYECTOS ============================================== */
@@ -348,13 +368,12 @@ body {
     }
 
     #menu {
-        left: 15px;
-        bottom: 15px;
-        gap: 2px;
+        gap: 12px;
+        padding: 0 10px;
     }
 
     #menu a {
-        font-size: 12px;
+        font-size: 10px;
     }
 
     .gallery {

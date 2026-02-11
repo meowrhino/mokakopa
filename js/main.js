@@ -74,6 +74,11 @@ function createProjectElement(projectName, projectData) {
     projectDiv.className = 'project';
     projectDiv.id = projectName;
 
+    // Aplicar color de fondo si existe
+    if (projectData.color) {
+        projectDiv.style.backgroundColor = projectData.color;
+    }
+
     const gallery = document.createElement('div');
     gallery.className = 'gallery';
 
@@ -560,8 +565,9 @@ function renderAboutContent() {
     content.querySelector('#about-title').textContent = aboutData.titulo;
     content.querySelector('.about-subtitle').textContent = aboutData.subtitulo;
 
-    // Limpiar párrafos anteriores (preservar título y subtítulo)
+    // Limpiar párrafos y footer anteriores (preservar título y subtítulo)
     content.querySelectorAll('p:not(.about-subtitle)').forEach(p => p.remove());
+    content.querySelectorAll('.about-footer').forEach(f => f.remove());
 
     // Añadir párrafos del idioma actual
     const textos = getTextsByLang(aboutData);
@@ -572,4 +578,10 @@ function renderAboutContent() {
             content.appendChild(p);
         });
     }
+
+    // Añadir link pequeño al final
+    const footer = document.createElement('div');
+    footer.className = 'about-footer';
+    footer.innerHTML = '<a href="https://meowrhino.studio" target="_blank" rel="noopener noreferrer">web:meowrhino</a>';
+    content.appendChild(footer);
 }
