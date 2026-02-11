@@ -193,19 +193,18 @@ body {
   text-decoration: none;
   /* El color se asigna dinámicamente desde JS según el estado */
   /* Inactivos: color del proyecto */
-  /* Activo: negro (#000) */
+  /* Activo: blanco (#fff) con blend mode */
   font-size: 14px;
   font-weight: bold;
   transition:
     opacity 0.3s ease,
     transform 0.2s ease,
     color 0.3s ease;
-    mix-blend-mode: difference;
 }
 
-/* Links no activos en baja opacidad */
+/* Links no activos - opacidad alta para que se vean fuertes */
 #menu a:not(.active) {
-  opacity: 0.6;
+  opacity: 0.9;
 }
 
 #menu a:hover {
@@ -217,7 +216,7 @@ body {
 #menu a.active {
   text-decoration: none;
   opacity: 1;
-  color: #000 !important;
+  color: #fff !important;
   mix-blend-mode: difference;
 }
 
