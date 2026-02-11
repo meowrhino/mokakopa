@@ -51,12 +51,6 @@ body {
   font-weight: bold;
   cursor: pointer;
   color: inherit;
-  transition: opacity 0.3s ease;
-  opacity: 1;
-}
-
-#site-name:hover {
-  opacity: 1;
 }
 
 /* ES  EN  CAT — el activo va en negrita y opacity 1 */
@@ -70,17 +64,10 @@ body {
   cursor: pointer;
   color: inherit;
   font-weight: normal;
-  transition: opacity 0.3s ease;
-  opacity: 1;
-}
-
-#language-selector span:hover {
-  opacity: 1;
 }
 
 #language-selector span.active {
   font-weight: bold;
-  opacity: 1;
 }
 
 /* === ABOUT OVERLAY (velo blanco semitransparente a pantalla completa) ====== */
@@ -186,7 +173,8 @@ body {
   flex-direction: column;
   gap: 4px;
   z-index: 1000;
-  /* No blend mode en el contenedor, solo en el botón activo */
+  mix-blend-mode: difference;
+  color: #fff;
 }
 
 #menu a {
@@ -197,27 +185,20 @@ body {
   font-size: 14px;
   font-weight: bold;
   transition:
-    opacity 0.3s ease,
     transform 0.2s ease,
     color 0.3s ease;
 }
 
-/* Links no activos - opacidad alta para que se vean fuertes */
-#menu a:not(.active) {
-  opacity: 0.9;
-}
+/* Links no activos - color del proyecto asignado desde JS, el difference del contenedor lo transforma */
 
 #menu a:hover {
-  opacity: 1;
   transform: translateX(5px);
 }
 
-/* Proyecto activo: blanco con blend mode difference (como el título y los idiomas) */
+/* Proyecto activo: blanco, el difference lo aplica el contenedor #menu */
 #menu a.active {
   text-decoration: none;
-  opacity: 1;
   color: #fff !important;
-  mix-blend-mode: difference;
 }
 
 /* === CONTENEDOR DE PROYECTOS ============================================== */

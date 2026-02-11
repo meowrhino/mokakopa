@@ -290,9 +290,9 @@ function initMenu() {
         link.textContent = projectData.titulo || projectName;
         link.dataset.project = projectName;
         
-        // Asignar el color del proyecto (inactivos)
+        // Asignar el color del proyecto oscurecido (inactivos)
         if (projectData.color) {
-            link.style.color = projectData.color;
+            link.style.color = darkenColor(projectData.color, 0.55);
         }
         
         menu.appendChild(link);
@@ -315,13 +315,14 @@ function initScrollSpy() {
                 document.querySelectorAll('#menu > a').forEach(a => {
                     const isActive = a.dataset.project === activeId;
                     a.classList.toggle('active', isActive);
-                    
-                    // El color del activo se maneja con CSS (.active)
-                    // Solo asignamos color a los inactivos
-                    if (!isActive) {
+
+                    if (isActive) {
+                        // Limpiar color inline para que CSS maneje el activo
+                        a.style.color = '';
+                    } else {
                         const projectData = findProjectData(a.dataset.project);
                         if (projectData && projectData.color) {
-                            a.style.color = projectData.color;
+                            a.style.color = darkenColor(projectData.color, 0.55);
                         }
                     }
                 });
@@ -400,6 +401,17 @@ function updateAllTexts() {
             adjustTextSize(textDiv, textos);
         }
     });
+}
+
+/**
+ * Oscurece un color hex multiplicando cada canal por un factor (0-1).
+ * darkenColor('#E8D5C4', 0.55) → versión más oscura y saturada.
+ */
+function darkenColor(hex, factor) {
+    const r = Math.round(parseInt(hex.slice(1, 3), 16) * factor);
+    const g = Math.round(parseInt(hex.slice(3, 5), 16) * factor);
+    const b = Math.round(parseInt(hex.slice(5, 7), 16) * factor);
+    return '#' + [r, g, b].map(c => c.toString(16).padStart(2, '0')).join('');
 }
 
 /**
