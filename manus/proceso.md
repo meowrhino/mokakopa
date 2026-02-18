@@ -1174,3 +1174,104 @@ El usuario mencionó que quería que el subrayado fuera más "pequeño" o sutil.
 #### Archivos modificados
 - `css/style.css` - Añadido pseudo-elemento ::before con animación, simplificado #menu a.active
 - `js/main.js` - Restaurada lógica de active-highlight en proyectos
+
+
+## 18 de febrero de 2026, 06:05 GMT+1
+
+### Título: Corrección final - Subrayado rosa en link del menú activo
+
+### Sinopsis
+Se corrigió la implementación para aplicar el subrayado rosa fosforito únicamente al link activo del menú (no al proyecto completo). El link activo pierde el blend mode para que el rosa se vea correctamente, mientras los demás links mantienen el efecto negativo.
+
+### Explicación detallada del proceso
+
+#### Contexto de la corrección
+En la implementación anterior, el subrayado rosa se aplicaba al proyecto completo, pero el usuario quería que el efecto estuviera solo en el link del menú activo. El objetivo era crear un efecto de subrayador fosforito que resaltara el nombre del proyecto en el menú, con animación de izquierda a derecha.
+
+#### Implementación técnica
+
+**1. Subrayado animado en el link del menú (CSS)**
+
+Se añadió un pseudo-elemento `::before` a todos los links del menú para crear el subrayado animado:
+
+```css
+#menu a {
+  position: relative;
+  overflow: hidden;
+}
+
+#menu a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #FF69B4;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+```
+
+**2. Activación del subrayado y cancelación del blend mode**
+
+Cuando el link está activo, se expande el subrayado y se cancela el blend mode:
+
+```css
+#menu a.active {
+  text-decoration: none;
+  color: #000; /* Texto negro */
+  mix-blend-mode: normal; /* Cancelar el blend mode del contenedor */
+}
+
+#menu a.active::before {
+  width: 100%; /* Subrayado completo */
+}
+```
+
+**Detalles técnicos:**
+- El subrayado tiene 3px de altura para que sea visible pero sutil
+- La transición de 0.6 segundos crea el efecto de "pasar el subrayador"
+- `mix-blend-mode: normal` en el link activo cancela el `mix-blend-mode: difference` del contenedor `#menu`
+- Esto hace que el texto se vea negro y el rosa se vea en su color real (no invertido)
+
+**3. Eliminación del resaltado en proyectos**
+
+Se eliminaron:
+- Las reglas CSS de `.project::before` y `.project.active-highlight::before`
+- La lógica JavaScript que aplicaba/quitaba la clase `active-highlight` a los proyectos
+
+**4. Simplificación del proyecto**
+
+El proyecto volvió a su estructura básica sin pseudo-elementos ni lógica de resaltado:
+
+```css
+.project {
+  width: 100dvw;
+  height: 100dvh;
+  position: relative;
+  overflow: hidden;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: auto;
+}
+```
+
+#### Resultado visual
+
+**Link activo en el menú:**
+- Texto negro (sin efecto negativo)
+- Subrayado rosa fosforito de 3px en la parte inferior
+- Animación de izquierda a derecha en 0.6 segundos
+- Sin sangría (solo se aplica en hover)
+
+**Links inactivos en el menú:**
+- Texto verde (efecto del blend mode difference)
+- Sin subrayado
+- Sangría de 5px en hover
+
+**Proyectos:**
+- Todos mantienen el efecto negativo del blend mode difference
+- Sin resaltado adicional
+
+#### Archivos modificados
+- `css/style.css` - Añadido subrayado animado al link del menú, eliminado resaltado de proyectos
+- `js/main.js` - Eliminada lógica de active-highlight en proyectos
