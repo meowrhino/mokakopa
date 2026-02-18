@@ -165,6 +165,7 @@ body {
    → sobre fondo blanco se ven negros, sobre imágenes oscuras se ven claros.
 */
 
+/* Capa 1: todos los links con blend mode difference */
 #menu {
   position: fixed;
   left: 20px;
@@ -182,40 +183,51 @@ body {
   color: #fff;
   font-size: 14px;
   font-weight: bold;
-  transition:
-    transform 0.2s ease,
-    color 0.3s ease;
+  padding: 1px 2px;
 }
 
-#menu a:hover {
-  transform: translateX(5px);
+/* Capa 2: link activo y hovers, sin blend mode, encima */
+#menu-active {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 1001;
 }
 
-/* Link activo: subrayado rosa fosforito con animación, sin sangría, sin blend mode */
-#menu a {
-  position: relative;
-  overflow: hidden;
-}
-
-#menu a::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background-color: #FF69B4;
-  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#menu a.active {
+#menu-active a {
   text-decoration: none;
-  color: #000;
-  mix-blend-mode: normal;
+  color: transparent;
+  font-size: 14px;
+  font-weight: bold;
+  pointer-events: auto;
+  background-image: linear-gradient(#FF69B4, #FF69B4);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0% 3px;
+  transition: background-size 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1px 2px;
 }
 
-#menu a.active::before {
-  width: 100%;
+#menu-active a:hover {
+  background-size: 100% 3px;
+}
+
+#menu-active a.active {
+  color: #000;
+  background-position: left top;
+  background-size: 0% 100%;
+  transition: background-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#menu-active a.active.animated {
+  background-size: 100% 100%;
+}
+
+#menu-active a.active:hover {
+  background-size: 100% 100%;
 }
 
 /* === CONTENEDOR DE PROYECTOS ============================================== */

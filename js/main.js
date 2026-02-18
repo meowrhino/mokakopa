@@ -275,25 +275,40 @@ function getTextsByLang(projectData) {
 // El proyecto visible se resalta con clase .active (scroll spy).
 // ============================================================================
 
+function setActiveProject(projectName) {
+    document.querySelectorAll('#menu > a, #menu-active > a').forEach(a => {
+        const isActive = a.dataset.project === projectName;
+        a.classList.remove('active', 'animated');
+        if (isActive) {
+            a.classList.add('active');
+            requestAnimationFrame(() => a.classList.add('animated'));
+        }
+    });
+}
+
 function initMenu() {
     const menu = document.getElementById('menu');
+    const menuActive = document.getElementById('menu-active');
     menu.innerHTML = '';
+    menuActive.innerHTML = '';
 
     projectsData.proyectos.forEach(([projectName, projectData]) => {
+        const titulo = projectData.titulo || projectName;
+
         const link = document.createElement('a');
         link.href = '#' + projectName;
-        link.textContent = projectData.titulo || projectName;
+        link.textContent = titulo;
         link.dataset.project = projectName;
-        
-        // Añadir listener para aplicar resaltado rosa al hacer clic
-        link.addEventListener('click', (e) => {
-            // Actualizar menú
-            document.querySelectorAll('#menu > a').forEach(a => {
-                a.classList.toggle('active', a.dataset.project === projectName);
-            });
-        });
-        
+        link.addEventListener('click', () => setActiveProject(projectName));
         menu.appendChild(link);
+
+        // Clon para la capa sin blend mode
+        const linkActive = document.createElement('a');
+        linkActive.href = '#' + projectName;
+        linkActive.textContent = titulo;
+        linkActive.dataset.project = projectName;
+        linkActive.addEventListener('click', () => setActiveProject(projectName));
+        menuActive.appendChild(linkActive);
     });
 }
 
@@ -309,13 +324,7 @@ function initScrollSpy() {
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const activeId = entry.target.id;
-                
-                // Actualizar menú
-                document.querySelectorAll('#menu > a').forEach(a => {
-                    const isActive = a.dataset.project === activeId;
-                    a.classList.toggle('active', isActive);
-                });
+                setActiveProject(entry.target.id);
             }
         });
     }, { threshold: 0.5 });
