@@ -396,15 +396,6 @@ function updateAllTexts() {
 }
 
 /**
- * Oscurece un color hex multiplicando cada canal por un factor (0-1).
- * darkenColor('#E8D5C4', 0.55) → versión más oscura y saturada.
- */
-function darkenColor(hex, factor) {
-    const r = Math.round(parseInt(hex.slice(1, 3), 16) * factor);
-    const g = Math.round(parseInt(hex.slice(3, 5), 16) * factor);
-    const b = Math.round(parseInt(hex.slice(5, 7), 16) * factor);
-    return '#' + [r, g, b].map(c => c.toString(16).padStart(2, '0')).join('');
-}
 
 /**
  * Busca los datos de un proyecto por nombre.

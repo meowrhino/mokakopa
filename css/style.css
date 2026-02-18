@@ -389,7 +389,8 @@ body {
     gap: 2px;
   }
 
-  #menu a {
+  #menu a,
+  #menu-active a {
     font-size: 12px;
   }
 
