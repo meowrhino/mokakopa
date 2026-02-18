@@ -1084,3 +1084,93 @@ El color rosa (#FF69B4) se ve verde oscuro en el navegador debido a la interacci
 #### Archivos modificados
 - `css/style.css` - Actualización de estilos para resaltar solo el link del menú
 - `js/main.js` - Eliminación de lógica de active-highlight en proyectos
+
+
+## 18 de febrero de 2026, 05:50 GMT+1
+
+### Título: Implementación de animación de subrayado rosa fosforito en proyecto activo
+
+### Sinopsis
+Se implementó un efecto de subrayador rosa fosforito con animación de izquierda a derecha en el proyecto activo. El resaltado se aplica al proyecto completo (no al menú), y se eliminó la sangría del link activo en el menú para mantener solo el efecto hover.
+
+### Explicación detallada del proceso
+
+#### Contexto de la solicitud
+El usuario quería que el proyecto activo tuviese un efecto de subrayador rosa fosforito que se animara de izquierda a derecha, simulando el gesto de pasar un marcador fluorescente sobre el contenido. Además, solicitó eliminar la sangría del link activo en el menú (manteniéndola solo en hover) y hacer que el resaltado fuera más "natural".
+
+#### Implementación técnica
+
+**1. Pseudo-elemento para la animación (CSS)**
+
+Se utilizó un pseudo-elemento `::before` en `.project` para crear el efecto de subrayado animado:
+
+```css
+.project {
+  isolation: isolate; /* Crear contexto de apilamiento para z-index */
+}
+
+.project::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0; /* Comienza invisible */
+  height: 100%;
+  background-color: #FF69B4; /* Rosa fosforito */
+  mix-blend-mode: normal; /* Sin efecto negativo */
+  z-index: -1; /* Detrás del contenido */
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Animación suave */
+}
+
+.project.active-highlight::before {
+  width: 100%; /* Se expande al 100% cuando está activo */
+}
+```
+
+**Detalles técnicos:**
+- `isolation: isolate` crea un nuevo contexto de apilamiento para que el `z-index: -1` funcione correctamente
+- La transición usa una curva de Bézier `cubic-bezier(0.4, 0, 0.2, 1)` para una animación más natural (ease-in-out)
+- La duración de 0.8 segundos permite ver claramente el efecto de "subrayado"
+- `mix-blend-mode: normal` asegura que el rosa se vea sin el efecto negativo del blend mode
+
+**2. Simplificación del menú (CSS)**
+
+Se eliminó el resaltado rosa del link activo en el menú, dejándolo solo como indicador visual:
+
+```css
+#menu a.active {
+  text-decoration: none;
+  color: #fff; /* Blanco, como los demás */
+}
+```
+
+El efecto hover se mantiene intacto:
+
+```css
+#menu a:hover {
+  transform: translateX(5px); /* Sangría solo en hover */
+}
+```
+
+**3. Restauración de la lógica JavaScript**
+
+Se restauró la lógica que aplica/quita la clase `active-highlight` a los proyectos tanto en el evento click del menú como en el IntersectionObserver del scroll spy.
+
+#### Resultado visual
+
+Cuando un proyecto se vuelve activo (por click en el menú o por scroll):
+1. El fondo rosa fosforito aparece desde la izquierda y se expande hacia la derecha en 0.8 segundos
+2. El proyecto pierde el `mix-blend-mode: difference`, por lo que las imágenes y textos se ven con sus colores normales sobre el fondo rosa
+3. El link del menú se marca como activo pero sin resaltado adicional (solo indicador visual)
+4. El hover en el menú mantiene la sangría de 5px
+
+#### Posibles ajustes futuros
+
+El usuario mencionó que quería que el subrayado fuera más "pequeño" o sutil. Actualmente cubre el 100% de la altura del proyecto. Opciones para ajustar:
+- Reducir la altura a 30-40% y centrar verticalmente
+- Colocar el subrayado solo en la parte superior o inferior
+- Ajustar la opacidad del rosa para hacerlo más translúcido
+
+#### Archivos modificados
+- `css/style.css` - Añadido pseudo-elemento ::before con animación, simplificado #menu a.active
+- `js/main.js` - Restaurada lógica de active-highlight en proyectos

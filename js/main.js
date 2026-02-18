@@ -291,6 +291,11 @@ function initMenu() {
             document.querySelectorAll('#menu > a').forEach(a => {
                 a.classList.toggle('active', a.dataset.project === projectName);
             });
+            
+            // Actualizar resaltado rosa en proyectos
+            document.querySelectorAll('.project').forEach(project => {
+                project.classList.toggle('active-highlight', project.id === projectName);
+            });
         });
         
         menu.appendChild(link);
@@ -315,6 +320,12 @@ function initScrollSpy() {
                 document.querySelectorAll('#menu > a').forEach(a => {
                     const isActive = a.dataset.project === activeId;
                     a.classList.toggle('active', isActive);
+                });
+                
+                // Actualizar resaltado rosa en proyectos
+                document.querySelectorAll('.project').forEach(project => {
+                    const isActiveProject = project.id === activeId;
+                    project.classList.toggle('active-highlight', isActiveProject);
                 });
             }
         });

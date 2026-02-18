@@ -191,14 +191,10 @@ body {
   transform: translateX(5px);
 }
 
-/* Proyecto activo: fondo rosa fosforito (efecto subrayador), sin blend mode */
+/* Proyecto activo: solo indicador, sin sangría ni resaltado */
 #menu a.active {
   text-decoration: none;
-  color: #000;
-  background-color: #FF69B4;
-  padding: 2px 8px;
-  mix-blend-mode: normal;
-  transition: background-color 0.3s ease, padding 0.2s ease;
+  color: #fff;
 }
 
 /* === CONTENEDOR DE PROYECTOS ============================================== */
@@ -215,6 +211,27 @@ body {
   overflow: hidden;
   overscroll-behavior-x: none;
   overscroll-behavior-y: auto;
+  /* Preparar para el pseudo-elemento del subrayado */
+  isolation: isolate;
+}
+
+/* Efecto subrayador rosa fosforito con animación de izquierda a derecha */
+.project::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #FF69B4;
+  mix-blend-mode: normal;
+  z-index: -1;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Proyecto activo: subrayado completo */
+.project.active-highlight::before {
+  width: 100%;
 }
 
 
