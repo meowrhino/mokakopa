@@ -1039,3 +1039,48 @@ El sitio ahora tiene un aspecto visual mucho más limpio y con mayor impacto:
 - Ajustar el tono de rosa si el usuario prefiere uno más o menos saturado
 - Considerar añadir una animación más elaborada para la transición del resaltado
 - Probar diferentes valores de `threshold` en el IntersectionObserver si la detección no es óptima
+
+
+## 18 de febrero de 2026, 05:35 GMT+1
+
+### Título: Corrección - Resaltado rosa fosforito aplicado al menú (no al proyecto)
+
+### Sinopsis
+Se corrigió la implementación anterior para aplicar el resaltado rosa fosforito únicamente al link activo del menú, no al proyecto completo. Se eliminó la lógica de `active-highlight` en proyectos y se mantuvo solo en los links del menú.
+
+### Explicación detallada del proceso
+
+#### Contexto del error
+En la implementación anterior, se había aplicado el resaltado rosa fosforito a todo el contenedor `.project` cuando estaba activo. Sin embargo, el usuario quería que el resaltado se aplicara únicamente al **nombre del proyecto en el menú**, simulando un subrayador rosa sobre el texto.
+
+#### Cambios realizados
+
+**1. CSS (`css/style.css`)**
+- Eliminada la regla `.project.active-highlight` que aplicaba el fondo rosa al proyecto completo
+- Modificada la regla `#menu a.active` para incluir:
+  - `background-color: #FF69B4` (rosa fosforito)
+  - `color: #000` (texto negro)
+  - `padding: 2px 8px` (espaciado para que se vea como un botón)
+  - `mix-blend-mode: normal` (cancelar el blend mode del contenedor padre)
+  - Transiciones suaves para background-color y padding
+- Eliminadas las reglas de blend mode en `.gallery` (ya no son necesarias)
+
+**2. JavaScript (`js/main.js`)**
+- Eliminada la lógica que aplicaba/quitaba la clase `active-highlight` a los proyectos en `initMenu()`
+- Eliminada la lógica que aplicaba/quitaba la clase `active-highlight` a los proyectos en `initScrollSpy()`
+- Mantenida la lógica que aplica/quita la clase `active` a los links del menú
+
+#### Resultado visual
+
+El link activo en el menú ahora muestra:
+- Un fondo de color (se ve verde oscuro debido a la interacción del rosa #FF69B4 con el `mix-blend-mode: difference` del contenedor `#menu`)
+- Texto negro (sin el efecto negativo)
+- Padding visible que hace que parezca un botón resaltado
+
+#### Nota sobre el color
+
+El color rosa (#FF69B4) se ve verde oscuro en el navegador debido a la interacción con el `mix-blend-mode: difference` del contenedor `#menu`. Esto es un efecto visual interesante que puede ajustarse si el usuario prefiere un tono más rosa o más brillante.
+
+#### Archivos modificados
+- `css/style.css` - Actualización de estilos para resaltar solo el link del menú
+- `js/main.js` - Eliminación de lógica de active-highlight en proyectos

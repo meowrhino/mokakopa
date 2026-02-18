@@ -191,10 +191,14 @@ body {
   transform: translateX(5px);
 }
 
-/* Proyecto activo: blanco, el difference lo aplica el contenedor #menu */
+/* Proyecto activo: fondo rosa fosforito (efecto subrayador), sin blend mode */
 #menu a.active {
   text-decoration: none;
-  color: #fff !important;
+  color: #000;
+  background-color: #FF69B4;
+  padding: 2px 8px;
+  mix-blend-mode: normal;
+  transition: background-color 0.3s ease, padding 0.2s ease;
 }
 
 /* === CONTENEDOR DE PROYECTOS ============================================== */
@@ -213,11 +217,7 @@ body {
   overscroll-behavior-y: auto;
 }
 
-/* Proyecto activo: fondo rosa fosforito (efecto subrayador) */
-.project.active-highlight {
-  background-color: #FF69B4;
-  transition: background-color 0.3s ease;
-}
+
 
 /* Barra de navegación de imágenes — indicador de progreso bottom (global y fija) */
 #global-scrollbar-track {
@@ -280,15 +280,6 @@ body {
   /* Ocultar scrollbar en todos los navegadores */
   -ms-overflow-style: none;
   scrollbar-width: none;
-  /* Efecto negativo con blend mode por defecto */
-  mix-blend-mode: difference;
-  color: #fff;
-}
-
-/* Desactivar blend mode en proyectos activos */
-.project.active-highlight .gallery {
-  mix-blend-mode: normal;
-  color: #000;
 }
 
 .gallery::-webkit-scrollbar {
