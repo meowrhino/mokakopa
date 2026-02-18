@@ -277,12 +277,7 @@ function getTextsByLang(projectData) {
 
 function setActiveProject(projectName) {
     document.querySelectorAll('#menu > a, #menu-active > a').forEach(a => {
-        const isActive = a.dataset.project === projectName;
-        a.classList.remove('active', 'animated');
-        if (isActive) {
-            a.classList.add('active');
-            requestAnimationFrame(() => a.classList.add('animated'));
-        }
+        a.classList.toggle('active', a.dataset.project === projectName);
     });
 }
 

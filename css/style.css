@@ -202,13 +202,12 @@ body {
   color: transparent;
   font-size: 14px;
   font-weight: bold;
-  pointer-events: auto;
+  padding: 1px 2px;
   background-image: linear-gradient(#FF69B4, #FF69B4);
   background-repeat: no-repeat;
   background-position: left bottom;
-  background-size: 0% 3px;
+  background-size: 0% 100%;
   transition: background-size 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 1px 2px;
 }
 
 #menu-active a:hover {
@@ -217,12 +216,6 @@ body {
 
 #menu-active a.active {
   color: #000;
-  background-position: left top;
-  background-size: 0% 100%;
-  transition: background-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#menu-active a.active.animated {
   background-size: 100% 100%;
 }
 
