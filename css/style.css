@@ -206,7 +206,7 @@ body {
   background-image: linear-gradient(#FF69B4, #FF69B4);
   background-repeat: no-repeat;
   background-position: left bottom;
-  background-size: 0% 100%;
+  background-size: 0% 3px;
   transition: background-size 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
