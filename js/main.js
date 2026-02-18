@@ -294,7 +294,6 @@ function initMenu() {
         link.href = '#' + projectName;
         link.textContent = titulo;
         link.dataset.project = projectName;
-        link.addEventListener('click', () => setActiveProject(projectName));
         menu.appendChild(link);
 
         // Clon para la capa sin blend mode
@@ -302,7 +301,6 @@ function initMenu() {
         linkActive.href = '#' + projectName;
         linkActive.textContent = titulo;
         linkActive.dataset.project = projectName;
-        linkActive.addEventListener('click', () => setActiveProject(projectName));
         menuActive.appendChild(linkActive);
     });
 }
