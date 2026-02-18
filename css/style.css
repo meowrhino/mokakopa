@@ -179,17 +179,13 @@ body {
 
 #menu a {
   text-decoration: none;
-  /* El color se asigna dinámicamente desde JS según el estado */
-  /* Inactivos: color del proyecto */
-  /* Activo: blanco (#fff) con blend mode */
+  color: #fff;
   font-size: 14px;
   font-weight: bold;
   transition:
     transform 0.2s ease,
     color 0.3s ease;
 }
-
-/* Links no activos - color del proyecto asignado desde JS, el difference del contenedor lo transforma */
 
 #menu a:hover {
   transform: translateX(5px);
@@ -215,6 +211,12 @@ body {
   overflow: hidden;
   overscroll-behavior-x: none;
   overscroll-behavior-y: auto;
+}
+
+/* Proyecto activo: fondo rosa fosforito (efecto subrayador) */
+.project.active-highlight {
+  background-color: #FF69B4;
+  transition: background-color 0.3s ease;
 }
 
 /* Barra de navegación de imágenes — indicador de progreso bottom (global y fija) */
@@ -278,6 +280,15 @@ body {
   /* Ocultar scrollbar en todos los navegadores */
   -ms-overflow-style: none;
   scrollbar-width: none;
+  /* Efecto negativo con blend mode por defecto */
+  mix-blend-mode: difference;
+  color: #fff;
+}
+
+/* Desactivar blend mode en proyectos activos */
+.project.active-highlight .gallery {
+  mix-blend-mode: normal;
+  color: #000;
 }
 
 .gallery::-webkit-scrollbar {

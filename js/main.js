@@ -75,11 +75,6 @@ function createProjectElement(projectName, projectData) {
     projectDiv.className = 'project';
     projectDiv.id = projectName;
 
-    // Aplicar color de fondo si existe
-    if (projectData.color) {
-        projectDiv.style.backgroundColor = projectData.color;
-    }
-
     const gallery = document.createElement('div');
     gallery.className = 'gallery';
 
@@ -290,10 +285,18 @@ function initMenu() {
         link.textContent = projectData.titulo || projectName;
         link.dataset.project = projectName;
         
-        // Asignar el color del proyecto oscurecido (inactivos)
-        if (projectData.color) {
-            link.style.color = darkenColor(projectData.color, 0.55);
-        }
+        // Añadir listener para aplicar resaltado rosa al hacer clic
+        link.addEventListener('click', (e) => {
+            // Actualizar menú
+            document.querySelectorAll('#menu > a').forEach(a => {
+                a.classList.toggle('active', a.dataset.project === projectName);
+            });
+            
+            // Actualizar resaltado rosa en proyectos
+            document.querySelectorAll('.project').forEach(project => {
+                project.classList.toggle('active-highlight', project.id === projectName);
+            });
+        });
         
         menu.appendChild(link);
     });
@@ -312,19 +315,17 @@ function initScrollSpy() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const activeId = entry.target.id;
+                
+                // Actualizar menú
                 document.querySelectorAll('#menu > a').forEach(a => {
                     const isActive = a.dataset.project === activeId;
                     a.classList.toggle('active', isActive);
-
-                    if (isActive) {
-                        // Limpiar color inline para que CSS maneje el activo
-                        a.style.color = '';
-                    } else {
-                        const projectData = findProjectData(a.dataset.project);
-                        if (projectData && projectData.color) {
-                            a.style.color = darkenColor(projectData.color, 0.55);
-                        }
-                    }
+                });
+                
+                // Actualizar resaltado rosa en proyectos
+                document.querySelectorAll('.project').forEach(project => {
+                    const isActiveProject = project.id === activeId;
+                    project.classList.toggle('active-highlight', isActiveProject);
                 });
             }
         });

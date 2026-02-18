@@ -964,3 +964,78 @@ feat: implementar barra de navegación única y global
 - `js/main.js`: 155 inserciones, 125 eliminaciones (refactorización completa)
 
 push exitoso a `origin/main`.
+
+
+## 18 de febrero de 2026, 05:20 GMT+1
+
+### Título: Implementación de resaltado rosa fosforito con blend mode difference
+
+### Sinopsis
+Se eliminó la lógica de colores individuales por proyecto y se implementó un sistema donde todos los proyectos tienen un efecto de negativo (`mix-blend-mode: difference`) excepto el proyecto activo, que se resalta con un fondo rosa fosforito (#FF69B4) simulando un subrayador.
+
+### Explicación detallada del proceso
+
+#### Contexto inicial
+El sitio mokakopa tenía una lógica donde cada proyecto tenía un color de fondo específico definido en `data.json`. Los links del menú usaban versiones oscurecidas de estos colores para los proyectos inactivos. El usuario quería simplificar esta lógica y probar un efecto visual más impactante.
+
+#### Objetivo
+- Eliminar todos los colores individuales por proyecto
+- Establecer una base blanca para todos los proyectos
+- Aplicar `mix-blend-mode: difference` para crear un efecto de negativo
+- Resaltar el proyecto activo con un fondo rosa fosforito que simule un subrayador
+- El proyecto activo debe perder el efecto negativo para verse con colores normales
+
+#### Cambios realizados
+
+**1. CSS (`css/style.css`)**
+- Eliminado el `mix-blend-mode: difference` del contenedor `.project`
+- Añadida la clase `.project.active-highlight` con fondo rosa fosforito (#FF69B4)
+- Aplicado `mix-blend-mode: difference` a `.gallery` para que el contenido tenga el efecto negativo
+- Añadida regla `.project.active-highlight .gallery` para desactivar el blend mode en proyectos activos
+- Simplificados los estilos del menú para que todos los links sean blancos con el blend mode heredado del contenedor `#menu`
+
+**2. JavaScript (`js/main.js`)**
+- Eliminada la lógica de asignación de `backgroundColor` desde `projectData.color` en `createProjectElement()`
+- Eliminada la función `darkenColor()` y sus referencias (ya no se usa)
+- Simplificada la función `initMenu()` para eliminar la asignación de colores individuales
+- Añadidos event listeners a los links del menú para aplicar la clase `.active-highlight` inmediatamente al hacer clic
+- Actualizada la función `initScrollSpy()` para aplicar/quitar la clase `.active-highlight` según el proyecto visible
+
+#### Arquitectura de la solución
+
+La solución se basa en una estrategia de capas:
+
+1. **Capa base**: Todos los proyectos tienen fondo blanco por defecto
+2. **Capa de efecto**: La galería (`.gallery`) tiene `mix-blend-mode: difference` que crea el efecto negativo sobre el fondo blanco
+3. **Capa de resaltado**: Cuando un proyecto está activo (`.active-highlight`):
+   - Se aplica un fondo rosa fosforito al contenedor `.project`
+   - Se desactiva el `mix-blend-mode` de su `.gallery` para que el contenido se vea normal
+   - El resultado es que el contenido se ve con colores normales sobre un fondo rosa brillante
+
+#### Decisiones técnicas
+
+**¿Por qué aplicar el blend mode a `.gallery` y no a `.project`?**
+Inicialmente intentamos aplicar el `mix-blend-mode: difference` directamente al contenedor `.project`, pero esto causaba que el efecto se heredara en cascada a todos los elementos hijos, haciendo imposible desactivarlo selectivamente. Al aplicarlo a `.gallery`, podemos controlar el efecto de forma más granular.
+
+**¿Por qué usar event listeners en los links además del IntersectionObserver?**
+El `IntersectionObserver` funciona perfectamente cuando el usuario hace scroll manualmente, pero cuando se hace clic en un link del menú, el navegador navega al ancla pero el proyecto puede no estar lo suficientemente visible (threshold: 0.5) para que el observer lo detecte inmediatamente. Los event listeners aseguran que el resaltado se aplique instantáneamente al hacer clic.
+
+**¿Por qué rosa fosforito (#FF69B4)?**
+El usuario específicamente solicitó un rosa "fosforito como el de los subrayadores" para crear un efecto visual potente que simule que el proyecto ha sido marcado con un subrayador. El color #FF69B4 (HotPink) es brillante y saturado, perfecto para este propósito.
+
+#### Resultado final
+
+El sitio ahora tiene un aspecto visual mucho más limpio y con mayor impacto:
+- Los proyectos inactivos se ven con un efecto de negativo sutil (texto negro sobre blanco se invierte)
+- El proyecto activo destaca con un fondo rosa fosforito brillante
+- El header y el menú mantienen su efecto negativo en todo momento, creando un contraste interesante
+- La transición entre proyectos es suave gracias a las transiciones CSS
+
+#### Archivos modificados
+- `css/style.css` - Actualización de estilos para blend mode y resaltado rosa
+- `js/main.js` - Eliminación de lógica de colores y actualización de event handlers
+
+#### Próximos pasos sugeridos
+- Ajustar el tono de rosa si el usuario prefiere uno más o menos saturado
+- Considerar añadir una animación más elaborada para la transición del resaltado
+- Probar diferentes valores de `threshold` en el IntersectionObserver si la detección no es óptima
