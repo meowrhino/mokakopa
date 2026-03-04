@@ -197,5 +197,51 @@
         "En lloc d'il·lustrar històries específiques, faig servir l'ambigüitat narrativa per desplaçar el significat cap a la postura, la mirada, la proximitat i el gest. La pintura esdevé un espai on la creença s'escenifica, s'encarna i s'inquieta silenciosament."
       ]
     }
-  ]
+  ],
+  "cv": [
+    {
+      "nombreES": "Educación Académica",
+      "nombreEN": "Academic Education",
+      "nombreCAT": "Educació Acadèmica",
+      "items": [
+        { "fecha": "2017", "titulo": "MFA in Fine Arts. San Francisco Art Institute" },
+        { "fecha": "2015", "titulo": "BFA in Painting and Drawing. California College of the Arts, San Francisco" },
+        { "fecha": "2012", "titulo": "Erasmus exchange. Facultat de Belles Arts, Universitat de Barcelona" }
+      ]
+    },
+    {
+      "nombreES": "Exposiciones individuales y proyectos seleccionados",
+      "nombreEN": "Solo Exhibitions and Selected Projects",
+      "nombreCAT": "Exposicions individuals i projectes seleccionats",
+      "items": [
+        { "fecha": "2024", "titulo": "El teatro de las plantas. Finalista Convocatòria d'Exposicions Pere Pruna 2024. Barcelona" },
+        { "fecha": "2023", "titulo": "El teatro de las plantas. Convocatòria Art i Ciutat. Sant Cugat del Vallès" },
+        { "fecha": "2022", "titulo": "Se acabaron las bacanales. CC Guinardó. Barcelona" },
+        { "fecha": "2022", "titulo": "Por Siglos en Eros. Espai Jove Boca Nord. Barcelona" },
+        { "fecha": "2021", "titulo": "Pato Ceramics. Galeria Can Xalant. Mataró" },
+        { "fecha": "2021", "titulo": "Se acabaron las Bacanales. Finalista Art Jove 2021. Barcelona" },
+        { "fecha": "2020", "titulo": "L'univers de la pomme de terre. Espai 13. Barcelona" },
+        { "fecha": "2019", "titulo": "Y otros cuentos. Galeria Àngels. Barcelona" }
+      ]
+    },
+    {
+      "nombreES": "Exposiciones y eventos colectivos",
+      "nombreEN": "Group Exhibitions and Events",
+      "nombreCAT": "Exposicions i esdeveniments col·lectius",
+      "items": [
+        { "fecha": "2024", "titulo": "Nubes nacen negras. Taller 131. Barcelona" },
+        { "fecha": "2023", "titulo": "Placenta. Grau-Garriga Centre d'Art textil contemporani. Sant Cugat del Vallès" },
+        { "fecha": "2021", "titulo": "Triennal Memento Mori. Xefo Art Gallery. Barcelona" },
+        { "fecha": "2021", "titulo": "Etching and engraving. Barn Gallery. Wingfield" },
+        { "fecha": "2018", "titulo": "Colectiva d'estiu. Galeria Espai B. Barcelona" },
+        { "fecha": "2017", "titulo": "MFA Graduate Show. San Francisco Art Institute" },
+        { "fecha": "2015", "titulo": "BFA Thesis Exhibition. California College of the Arts. San Francisco" }
+      ]
+    }
+  ],
+  "contacto": {
+    "nombre": "Monica Kopatschek (San Francisco, 1993)",
+    "email": "monicakopatschek@gmail.com",
+    "instagram": "@mokakopa"
+  }
 }

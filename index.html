@@ -61,14 +61,9 @@
 </head>
 <body>
 
-    <!-- Header: nombre + idiomas -->
+    <!-- Header: nombre (sin idiomas, se mueven al about) -->
     <div id="site-header">
         <div id="site-name">mokakopa</div>
-        <div id="language-selector">
-            <span class="active" data-lang="ES">ES</span>
-            <span data-lang="EN">EN</span>
-            <span data-lang="CAT">CAT</span>
-        </div>
     </div>
 
     <!-- About overlay (velo) -->
@@ -76,6 +71,14 @@
         <div id="about-content">
             <h2 id="about-title"></h2>
             <p class="about-subtitle"></p>
+            <div id="about-text"></div>
+            <div id="about-switch">
+                <span class="active" data-view="statement">Statement</span>
+                <span data-view="cv">CV</span>
+            </div>
+            <div class="lang-switch"></div>
+            <div id="about-contact"></div>
+            <div class="about-footer"></div>
         </div>
         <button id="close-about" aria-label="cerrar">×</button>
     </div>
@@ -85,11 +88,6 @@
     <nav id="menu"></nav>
     <!-- #menu-active: solo el link activo, sin blend mode, encima -->
     <nav id="menu-active"></nav>
-
-    <!-- Barra de navegación de imágenes (bottom center, única y fija) -->
-    <div id="global-scrollbar-track" class="scrollbar-track">
-        <div id="global-scrollbar-thumb" class="scrollbar-thumb"></div>
-    </div>
 
     <!-- Contenedor de proyectos -->
     <main id="projects-container"></main>

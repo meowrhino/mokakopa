@@ -3,12 +3,12 @@
 // Portfolio de proyectos artísticos de Monica Kopatschek
 //
 // Arquitectura:
-//   - data.json contiene todos los proyectos, textos (ES/EN/CAT) y about
+//   - data.json contiene proyectos, textos (ES/EN/CAT), about, cv y contacto
 //   - Cada proyecto se renderiza como una sección fullscreen con scroll horizontal
 //   - Las imágenes se prueban en orden: .jpg → .png → .jpeg → .webp → .gif
 //   - El menú (abajo-izq) usa mix-blend-mode: difference (CSS)
 //   - "mokakopa" (arriba-izq) abre el overlay del about
-//   - Debajo de "mokakopa" están los 3 idiomas, el activo en negrita
+//   - About tiene toggle statement/CV + selector de idioma reutilizable
 // ============================================================================
 
 // --- Estado global ---
@@ -31,10 +31,8 @@ async function init() {
 
         renderProjects();
         initMenu();
-        initLanguageSelector();
         initAboutOverlay();
         initScrollSpy();
-        initGlobalScrollbar();
         initResizeHandler();
     } catch (error) {
         console.error('Error al inicializar:', error);
@@ -213,23 +211,56 @@ function addTextToGallery(gallery, projectName, projectData) {
     textDiv.className = 'gallery-text';
     textDiv.dataset.project = projectName;
 
-    // Título del proyecto (usa el campo titulo del JSON)
+    // Scroll wrapper (80dvh con gradientes fade)
+    const scrollWrapper = document.createElement('div');
+    scrollWrapper.className = 'gallery-text-scroll';
+
+    // Título del proyecto
     const title = document.createElement('h2');
     title.textContent = projectData.titulo || projectName;
-    textDiv.appendChild(title);
+    scrollWrapper.appendChild(title);
 
     // Párrafos de texto en el idioma actual
     const textos = getTextsByLang(projectData);
     if (textos && textos.length > 0) {
         textos.forEach(texto => {
             const p = document.createElement('p');
-            p.innerHTML = texto; // permite enlaces <a> dentro del texto
-            textDiv.appendChild(p);
+            p.innerHTML = texto;
+            scrollWrapper.appendChild(p);
         });
-        adjustTextSize(textDiv, textos);
+        adjustTextSize(scrollWrapper, textos);
     }
 
+    textDiv.appendChild(scrollWrapper);
+
+    // Gradientes: detectar scroll arriba/abajo
+    initScrollGradients(scrollWrapper);
+
+    // Selector de idioma (fuera del scroll wrapper)
+    const langDiv = document.createElement('div');
+    langDiv.className = 'lang-switch';
+    textDiv.appendChild(langDiv);
+    createLangSwitch(langDiv);
+
     gallery.appendChild(textDiv);
+}
+
+/**
+ * Añade listeners de scroll para mostrar/ocultar gradientes fade
+ * cuando hay contenido arriba o abajo del scroll wrapper.
+ */
+function initScrollGradients(scrollEl) {
+    const update = () => {
+        const top = scrollEl.scrollTop;
+        const bottom = scrollEl.scrollHeight - scrollEl.clientHeight - top;
+        scrollEl.classList.toggle('can-scroll-up', top > 5);
+        scrollEl.classList.toggle('can-scroll-down', bottom > 5);
+    };
+
+    scrollEl.addEventListener('scroll', update);
+
+    // Comprobar estado inicial tras renderizado
+    requestAnimationFrame(update);
 }
 
 /**
@@ -327,18 +358,28 @@ function initScrollSpy() {
 
 
 // ============================================================================
-// SELECTOR DE IDIOMA (ES / EN / CAT)
+// SELECTOR DE IDIOMA REUTILIZABLE (ES / EN / CAT)
 //
-// Los 3 idiomas aparecen debajo de "mokakopa" en el header.
-// El idioma activo se muestra en negrita (clase .active).
-// Al cambiar de idioma se actualizan todos los textos visibles
-// y el about si está abierto.
+// Componente que se puede instanciar en cualquier contenedor.
+// Todas las instancias comparten el estado global currentLang.
+// Al cambiar idioma en una instancia, se sincronizan todas.
 // ============================================================================
 
-function initLanguageSelector() {
-    const selector = document.getElementById('language-selector');
+/**
+ * Crea un selector de idioma (ES/EN/CAT) dentro del contenedor dado.
+ * Devuelve el contenedor para encadenamiento.
+ */
+function createLangSwitch(container) {
+    container.innerHTML = '';
+    ['ES', 'EN', 'CAT'].forEach(lang => {
+        const span = document.createElement('span');
+        span.textContent = lang;
+        span.dataset.lang = lang;
+        if (lang === currentLang) span.classList.add('active');
+        container.appendChild(span);
+    });
 
-    selector.addEventListener('click', e => {
+    container.addEventListener('click', e => {
         const span = e.target.closest('span[data-lang]');
         if (!span) return;
 
@@ -347,19 +388,28 @@ function initLanguageSelector() {
 
         currentLang = newLang;
 
-        // Actualizar negrita en el selector
-        selector.querySelectorAll('span').forEach(s => {
-            s.classList.toggle('active', s.dataset.lang === currentLang);
-        });
+        // Sincronizar todas las instancias de .lang-switch
+        syncAllLangSwitches();
 
-        // Actualizar textos de todas las galerías
+        // Actualizar textos de galerías
         updateAllTexts();
 
-        // Si el about está abierto, actualizar también
+        // Si el about está abierto, actualizar el contenido visible
         const overlay = document.getElementById('about-overlay');
         if (!overlay.classList.contains('hidden')) {
-            renderAboutContent();
+            renderAboutView();
         }
+    });
+
+    return container;
+}
+
+/**
+ * Sincroniza el estado .active de todas las instancias .lang-switch.
+ */
+function syncAllLangSwitches() {
+    document.querySelectorAll('.lang-switch span[data-lang]').forEach(s => {
+        s.classList.toggle('active', s.dataset.lang === currentLang);
     });
 }
 
@@ -378,24 +428,38 @@ function updateAllTexts() {
 
         if (!projectData) return;
 
-        // Preservar el título, reemplazar solo los párrafos
-        const title = textDiv.querySelector('h2');
-        textDiv.innerHTML = '';
-        textDiv.appendChild(title);
+        // Operar dentro del scroll wrapper
+        const scrollWrapper = textDiv.querySelector('.gallery-text-scroll');
+        if (!scrollWrapper) return;
+
+        // Preservar título, reemplazar solo los párrafos
+        const title = scrollWrapper.querySelector('h2');
+        scrollWrapper.innerHTML = '';
+        scrollWrapper.appendChild(title);
 
         const textos = getTextsByLang(projectData);
         if (textos && textos.length > 0) {
             textos.forEach(texto => {
                 const p = document.createElement('p');
                 p.innerHTML = texto;
-                textDiv.appendChild(p);
+                scrollWrapper.appendChild(p);
             });
-            adjustTextSize(textDiv, textos);
+            adjustTextSize(scrollWrapper, textos);
         }
-    });
-}
 
-/**
+        // Resetear scroll y actualizar gradientes
+        scrollWrapper.scrollTop = 0;
+        requestAnimationFrame(() => {
+            const top = scrollWrapper.scrollTop;
+            const bottom = scrollWrapper.scrollHeight - scrollWrapper.clientHeight - top;
+            scrollWrapper.classList.toggle('can-scroll-up', top > 5);
+            scrollWrapper.classList.toggle('can-scroll-down', bottom > 5);
+        });
+    });
+
+    // Sincronizar estado de todos los lang switches
+    syncAllLangSwitches();
+}
 
 /**
  * Busca los datos de un proyecto por nombre.
@@ -412,9 +476,12 @@ function findProjectData(name) {
 // ABOUT OVERLAY
 //
 // Al hacer click en "mokakopa" se abre un velo blanco semitransparente
-// con el texto del about en el idioma actual.
+// con statement/CV toggle, selector de idioma, contacto y footer.
 // Se cierra con: botón ×, click fuera del contenido, o tecla Escape.
 // ============================================================================
+
+// Vista activa del about: 'statement' o 'cv'
+let currentAboutView = 'statement';
 
 function initAboutOverlay() {
     const siteName = document.getElementById('site-name');
@@ -425,7 +492,7 @@ function initAboutOverlay() {
     siteName.addEventListener('click', () => {
         renderAboutContent();
         overlay.classList.remove('hidden');
-        overlay.scrollTop = 0; // ⭐ resetear scroll al principio
+        overlay.scrollTop = 0;
     });
 
     // Cerrar con botón ×
@@ -446,178 +513,149 @@ function initAboutOverlay() {
             overlay.classList.add('hidden');
         }
     });
+
+    // Toggle statement / CV
+    const aboutSwitch = document.getElementById('about-switch');
+    aboutSwitch.addEventListener('click', e => {
+        const span = e.target.closest('span[data-view]');
+        if (!span) return;
+
+        const newView = span.dataset.view;
+        if (newView === currentAboutView) return;
+
+        currentAboutView = newView;
+
+        // Actualizar estado activo del switch
+        aboutSwitch.querySelectorAll('span').forEach(s => {
+            s.classList.toggle('active', s.dataset.view === currentAboutView);
+        });
+
+        // Re-renderizar solo el contenido de texto
+        renderAboutView();
+    });
+
+    // Crear selector de idioma en el about
+    const langContainer = document.querySelector('#about-content .lang-switch');
+    createLangSwitch(langContainer);
 }
 
 /**
- * Renderiza el contenido del about con el idioma actual.
- * Mantiene el <h2> y .about-subtitle, reemplaza los párrafos.
+ * Renderiza el about completo (título, subtítulo, contenido, contacto, footer).
+ * Se llama al abrir el overlay.
  */
 function renderAboutContent() {
     const aboutData = projectsData.about[0];
-    const content = document.getElementById('about-content');
 
     // Título y subtítulo
-    content.querySelector('#about-title').textContent = aboutData.titulo;
-    content.querySelector('.about-subtitle').textContent = aboutData.subtitulo;
+    document.getElementById('about-title').textContent = aboutData.titulo;
+    document.querySelector('.about-subtitle').textContent = aboutData.subtitulo;
 
-    // Limpiar párrafos y footer anteriores (preservar título y subtítulo)
-    content.querySelectorAll('p:not(.about-subtitle)').forEach(p => p.remove());
-    content.querySelectorAll('.about-footer').forEach(f => f.remove());
+    // Renderizar vista activa (statement o CV)
+    renderAboutView();
 
-    // Añadir párrafos del idioma actual
+    // Contacto
+    renderContact();
+
+    // Footer
+    const footer = document.querySelector('#about-content .about-footer');
+    footer.innerHTML = '<a href="https://meowrhino.studio" target="_blank" rel="noopener noreferrer">web:meowrhino</a>';
+
+    // Sincronizar lang switch
+    syncAllLangSwitches();
+}
+
+/**
+ * Renderiza solo el contenido dinámico (statement o CV) según la vista activa.
+ * Se llama al cambiar toggle o idioma. Transición smooth con fade.
+ */
+function renderAboutView() {
+    const textDiv = document.getElementById('about-text');
+
+    // Fade out, reemplazar contenido, fade in
+    textDiv.style.opacity = '0';
+    setTimeout(() => {
+        textDiv.innerHTML = '';
+        if (currentAboutView === 'statement') {
+            renderStatement(textDiv);
+        } else {
+            renderCV(textDiv);
+        }
+        textDiv.style.opacity = '1';
+    }, 300);
+}
+
+/**
+ * Renderiza los párrafos del statement en el idioma actual.
+ */
+function renderStatement(container) {
+    const aboutData = projectsData.about[0];
     const textos = getTextsByLang(aboutData);
+
     if (textos) {
         textos.forEach(texto => {
             const p = document.createElement('p');
             p.innerHTML = texto;
-            content.appendChild(p);
+            container.appendChild(p);
         });
     }
-
-    // Añadir link pequeño al final
-    const footer = document.createElement('div');
-    footer.className = 'about-footer';
-    footer.innerHTML = '<a href="https://meowrhino.studio" target="_blank" rel="noopener noreferrer">web:meowrhino</a>';
-    content.appendChild(footer);
 }
 
+/**
+ * Renderiza las secciones del CV desde data.json.
+ */
+function renderCV(container) {
+    const cvData = projectsData.cv;
+    if (!cvData) return;
 
-// ============================================================================
-// BARRA DE NAVEGACIÓN GLOBAL
-//
-// Una única barra fija en el bottom center que se actualiza dinámicamente
-// según el proyecto activo. Permite navegar entre las imágenes del proyecto
-// actual mediante drag o click.
-// ============================================================================
+    cvData.forEach(section => {
+        const sectionDiv = document.createElement('div');
+        sectionDiv.className = 'cv-section';
 
-function initGlobalScrollbar() {
-    const track = document.getElementById('global-scrollbar-track');
-    const thumb = document.getElementById('global-scrollbar-thumb');
-    
-    let currentGallery = null;
-    let isDragging = false;
-    let dragStartX = 0;
-    let dragStartLeft = 0;
+        // Título de la sección en el idioma actual
+        const h3 = document.createElement('h3');
+        h3.textContent = section['nombre' + currentLang] || section.nombreES;
+        sectionDiv.appendChild(h3);
 
-    // Función para actualizar el thumb según el scroll de la galería activa
-    const updateThumb = () => {
-        if (!currentGallery) {
-            track.style.display = 'none';
-            return;
-        }
-
-        const scrollW = currentGallery.scrollWidth;
-        const clientW = currentGallery.clientWidth;
-        
-        if (scrollW <= clientW) {
-            // Todo el contenido cabe en pantalla, ocultar scrollbar
-            track.style.display = 'none';
-            return;
-        }
-        
-        track.style.display = '';
-        
-        // Ratio: cuánto del contenido total es visible
-        const ratio = clientW / scrollW;
-        const thumbWidth = Math.max(30, ratio * track.offsetWidth);
-        thumb.style.width = thumbWidth + 'px';
-        
-        // Posición del thumb dentro del track
-        const maxScroll = scrollW - clientW;
-        const maxThumbLeft = track.offsetWidth - thumbWidth;
-        const pct = maxScroll > 0 ? currentGallery.scrollLeft / maxScroll : 0;
-        thumb.style.left = (pct * maxThumbLeft) + 'px';
-    };
-
-    // Observar qué proyecto está visible y actualizar la galería activa
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const projectDiv = entry.target;
-                const gallery = projectDiv.querySelector('.gallery');
-                
-                // Remover listener del anterior
-                if (currentGallery) {
-                    currentGallery.removeEventListener('scroll', updateThumb);
-                }
-                
-                // Actualizar galería activa
-                currentGallery = gallery;
-                
-                // Añadir listener al nuevo
-                if (currentGallery) {
-                    currentGallery.addEventListener('scroll', updateThumb);
-                    updateThumb();
-                }
-            }
+        // Lista de items
+        const ul = document.createElement('ul');
+        section.items.forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = '<span class="cv-fecha">' + item.fecha + '</span> ' + item.titulo;
+            ul.appendChild(li);
         });
-    }, { threshold: 0.5 });
+        sectionDiv.appendChild(ul);
 
-    // Observar todos los proyectos
-    document.querySelectorAll('.project').forEach(el => observer.observe(el));
-
-    // Recalcular al resize
-    window.addEventListener('resize', updateThumb);
-
-    // --- Drag del thumb ---
-    thumb.addEventListener('mousedown', e => {
-        if (!currentGallery) return;
-        e.preventDefault();
-        isDragging = true;
-        dragStartX = e.clientX;
-        dragStartLeft = parseFloat(thumb.style.left) || 0;
-        thumb.classList.add('dragging');
+        container.appendChild(sectionDiv);
     });
+}
 
-    window.addEventListener('mousemove', e => {
-        if (!isDragging || !currentGallery) return;
-        const dx = e.clientX - dragStartX;
-        const thumbWidth = thumb.offsetWidth;
-        const maxThumbLeft = track.offsetWidth - thumbWidth;
-        const newLeft = Math.max(0, Math.min(maxThumbLeft, dragStartLeft + dx));
-        const pct = maxThumbLeft > 0 ? newLeft / maxThumbLeft : 0;
-        currentGallery.scrollLeft = pct * (currentGallery.scrollWidth - currentGallery.clientWidth);
-    });
+/**
+ * Renderiza la sección de contacto desde data.json.
+ */
+function renderContact() {
+    const contacto = projectsData.contacto;
+    if (!contacto) return;
 
-    window.addEventListener('mouseup', () => {
-        if (isDragging) {
-            isDragging = false;
-            thumb.classList.remove('dragging');
-        }
-    });
+    const contactDiv = document.getElementById('about-contact');
+    contactDiv.innerHTML = '';
 
-    // --- Click en el track (fuera del thumb) para saltar ---
-    track.addEventListener('click', e => {
-        if (!currentGallery || e.target === thumb) return;
-        const rect = track.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        const pct = clickX / rect.width;
-        currentGallery.scrollLeft = pct * (currentGallery.scrollWidth - currentGallery.clientWidth);
-    });
+    const nombre = document.createElement('div');
+    nombre.textContent = contacto.nombre;
+    contactDiv.appendChild(nombre);
 
-    // --- Touch support ---
-    thumb.addEventListener('touchstart', e => {
-        if (!currentGallery) return;
-        isDragging = true;
-        dragStartX = e.touches[0].clientX;
-        dragStartLeft = parseFloat(thumb.style.left) || 0;
-        thumb.classList.add('dragging');
-    }, { passive: true });
+    const email = document.createElement('div');
+    const emailLink = document.createElement('a');
+    emailLink.href = 'mailto:' + contacto.email;
+    emailLink.textContent = contacto.email;
+    email.appendChild(emailLink);
+    contactDiv.appendChild(email);
 
-    window.addEventListener('touchmove', e => {
-        if (!isDragging || !currentGallery) return;
-        const dx = e.touches[0].clientX - dragStartX;
-        const thumbWidth = thumb.offsetWidth;
-        const maxThumbLeft = track.offsetWidth - thumbWidth;
-        const newLeft = Math.max(0, Math.min(maxThumbLeft, dragStartLeft + dx));
-        const pct = maxThumbLeft > 0 ? newLeft / maxThumbLeft : 0;
-        currentGallery.scrollLeft = pct * (currentGallery.scrollWidth - currentGallery.clientWidth);
-    }, { passive: true });
-
-    window.addEventListener('touchend', () => {
-        if (isDragging) {
-            isDragging = false;
-            thumb.classList.remove('dragging');
-        }
-    });
+    const ig = document.createElement('div');
+    const igLink = document.createElement('a');
+    igLink.href = 'https://www.instagram.com/' + contacto.instagram.replace('@', '');
+    igLink.target = '_blank';
+    igLink.rel = 'noopener noreferrer';
+    igLink.textContent = contacto.instagram + ' (IG)';
+    ig.appendChild(igLink);
+    contactDiv.appendChild(ig);
 }

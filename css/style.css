@@ -26,7 +26,7 @@ body {
   overscroll-behavior-y: auto; /* permite scroll vertical entre proyectos */
 }
 
-/* === HEADER: NOMBRE + SELECTOR DE IDIOMAS (arriba izquierda) ============== */
+/* === HEADER: NOMBRE (arriba izquierda) ============== */
 /*
    mix-blend-mode: difference con color: #fff en el contenedor.
    Sobre fondo blanco se ven negros, sobre imágenes oscuras se ven claros.
@@ -51,23 +51,6 @@ body {
   font-weight: bold;
   cursor: pointer;
   color: inherit;
-}
-
-/* ES  EN  CAT — el activo va en negrita y opacity 1 */
-#language-selector {
-  display: flex;
-  gap: 8px;
-  font-size: 13px;
-}
-
-#language-selector span {
-  cursor: pointer;
-  color: inherit;
-  font-weight: normal;
-}
-
-#language-selector span.active {
-  font-weight: bold;
 }
 
 /* === ABOUT OVERLAY (velo blanco semitransparente a pantalla completa) ====== */
@@ -158,6 +141,108 @@ body {
   color: #666;
 }
 
+/* === ABOUT: TEXTO DINÁMICO (statement o CV) ================================ */
+
+#about-text {
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+/* --- Toggle Statement / CV --- */
+#about-switch {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+  font-size: 13px;
+}
+
+#about-switch span {
+  cursor: pointer;
+  color: #999;
+  font-weight: normal;
+  transition: color 0.2s ease;
+}
+
+#about-switch span.active {
+  color: #000;
+  font-weight: bold;
+}
+
+#about-switch span:hover {
+  color: #000;
+}
+
+/* --- Selector de idioma reutilizable --- */
+.lang-switch {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.lang-switch span {
+  cursor: pointer;
+  color: #999;
+  font-weight: normal;
+  transition: color 0.2s ease;
+}
+
+.lang-switch span.active {
+  color: #000;
+  font-weight: bold;
+}
+
+.lang-switch span:hover {
+  color: #000;
+}
+
+/* --- CV: listas de secciones --- */
+.cv-section {
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.cv-section h3 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.cv-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cv-section li {
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+
+.cv-section li .cv-fecha {
+  font-weight: bold;
+}
+
+/* --- Contacto --- */
+#about-contact {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+#about-contact a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#about-contact a:hover {
+  color: #666;
+}
+
 /* === MENÚ DE PROYECTOS (abajo izquierda, texto pelao, blend-mode) ========= */
 /*
    Sin fondo, sin blur, sin bordes.
@@ -239,51 +324,6 @@ body {
   overscroll-behavior-y: auto;
 }
 
-
-
-/* Barra de navegación de imágenes — indicador de progreso bottom (global y fija) */
-#global-scrollbar-track {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100dvw;
-  height: 2dvh;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(4px);
-  z-index: 1000;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-#global-scrollbar-track:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-#global-scrollbar-thumb {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  min-width: 30px;
-  background: rgba(255, 255, 255, 0.8);
-  cursor: grab;
-  transition:
-    background 0.2s ease,
-    box-shadow 0.2s ease;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-}
-
-#global-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 1);
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
-}
-
-#global-scrollbar-thumb.dragging {
-  background: rgba(255, 255, 255, 1);
-  cursor: grabbing;
-  box-shadow: 0 0 16px rgba(255, 255, 255, 0.8);
-}
-
 /* === GALERÍA HORIZONTAL SCROLLEABLE ======================================= */
 /*
    Cada proyecto tiene un scroll horizontal con imágenes + texto al final.
@@ -333,19 +373,68 @@ body {
   display: block;
 }
 
-/* Bloque de texto al final de cada galería */
+/* Bloque de texto al final de cada galería — contenedor fullscreen */
 .gallery-text {
   flex-shrink: 0;
-  width: 80dvw;
-  max-width: 560px;
-  padding: 40px;
+  width: 100dvw;
+  height: 100dvh;
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  height: 100%;
-  /* El font-size se ajusta dinámicamente en JS según la cantidad de texto */
+  background: #fff;
 }
+
+/* Scroll wrapper 80dvh con gradientes fade */
+.gallery-text-scroll {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  height: 80dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  padding: 0 5dvw;
+  text-align: left;
+  /* Ocultar scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.gallery-text-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Gradientes fade arriba y abajo */
+.gallery-text-scroll::before,
+.gallery-text-scroll::after {
+  content: "";
+  position: sticky;
+  display: block;
+  left: 0;
+  right: 0;
+  height: 3rem;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  flex-shrink: 0;
+}
+
+.gallery-text-scroll::before {
+  top: 0;
+  background: linear-gradient(to bottom, #fff, transparent);
+}
+
+.gallery-text-scroll::after {
+  bottom: 0;
+  background: linear-gradient(to top, #fff, transparent);
+}
+
+.gallery-text-scroll.can-scroll-up::before { opacity: 1; }
+.gallery-text-scroll.can-scroll-down::after { opacity: 1; }
 
 .gallery-text h2 {
   font-size: 18px;
@@ -367,6 +456,12 @@ body {
   color: #666;
 }
 
+/* Lang switch debajo del scroll wrapper */
+.gallery-text .lang-switch {
+  justify-content: center;
+  margin-top: 12px;
+}
+
 /* === RESPONSIVE (móvil < 768px) =========================================== */
 
 @media (max-width: 768px) {
@@ -379,17 +474,22 @@ body {
     font-size: 18px;
   }
 
-  #language-selector {
-    font-size: 11px;
-  }
-
   #menu {
     left: 15px;
     bottom: 15px;
     gap: 2px;
   }
 
-  #menu a,
+  #menu a {
+    font-size: 12px;
+  }
+
+  #menu-active {
+    left: 15px;
+    bottom: 15px;
+    gap: 2px;
+  }
+
   #menu-active a {
     font-size: 12px;
   }
@@ -403,9 +503,8 @@ body {
     max-width: 90dvw; /* más espacio horizontal en móvil */
   }
 
-  .gallery-text {
-    width: 90dvw;
-    padding: 20px;
+  .gallery-text-scroll {
+    padding: 0 5dvw;
   }
 
   .gallery-text h2 {
