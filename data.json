@@ -24,6 +24,28 @@
       }
     ],
     [
+      "viscerales",
+      {
+        "titulo": "diálogos viscerales",
+        "textosES": [
+          "Pato Ceramics nace de la voluntad de explorar la escultura desde el barro, entendiendo la cerámica como extensión natural del dibujo. Cada pieza parte de un boceto previo que se transforma al entrar en contacto con el material: el gres y la porcelana imponen sus propios tiempos y resistencias.",
+          "El proyecto investiga las posibilidades narrativas del objeto cerámico. Las figuras —animales, híbridos, formas ambiguas— funcionan como personajes de un relato sin texto, donde el humor y lo inquietante conviven en la misma superficie esmaltada.",
+          "El proceso de producción combina técnicas de modelado manual, moldes y esmaltado experimental. El horno introduce un factor de azar que se incorpora como parte del lenguaje: las grietas, las variaciones de color y las deformaciones no son errores sino gestos del material."
+        ],
+        "textosEN": [
+          "Pato Ceramics arises from the desire to explore sculpture through clay, understanding ceramics as a natural extension of drawing. Each piece begins with a preliminary sketch that transforms upon contact with the material: stoneware and porcelain impose their own rhythms and resistances.",
+          "The project investigates the narrative possibilities of the ceramic object. The figures—animals, hybrids, ambiguous forms—function as characters in a textless story, where humor and the uncanny coexist on the same glazed surface.",
+          "The production process combines hand-modeling techniques, molds, and experimental glazing. The kiln introduces an element of chance that becomes part of the language: cracks, color variations, and deformations are not errors but gestures of the material."
+        ],
+        "textosCAT": [
+          "Pato Ceramics neix de la voluntat d'explorar l'escultura des del fang, entenent la ceràmica com a extensió natural del dibuix. Cada peça parteix d'un esbós previ que es transforma en entrar en contacte amb el material: el gres i la porcellana imposen els seus propis temps i resistències.",
+          "El projecte investiga les possibilitats narratives de l'objecte ceràmic. Les figures —animals, híbrids, formes ambigües— funcionen com a personatges d'un relat sense text, on l'humor i l'inquietant conviuen en la mateixa superfície esmaltada.",
+          "El procés de producció combina tècniques de modelat manual, motlles i esmaltat experimental. El forn introdueix un factor d'atzar que s'incorpora com a part del llenguatge: les esquerdes, les variacions de color i les deformacions no són errors sinó gestos del material."
+        ],
+        "imgCount": 10
+      }
+    ],
+    [
       "porSiglos",
       {
         "titulo": "por siglos en eros",
@@ -168,8 +190,8 @@
       {
         "titulo": "se acabaron las bacanales",
         "textosES": [
-          "Esta exposición enlaza las creaciones que tuvieron lugar entre Agosto y Septiembre de 2020, de dos artistas que comparten estudio y entorno: las acuarelas de medio formato de Monica Kopatschek y los poemas de Ana López.",
-          "'Se acabaron las bacanales' brota de una feroz voluntad de reivindicar las pasadas celebraciones de la vida de las personas, las relaciones entre ellas, las reuniones, y en definitiva, todo aquello que arrebató las medidas contra la crisis mundial de 2020. El primer verano en estas circunstancias, en lo que en la cultura mediterránea solía ser una época de explosión de alegría, sol, y atardeceres infinitos, nació a medias tintas y bajo el control estricto de las medidas anti-contacto. En esta exposición revisamos cómo, durante aquel final de verano, contemplamos también como había sido el final de la vida en sociedad tal y cómo la habíamos conocido, y el inicio de un otoño que empezaba con nuevas medidas. Rabia, decepción, y profunda reflexión, empujaron aquellas creaciones que hoy reunimos en vistas a un nuevo verano tras la crisis. Las escenas de las acuarelas se suceden en complejas composiciones de gente que ríe y se regocija sobre la hierba sin querer despertar. Pero ya es tarde: se han acabado las bacanales y tan solo nos queda la crítica nostálgica plagada de recuerdos de cuando se vivía, se respiraba y se bailaba en libertad.",
+          "La exposición Se acabaron las bacanales reúne las acuarelas de Monica Kopatschek y los poemas de Ana López, realizadas entre agosto y septiembre de 2020 en un contexto de convivencia creativa. Concebida a partir del impacto de la crisis sanitaria global, la muestra surge como respuesta a las restricciones que interrumpieron las celebraciones colectivas y la experiencia compartida fuera del espacio digital. Presentada en el marco de Art Jove 2021, la propuesta se configura como gesto de reivindicación ante la pérdida de los rituales comunitarios que estructuran la vida social.",
+          "Las acuarelas despliegan composiciones complejas de cuerpos que ríen y reposan sobre la hierba, suspendidos en una atmósfera de aparente ensoñación. Sin embargo, bajo esa luminosidad subyace la conciencia de un final irrevocable: se acabaron las bacanales. Las imágenes, atravesadas por la rabia y la decepción, se convierten así en archivo nostálgico de un tiempo en que el encuentro y la danza constituían formas elementales de existencia. En paralelo, los poemas de Ana López construyen una narración lírica que transcribe los instantes de aquel “dorado final de verano” de 2020.",
           "Entre brillantes colores diluidos en aguadas de mar y cielo, personajes que danzan, animales parlantes y leones heráldicos, los mensajes asoman una y otra vez: 'Remember your lungs but never forget your rights', dice un caballo cuyas patas se transforman en cigarrillos gigantes.",
           "Una narración se desarrolla paralelamente en forma de versos. Los poemas de Ana López transcriben los instantes y vivencias que resultaban de este marco temporal y espacial tan influyente como los últimos y nostálgicos días de aquel dorado final de verano de 2020. Ambas artistas muestran dos visiones ampliamente relacionadas en varios sentidos, desde su proceso de creación, hasta el intento de ficcionar y dar forma a través de escenas e historias la reivindicación de las expresiones humanas conjuntas que tanto necesita cualquier sociedad.",
           "Publicaciones- Prensa"
@@ -188,7 +210,7 @@
           "Una narració es desenvolupa paral·lelament en forma de versos. Els poemes d'Ana López transcriuen els instants i vivències que resultaven d'aquest marc temporal i espacial tan influent com els darrers i nostàlgics dies d'aquell daurat final d'estiu de 2020. Ambdues artistes mostren dues visions àmpliament relacionades en diversos sentits, des del seu procés de creació fins a l'intent de ficcionar i donar forma, a través d'escenes i històries, a la reivindicació de les expressions humanes conjuntes que tant necessita qualsevol societat.",
           "Publicacions- Premsa"
         ],
-        "imgCount": 48
+        "imgCount": 47
       }
     ]
   ],
@@ -222,9 +244,18 @@
       "nombreEN": "Academic Education",
       "nombreCAT": "Educació Acadèmica",
       "items": [
-        { "fecha": "2017", "titulo": "MFA in Fine Arts. San Francisco Art Institute" },
-        { "fecha": "2015", "titulo": "BFA in Painting and Drawing. California College of the Arts, San Francisco" },
-        { "fecha": "2012", "titulo": "Erasmus exchange. Facultat de Belles Arts, Universitat de Barcelona" }
+        {
+          "fecha": "2017",
+          "titulo": "MFA in Fine Arts. San Francisco Art Institute"
+        },
+        {
+          "fecha": "2015",
+          "titulo": "BFA in Painting and Drawing. California College of the Arts, San Francisco"
+        },
+        {
+          "fecha": "2012",
+          "titulo": "Erasmus exchange. Facultat de Belles Arts, Universitat de Barcelona"
+        }
       ]
     },
     {
@@ -232,14 +263,38 @@
       "nombreEN": "Solo Exhibitions and Selected Projects",
       "nombreCAT": "Exposicions individuals i projectes seleccionats",
       "items": [
-        { "fecha": "2024", "titulo": "El teatro de las plantas. Finalista Convocatòria d'Exposicions Pere Pruna 2024. Barcelona" },
-        { "fecha": "2023", "titulo": "El teatro de las plantas. Convocatòria Art i Ciutat. Sant Cugat del Vallès" },
-        { "fecha": "2022", "titulo": "Se acabaron las bacanales. CC Guinardó. Barcelona" },
-        { "fecha": "2022", "titulo": "Por Siglos en Eros. Espai Jove Boca Nord. Barcelona" },
-        { "fecha": "2021", "titulo": "Pato Ceramics. Galeria Can Xalant. Mataró" },
-        { "fecha": "2021", "titulo": "Se acabaron las Bacanales. Finalista Art Jove 2021. Barcelona" },
-        { "fecha": "2020", "titulo": "L'univers de la pomme de terre. Espai 13. Barcelona" },
-        { "fecha": "2019", "titulo": "Y otros cuentos. Galeria Àngels. Barcelona" }
+        {
+          "fecha": "2024",
+          "titulo": "El teatro de las plantas. Finalista Convocatòria d'Exposicions Pere Pruna 2024. Barcelona"
+        },
+        {
+          "fecha": "2023",
+          "titulo": "El teatro de las plantas. Convocatòria Art i Ciutat. Sant Cugat del Vallès"
+        },
+        {
+          "fecha": "2022",
+          "titulo": "Se acabaron las bacanales. CC Guinardó. Barcelona"
+        },
+        {
+          "fecha": "2022",
+          "titulo": "Por Siglos en Eros. Espai Jove Boca Nord. Barcelona"
+        },
+        {
+          "fecha": "2021",
+          "titulo": "Pato Ceramics. Galeria Can Xalant. Mataró"
+        },
+        {
+          "fecha": "2021",
+          "titulo": "Se acabaron las Bacanales. Finalista Art Jove 2021. Barcelona"
+        },
+        {
+          "fecha": "2020",
+          "titulo": "L'univers de la pomme de terre. Espai 13. Barcelona"
+        },
+        {
+          "fecha": "2019",
+          "titulo": "Y otros cuentos. Galeria Àngels. Barcelona"
+        }
       ]
     },
     {
@@ -247,13 +302,34 @@
       "nombreEN": "Group Exhibitions and Events",
       "nombreCAT": "Exposicions i esdeveniments col·lectius",
       "items": [
-        { "fecha": "2024", "titulo": "Nubes nacen negras. Taller 131. Barcelona" },
-        { "fecha": "2023", "titulo": "Placenta. Grau-Garriga Centre d'Art textil contemporani. Sant Cugat del Vallès" },
-        { "fecha": "2021", "titulo": "Triennal Memento Mori. Xefo Art Gallery. Barcelona" },
-        { "fecha": "2021", "titulo": "Etching and engraving. Barn Gallery. Wingfield" },
-        { "fecha": "2018", "titulo": "Colectiva d'estiu. Galeria Espai B. Barcelona" },
-        { "fecha": "2017", "titulo": "MFA Graduate Show. San Francisco Art Institute" },
-        { "fecha": "2015", "titulo": "BFA Thesis Exhibition. California College of the Arts. San Francisco" }
+        {
+          "fecha": "2024",
+          "titulo": "Nubes nacen negras. Taller 131. Barcelona"
+        },
+        {
+          "fecha": "2023",
+          "titulo": "Placenta. Grau-Garriga Centre d'Art textil contemporani. Sant Cugat del Vallès"
+        },
+        {
+          "fecha": "2021",
+          "titulo": "Triennal Memento Mori. Xefo Art Gallery. Barcelona"
+        },
+        {
+          "fecha": "2021",
+          "titulo": "Etching and engraving. Barn Gallery. Wingfield"
+        },
+        {
+          "fecha": "2018",
+          "titulo": "Colectiva d'estiu. Galeria Espai B. Barcelona"
+        },
+        {
+          "fecha": "2017",
+          "titulo": "MFA Graduate Show. San Francisco Art Institute"
+        },
+        {
+          "fecha": "2015",
+          "titulo": "BFA Thesis Exhibition. California College of the Arts. San Francisco"
+        }
       ]
     }
   ],
