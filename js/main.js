@@ -29,6 +29,10 @@ async function init() {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         projectsData = await response.json();
 
+        if (projectsData.resaltado) {
+            document.documentElement.style.setProperty('--resaltado', projectsData.resaltado);
+        }
+
         renderProjects();
         initMenu();
         initAboutOverlay();

@@ -288,7 +288,7 @@ body {
   font-size: 14px;
   font-weight: bold;
   padding: 1px 2px;
-  background-image: linear-gradient(#FF69B4, #FF69B4);
+  background-image: linear-gradient(var(--resaltado, #FF69B4), var(--resaltado, #FF69B4));
   background-repeat: no-repeat;
   background-position: left bottom;
   background-size: 0% 3px;

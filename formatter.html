@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>formatter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      background: #f8f8f8;
+      color: #111;
+      padding: 48px 20px 100px;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    h1 {
+      font-size: 15px;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #999;
+    }
+
+    .status {
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+      margin-top: -12px;
+    }
+
+    .section {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      padding: 20px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #aaa;
+      margin-bottom: 14px;
+    }
+
+    input, textarea {
+      font-family: inherit;
+      font-size: 13px;
+      border: 1px solid #e0e0e0;
+      padding: 7px 10px;
+      width: 100%;
+      background: #fff;
+      outline: none;
+      transition: border-color 0.15s;
+      color: #111;
+    }
+
+    input:focus, textarea:focus { border-color: #bbb; }
+
+    input::placeholder, textarea::placeholder { color: #ccc; }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+      line-height: 1.7;
+    }
+
+    button {
+      font-family: inherit;
+      font-size: 12px;
+      padding: 5px 12px;
+      border: 1px solid #ddd;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.15s;
+      color: #333;
+    }
+
+    button:hover { background: #f5f5f5; border-color: #ccc; }
+
+    .btn-primary {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    .btn-primary:hover { background: #333; border-color: #333; }
+
+    /* Import */
+    .import-area {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      min-height: 80px;
+    }
+
+    /* Color */
+    .color-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .color-row input[type="color"] {
+      width: 40px;
+      height: 32px;
+      padding: 1px;
+      cursor: pointer;
+      border: 1px solid #e0e0e0;
+    }
+
+    .color-row input[type="text"] {
+      width: 90px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+    }
+
+    .color-preview {
+      flex: 1;
+      height: 32px;
+      border: 1px solid #e0e0e0;
+    }
+
+    /* Cards */
+    .project-card, .cv-card {
+      border: 1px solid #eee;
+      padding: 16px;
+      margin-bottom: 12px;
+      background: #fcfcfc;
+    }
+
+    .project-header, .cv-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .project-fields {
+      display: flex;
+      gap: 6px;
+      flex: 1;
+      flex-wrap: wrap;
+    }
+
+    .project-fields input { flex: 1; min-width: 80px; }
+    .project-fields input.slug-input { max-width: 140px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+    .project-fields input.img-input { max-width: 60px; text-align: center; }
+
+    .card-actions {
+      display: flex;
+      gap: 3px;
+      flex-shrink: 0;
+    }
+
+    .card-actions button {
+      padding: 3px 7px;
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    .del-btn { color: #c00 !important; border-color: #e8c0c0 !important; }
+    .del-btn:hover { background: #fef5f5 !important; }
+
+    /* Toolbar */
+    .text-toolbar {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 10px;
+    }
+
+    .text-toolbar button {
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    /* Textarea group */
+    .ta-group { margin-bottom: 8px; }
+
+    .ta-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: #bbb;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 3px;
+    }
+
+    /* About */
+    .about-fields {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .about-fields input { flex: 1; }
+
+    /* CV */
+    .cv-names {
+      display: flex;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .cv-names input { flex: 1; font-size: 12px; }
+
+    .cv-item-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .cv-item-row .cv-fecha {
+      width: 50px;
+      flex-shrink: 0;
+      font-size: 12px;
+      text-align: center;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .cv-item-row .cv-titulo { flex: 1; font-size: 12px; }
+
+    .cv-item-actions { display: flex; gap: 2px; flex-shrink: 0; }
+    .cv-item-actions button { padding: 2px 5px; font-size: 10px; }
+
+    /* Contacto */
+    .contact-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .contact-row label {
+      width: 72px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+
+    .contact-row input { flex: 1; }
+
+    /* Output */
+    .output-area {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      line-height: 1.5;
+      min-height: 200px;
+      background: #1a1a1a;
+      color: #d4d4d4;
+      padding: 16px;
+      border: none;
+      overflow: auto;
+      white-space: pre;
+      margin: 0;
+    }
+
+    .actions-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Modal overlay */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.15s, visibility 0.15s;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      padding: 24px;
+      width: min(400px, 90vw);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .modal-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #999;
+    }
+
+    .modal input {
+      font-size: 13px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 20px 10px 60px; }
+      .project-fields { flex-direction: column; }
+      .project-fields input.slug-input,
+      .project-fields input.img-input { max-width: 100%; }
+      .cv-names { flex-direction: column; }
+      .about-fields { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>formatter</h1>
+    <p class="status" id="status"></p>
+
+    <!-- IMPORT -->
+    <section class="section" id="import-section">
+      <div class="section-title">importar</div>
+      <textarea class="import-area" id="import-area" placeholder="Pega aquí el contenido de data.json"></textarea>
+      <div class="actions-row">
+        <button id="btn-import" class="btn-primary">cargar json</button>
+      </div>
+    </section>
+
+    <!-- RESALTADO -->
+    <section class="section">
+      <div class="section-title">color de resaltado</div>
+      <div class="color-row">
+        <input type="color" id="color-picker">
+        <input type="text" id="color-hex" placeholder="#FFFF00">
+        <div class="color-preview" id="color-preview"></div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section class="section">
+      <div class="section-title">proyectos</div>
+      <div id="projects-list"></div>
+      <div class="actions-row">
+        <button id="btn-add-project">+ nuevo proyecto</button>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section">
+      <div class="section-title">about</div>
+      <div class="about-fields">
+        <input type="text" id="about-titulo" placeholder="título">
+        <input type="text" id="about-subtitulo" placeholder="subtítulo">
+      </div>
+      <div class="text-toolbar">
+        <button data-fmt="bold">B</button>
+        <button data-fmt="italic">I</button>
+        <button data-fmt="link">Link</button>
+      </div>
+      <div class="ta-group">
+        <div class="ta-label">ES</div>
+        <textarea id="about-es" placeholder="Texto en español..."></textarea>
+      </div>
+      <div class="ta-group">
+        <div class="ta-label">EN</div>
+        <textarea id="about-en" placeholder="Text in English..."></textarea>
+      </div>
+      <div class="ta-group">
+        <div class="ta-label">CAT</div>
+        <textarea id="about-cat" placeholder="Text en català..."></textarea>
+      </div>
+    </section>
+
+    <!-- CV -->
+    <section class="section">
+      <div class="section-title">cv</div>
+      <div id="cv-list"></div>
+      <div class="actions-row">
+        <button id="btn-add-cv">+ nueva sección</button>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section">
+      <div class="section-title">contacto</div>
+      <div class="contact-row">
+        <label>nombre</label>
+        <input type="text" id="contact-nombre">
+      </div>
+      <div class="contact-row">
+        <label>email</label>
+        <input type="email" id="contact-email">
+      </div>
+      <div class="contact-row">
+        <label>instagram</label>
+        <input type="text" id="contact-instagram">
+      </div>
+    </section>
+
+    <!-- OUTPUT -->
+    <section class="section" style="padding:0;overflow:hidden;">
+      <div class="section-title" style="padding:20px 20px 0;">salida json</div>
+      <pre class="output-area" id="output"></pre>
+      <div class="actions-row" style="padding:0 20px 20px;">
+        <button id="btn-copy" class="btn-primary">copiar</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- LINK MODAL -->
+  <div class="modal-overlay" id="link-modal">
+    <div class="modal">
+      <div class="modal-title">insertar enlace</div>
+      <input type="text" id="link-text" placeholder="texto del enlace">
+      <input type="url" id="link-url" placeholder="https://...">
+      <div class="modal-actions">
+        <button id="link-cancel">cancelar</button>
+        <button id="link-ok" class="btn-primary">insertar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (() => {
+    // ── State ──
+    let data = {
+      resaltado: '#FFFF00',
+      proyectos: [],
+      about: [{ titulo: '', subtitulo: '', textosES: [], textosEN: [], textosCAT: [] }],
+      cv: [],
+      contacto: { nombre: '', email: '', instagram: '' }
+    };
+
+    let lastTextarea = null;
+    let linkContext = null; // { ta, start, end }
+
+    // ── DOM refs ──
+    const $ = id => document.getElementById(id);
+    const statusEl       = $('status');
+    const importSection  = $('import-section');
+    const importArea     = $('import-area');
+    const colorPicker    = $('color-picker');
+    const colorHex       = $('color-hex');
+    const colorPreview   = $('color-preview');
+    const projectsList   = $('projects-list');
+    const aboutTitulo    = $('about-titulo');
+    const aboutSubtitulo = $('about-subtitulo');
+    const aboutES        = $('about-es');
+    const aboutEN        = $('about-en');
+    const aboutCAT       = $('about-cat');
+    const cvList         = $('cv-list');
+    const contactNombre  = $('contact-nombre');
+    const contactEmail   = $('contact-email');
+    const contactIG      = $('contact-instagram');
+    const outputEl       = $('output');
+    const btnCopy        = $('btn-copy');
+    const linkModal      = $('link-modal');
+    const linkTextInput  = $('link-text');
+    const linkUrlInput   = $('link-url');
+
+    // ── Helpers ──
+    function textToArray(text) {
+      if (!text || !text.trim()) return [];
+      return text.trim().split(/\n\s*\n/).map(p => p.trim()).filter(Boolean);
+    }
+
+    function arrayToText(arr) {
+      return (arr || []).join('\n\n');
+    }
+
+    function makeInput(value, placeholder, className) {
+      const inp = document.createElement('input');
+      inp.type = 'text';
+      inp.value = value;
+      inp.placeholder = placeholder;
+      if (className) inp.className = className;
+      return inp;
+    }
+
+    function makeBtn(text, handler, className) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = text;
+      if (className) btn.className = className;
+      btn.addEventListener('click', handler);
+      return btn;
+    }
+
+    // ── Sync & Output ──
+    function syncAboutAndContact() {
+      if (data.about && data.about[0]) {
+        data.about[0].titulo = aboutTitulo.value;
+        data.about[0].subtitulo = aboutSubtitulo.value;
+        data.about[0].textosES = textToArray(aboutES.value);
+        data.about[0].textosEN = textToArray(aboutEN.value);
+        data.about[0].textosCAT = textToArray(aboutCAT.value);
+      }
+      data.contacto = {
+        nombre: contactNombre.value,
+        email: contactEmail.value,
+        instagram: contactIG.value
+      };
+    }
+
+    function refreshOutput() {
+      syncAboutAndContact();
+      outputEl.textContent = JSON.stringify(data, null, 2);
+    }
+
+    // ── Formatting ──
+    function wrapSelection(before, after) {
+      if (!lastTextarea) return;
+      const ta = lastTextarea;
+      const scrollY = window.scrollY;
+      const taScroll = ta.scrollTop;
+      const s = ta.selectionStart;
+      const e = ta.selectionEnd;
+      const sel = ta.value.slice(s, e);
+      ta.value = ta.value.slice(0, s) + before + sel + after + ta.value.slice(e);
+      ta.focus({ preventScroll: true });
+      ta.setSelectionRange(s + before.length, s + before.length + sel.length);
+      ta.scrollTop = taScroll;
+      window.scrollTo(0, scrollY);
+      refreshOutput();
+    }
+
+    // ── Link modal ──
+    function openLinkModal() {
+      if (!lastTextarea) return;
+      const ta = lastTextarea;
+      const s = ta.selectionStart;
+      const e = ta.selectionEnd;
+      const sel = ta.value.slice(s, e).trim();
+      linkContext = { ta, start: s, end: e };
+      linkTextInput.value = sel;
+      linkUrlInput.value = '';
+      linkModal.classList.add('open');
+      if (sel) linkUrlInput.focus(); else linkTextInput.focus();
+    }
+
+    function closeLinkModal() {
+      linkModal.classList.remove('open');
+      linkContext = null;
+    }
+
+    function confirmLink() {
+      if (!linkContext) return;
+      const text = linkTextInput.value.trim();
+      const url = linkUrlInput.value.trim();
+      if (!text || !url) return;
+      const { ta, start, end } = linkContext;
+      const scrollY = window.scrollY;
+      const taScroll = ta.scrollTop;
+      const tag = '<a href="' + url + '">' + text + '</a>';
+      ta.value = ta.value.slice(0, start) + tag + ta.value.slice(end);
+      ta.focus({ preventScroll: true });
+      ta.setSelectionRange(start + tag.length, start + tag.length);
+      ta.scrollTop = taScroll;
+      window.scrollTo(0, scrollY);
+      refreshOutput();
+      closeLinkModal();
+    }
+
+    $('link-ok').addEventListener('click', confirmLink);
+    $('link-cancel').addEventListener('click', closeLinkModal);
+    linkModal.addEventListener('click', e => { if (e.target === linkModal) closeLinkModal(); });
+    linkUrlInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); confirmLink(); } });
+    linkTextInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); linkUrlInput.focus(); } });
+
+    // Track last focused textarea
+    document.addEventListener('focusin', e => {
+      if (e.target.tagName === 'TEXTAREA' && !linkModal.classList.contains('open')) {
+        lastTextarea = e.target;
+      }
+    });
+
+    // Prevent format buttons from stealing focus (avoids scroll jump)
+    document.addEventListener('mousedown', e => {
+      if (e.target.closest('[data-fmt]')) e.preventDefault();
+    });
+
+    // Delegate format buttons
+    document.addEventListener('click', e => {
+      const btn = e.target.closest('[data-fmt]');
+      if (!btn) return;
+      const fmt = btn.dataset.fmt;
+      if (fmt === 'bold') wrapSelection('<b>', '</b>');
+      else if (fmt === 'italic') wrapSelection('<i>', '</i>');
+      else if (fmt === 'link') openLinkModal();
+    });
+
+    // ── Render: Resaltado ──
+    function renderResaltado() {
+      const c = data.resaltado || '#FFFF00';
+      colorPicker.value = c;
+      colorHex.value = c;
+      colorPreview.style.background = c;
+    }
+
+    colorPicker.addEventListener('input', () => {
+      data.resaltado = colorPicker.value;
+      colorHex.value = colorPicker.value;
+      colorPreview.style.background = colorPicker.value;
+      refreshOutput();
+    });
+
+    colorHex.addEventListener('input', () => {
+      const v = colorHex.value;
+      if (/^#[0-9a-fA-F]{6}$/.test(v)) {
+        data.resaltado = v;
+        colorPicker.value = v;
+        colorPreview.style.background = v;
+        refreshOutput();
+      }
+    });
+
+    // ── Render: Proyectos ──
+    function renderProyectos() {
+      projectsList.innerHTML = '';
+      data.proyectos.forEach((proj, idx) => {
+        projectsList.appendChild(createProjectCard(proj[0], proj[1], idx));
+      });
+    }
+
+    function createProjectCard(slug, info, idx) {
+      const card = document.createElement('div');
+      card.className = 'project-card';
+
+      const header = document.createElement('div');
+      header.className = 'project-header';
+
+      const fields = document.createElement('div');
+      fields.className = 'project-fields';
+
+      const slugInp = makeInput(slug, 'slug', 'slug-input');
+      slugInp.addEventListener('input', () => { data.proyectos[idx][0] = slugInp.value; refreshOutput(); });
+
+      const titInp = makeInput(info.titulo || '', 'título');
+      titInp.addEventListener('input', () => { data.proyectos[idx][1].titulo = titInp.value; refreshOutput(); });
+
+      const imgInp = makeInput(String(info.imgCount || 0), 'imgs', 'img-input');
+      imgInp.type = 'number'; imgInp.min = '0';
+      imgInp.addEventListener('input', () => { data.proyectos[idx][1].imgCount = parseInt(imgInp.value) || 0; refreshOutput(); });
+
+      fields.append(slugInp, titInp, imgInp);
+
+      const actions = document.createElement('div');
+      actions.className = 'card-actions';
+      if (idx > 0)
+        actions.appendChild(makeBtn('^', () => moveProject(idx, idx - 1)));
+      if (idx < data.proyectos.length - 1)
+        actions.appendChild(makeBtn('v', () => moveProject(idx, idx + 1)));
+      actions.appendChild(makeBtn('x', () => {
+        if (!confirm('Eliminar proyecto "' + (info.titulo || slug) + '"?')) return;
+        data.proyectos.splice(idx, 1);
+        renderProyectos();
+        refreshOutput();
+      }, 'del-btn'));
+
+      header.append(fields, actions);
+      card.appendChild(header);
+
+      const toolbar = document.createElement('div');
+      toolbar.className = 'text-toolbar';
+      toolbar.innerHTML = '<button data-fmt="bold">B</button><button data-fmt="italic">I</button><button data-fmt="link">Link</button>';
+      card.appendChild(toolbar);
+
+      ['ES', 'EN', 'CAT'].forEach(lang => {
+        const key = 'textos' + lang;
+        const group = document.createElement('div');
+        group.className = 'ta-group';
+
+        const label = document.createElement('div');
+        label.className = 'ta-label';
+        label.textContent = lang;
+
+        const ta = document.createElement('textarea');
+        ta.value = arrayToText(info[key]);
+        ta.placeholder = 'Texto ' + lang + '...';
+        ta.addEventListener('input', () => {
+          data.proyectos[idx][1][key] = textToArray(ta.value);
+          refreshOutput();
+        });
+
+        group.append(label, ta);
+        card.appendChild(group);
+      });
+
+      return card;
+    }
+
+    function moveProject(from, to) {
+      const [item] = data.proyectos.splice(from, 1);
+      data.proyectos.splice(to, 0, item);
+      renderProyectos();
+      refreshOutput();
+    }
+
+    $('btn-add-project').addEventListener('click', () => {
+      data.proyectos.push(['nuevo-proyecto', {
+        titulo: '', textosES: [], textosEN: [], textosCAT: [], imgCount: 0
+      }]);
+      renderProyectos();
+      refreshOutput();
+    });
+
+    // ── Render: About ──
+    function renderAbout() {
+      if (!data.about || !data.about[0]) {
+        data.about = [{ titulo: '', subtitulo: '', textosES: [], textosEN: [], textosCAT: [] }];
+      }
+      const a = data.about[0];
+      aboutTitulo.value = a.titulo || '';
+      aboutSubtitulo.value = a.subtitulo || '';
+      aboutES.value = arrayToText(a.textosES);
+      aboutEN.value = arrayToText(a.textosEN);
+      aboutCAT.value = arrayToText(a.textosCAT);
+    }
+
+    [aboutTitulo, aboutSubtitulo, aboutES, aboutEN, aboutCAT].forEach(el => {
+      el.addEventListener('input', refreshOutput);
+    });
+
+    // ── Render: CV ──
+    function renderCV() {
+      cvList.innerHTML = '';
+      (data.cv || []).forEach((section, idx) => {
+        cvList.appendChild(createCVCard(section, idx));
+      });
+    }
+
+    function createCVCard(section, idx) {
+      const card = document.createElement('div');
+      card.className = 'cv-card';
+
+      const header = document.createElement('div');
+      header.className = 'cv-header';
+
+      const names = document.createElement('div');
+      names.className = 'cv-names';
+      ['ES', 'EN', 'CAT'].forEach(lang => {
+        const key = 'nombre' + lang;
+        const inp = makeInput(section[key] || '', 'nombre ' + lang);
+        inp.addEventListener('input', () => { data.cv[idx][key] = inp.value; refreshOutput(); });
+        names.appendChild(inp);
+      });
+
+      const actions = document.createElement('div');
+      actions.className = 'card-actions';
+      if (idx > 0)
+        actions.appendChild(makeBtn('^', () => moveCVSection(idx, idx - 1)));
+      if (idx < data.cv.length - 1)
+        actions.appendChild(makeBtn('v', () => moveCVSection(idx, idx + 1)));
+      actions.appendChild(makeBtn('x', () => {
+        if (!confirm('Eliminar sección "' + (section.nombreES || 'sin nombre') + '"?')) return;
+        data.cv.splice(idx, 1);
+        renderCV();
+        refreshOutput();
+      }, 'del-btn'));
+
+      header.append(names, actions);
+      card.appendChild(header);
+
+      const itemsDiv = document.createElement('div');
+      (section.items || []).forEach((item, iIdx) => {
+        itemsDiv.appendChild(createCVItemRow(idx, iIdx, item));
+      });
+      card.appendChild(itemsDiv);
+
+      card.appendChild(makeBtn('+ item', () => {
+        if (!data.cv[idx].items) data.cv[idx].items = [];
+        data.cv[idx].items.push({ fecha: '', titulo: '' });
+        renderCV();
+        refreshOutput();
+      }));
+
+      return card;
+    }
+
+    function createCVItemRow(sIdx, iIdx, item) {
+      const row = document.createElement('div');
+      row.className = 'cv-item-row';
+
+      const fecha = makeInput(item.fecha || '', 'año', 'cv-fecha');
+      fecha.addEventListener('input', () => { data.cv[sIdx].items[iIdx].fecha = fecha.value; refreshOutput(); });
+
+      const titulo = makeInput(item.titulo || '', 'título', 'cv-titulo');
+      titulo.addEventListener('input', () => { data.cv[sIdx].items[iIdx].titulo = titulo.value; refreshOutput(); });
+
+      const actions = document.createElement('div');
+      actions.className = 'cv-item-actions';
+      const items = data.cv[sIdx].items;
+      if (iIdx > 0)
+        actions.appendChild(makeBtn('^', () => { [items[iIdx - 1], items[iIdx]] = [items[iIdx], items[iIdx - 1]]; renderCV(); refreshOutput(); }));
+      if (iIdx < items.length - 1)
+        actions.appendChild(makeBtn('v', () => { [items[iIdx], items[iIdx + 1]] = [items[iIdx + 1], items[iIdx]]; renderCV(); refreshOutput(); }));
+      actions.appendChild(makeBtn('x', () => {
+        if (!confirm('Eliminar item?')) return;
+        items.splice(iIdx, 1); renderCV(); refreshOutput();
+      }));
+
+      row.append(fecha, titulo, actions);
+      return row;
+    }
+
+    function moveCVSection(from, to) {
+      const [item] = data.cv.splice(from, 1);
+      data.cv.splice(to, 0, item);
+      renderCV();
+      refreshOutput();
+    }
+
+    $('btn-add-cv').addEventListener('click', () => {
+      if (!data.cv) data.cv = [];
+      data.cv.push({ nombreES: '', nombreEN: '', nombreCAT: '', items: [] });
+      renderCV();
+      refreshOutput();
+    });
+
+    // ── Render: Contacto ──
+    function renderContacto() {
+      const c = data.contacto || {};
+      contactNombre.value = c.nombre || '';
+      contactEmail.value = c.email || '';
+      contactIG.value = c.instagram || '';
+    }
+
+    [contactNombre, contactEmail, contactIG].forEach(el => {
+      el.addEventListener('input', refreshOutput);
+    });
+
+    // ── Render all ──
+    function renderAll() {
+      renderResaltado();
+      renderProyectos();
+      renderAbout();
+      renderCV();
+      renderContacto();
+      refreshOutput();
+    }
+
+    // ── Import ──
+    $('btn-import').addEventListener('click', () => {
+      try {
+        data = JSON.parse(importArea.value);
+        renderAll();
+        statusEl.textContent = 'JSON importado correctamente';
+      } catch (e) {
+        alert('JSON no válido: ' + e.message);
+      }
+    });
+
+    // ── Copy ──
+    btnCopy.addEventListener('click', async () => {
+      refreshOutput();
+      try {
+        await navigator.clipboard.writeText(outputEl.textContent);
+        btnCopy.textContent = 'copiado';
+        setTimeout(() => btnCopy.textContent = 'copiar', 1400);
+      } catch {
+        btnCopy.textContent = 'error';
+        setTimeout(() => btnCopy.textContent = 'copiar', 1600);
+      }
+    });
+
+    // ── Auto-load ──
+    async function autoLoad() {
+      try {
+        const res = await fetch('data.json');
+        if (!res.ok) throw new Error(res.status);
+        data = await res.json();
+        renderAll();
+        importSection.style.display = 'none';
+        statusEl.textContent = 'data.json cargado';
+      } catch {
+        statusEl.textContent = 'pega el contenido de data.json para empezar';
+      }
+    }
+
+    autoLoad();
+  })();
+  </script>
+</body>
+</html>
