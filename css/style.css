@@ -386,12 +386,12 @@ body {
   background: #fff;
 }
 
-/* Scroll wrapper 80dvh con gradientes fade */
+/* Scroll wrapper con gradientes fade */
 .gallery-text-scroll {
   position: relative;
   width: 100%;
-  max-width: 560px;
-  height: 80dvh;
+  max-width: min(800px, 80dvw);
+  height: 60dvh;
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
@@ -504,6 +504,7 @@ body {
   }
 
   .gallery-text-scroll {
+    height: 80dvh;
     padding: 0 5dvw;
   }
 

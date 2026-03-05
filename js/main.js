@@ -334,6 +334,19 @@ function initMenu() {
         linkActive.dataset.project = projectName;
         menuActive.appendChild(linkActive);
     });
+
+    // Click en proyecto activo → scroll a su bloque de texto
+    [menu, menuActive].forEach(nav => {
+        nav.addEventListener('click', e => {
+            const a = e.target.closest('a');
+            if (!a) return;
+            if (a.classList.contains('active')) {
+                e.preventDefault();
+                const textBlock = document.querySelector(`.gallery-text[data-project="${a.dataset.project}"]`);
+                if (textBlock) textBlock.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+            }
+        });
+    });
 }
 
 
