@@ -5,9 +5,21 @@
       {
         "titulo": "pato ceramics",
         "color": "#E8D5C4",
-        "textosES": [],
-        "textosEN": [],
-        "textosCAT": [],
+        "textosES": [
+          "Pato Ceramics nace de la voluntad de explorar la escultura desde el barro, entendiendo la cerámica como extensión natural del dibujo. Cada pieza parte de un boceto previo que se transforma al entrar en contacto con el material: el gres y la porcelana imponen sus propios tiempos y resistencias.",
+          "El proyecto investiga las posibilidades narrativas del objeto cerámico. Las figuras —animales, híbridos, formas ambiguas— funcionan como personajes de un relato sin texto, donde el humor y lo inquietante conviven en la misma superficie esmaltada.",
+          "El proceso de producción combina técnicas de modelado manual, moldes y esmaltado experimental. El horno introduce un factor de azar que se incorpora como parte del lenguaje: las grietas, las variaciones de color y las deformaciones no son errores sino gestos del material."
+        ],
+        "textosEN": [
+          "Pato Ceramics arises from the desire to explore sculpture through clay, understanding ceramics as a natural extension of drawing. Each piece begins with a preliminary sketch that transforms upon contact with the material: stoneware and porcelain impose their own rhythms and resistances.",
+          "The project investigates the narrative possibilities of the ceramic object. The figures—animals, hybrids, ambiguous forms—function as characters in a textless story, where humor and the uncanny coexist on the same glazed surface.",
+          "The production process combines hand-modeling techniques, molds, and experimental glazing. The kiln introduces an element of chance that becomes part of the language: cracks, color variations, and deformations are not errors but gestures of the material."
+        ],
+        "textosCAT": [
+          "Pato Ceramics neix de la voluntat d'explorar l'escultura des del fang, entenent la ceràmica com a extensió natural del dibuix. Cada peça parteix d'un esbós previ que es transforma en entrar en contacte amb el material: el gres i la porcellana imposen els seus propis temps i resistències.",
+          "El projecte investiga les possibilitats narratives de l'objecte ceràmic. Les figures —animals, híbrids, formes ambigües— funcionen com a personatges d'un relat sense text, on l'humor i l'inquietant conviuen en la mateixa superfície esmaltada.",
+          "El procés de producció combina tècniques de modelat manual, motlles i esmaltat experimental. El forn introdueix un factor d'atzar que s'incorpora com a part del llenguatge: les esquerdes, les variacions de color i les deformacions no són errors sinó gestos del material."
+        ],
         "imgCount": 18
       }
     ],
@@ -48,9 +60,21 @@
       {
         "titulo": "hasta su abuelo lo era",
         "color": "#C4D5E8",
-        "textosES": [],
-        "textosEN": [],
-        "textosCAT": [],
+        "textosES": [
+          "Hasta su abuelo lo era es un proyecto de ilustración y narrativa gráfica que parte de los archivos familiares para reconstruir una genealogía afectiva. A través de retratos, objetos y espacios domésticos, la obra traza las líneas invisibles que conectan generaciones y revela los patrones que se heredan sin nombrar.",
+          "El dibujo a tinta y acuarela se combina con fragmentos de texto autobiográfico, creando un diálogo entre imagen y palabra donde ninguno de los dos lenguajes completa al otro. Las lagunas y los silencios forman parte del relato tanto como lo que se muestra.",
+          "El título alude a la repetición de roles y destinos dentro de una familia, pero también a la posibilidad de interrumpir esa cadena. La obra se sitúa en ese punto de tensión entre la herencia recibida y la identidad que se elige construir."
+        ],
+        "textosEN": [
+          "Hasta su abuelo lo era is an illustration and graphic narrative project that draws from family archives to reconstruct an affective genealogy. Through portraits, objects, and domestic spaces, the work traces the invisible lines connecting generations and reveals patterns inherited without being named.",
+          "Ink and watercolor drawing is combined with fragments of autobiographical text, creating a dialogue between image and word where neither language completes the other. Gaps and silences are as much a part of the narrative as what is shown.",
+          "The title alludes to the repetition of roles and destinies within a family, but also to the possibility of interrupting that chain. The work situates itself at the point of tension between inherited legacy and the identity one chooses to build."
+        ],
+        "textosCAT": [
+          "Hasta su abuelo lo era és un projecte d'il·lustració i narrativa gràfica que parteix dels arxius familiars per reconstruir una genealogia afectiva. A través de retrats, objectes i espais domèstics, l'obra traça les línies invisibles que connecten generacions i revela els patrons que s'hereten sense nomenar.",
+          "El dibuix a tinta i aquarel·la es combina amb fragments de text autobiogràfic, creant un diàleg entre imatge i paraula on cap dels dos llenguatges completa l'altre. Les llacunes i els silencis formen part del relat tant com allò que es mostra.",
+          "El títol al·ludeix a la repetició de rols i destins dins d'una família, però també a la possibilitat d'interrompre aquesta cadena. L'obra se situa en aquest punt de tensió entre l'herència rebuda i la identitat que es tria construir."
+        ],
         "imgCount": 12
       }
     ],
