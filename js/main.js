@@ -5,7 +5,8 @@
 // Arquitectura:
 //   - data.json contiene proyectos, textos (ES/EN/CAT), about, cv y contacto
 //   - Cada proyecto se renderiza como una sección fullscreen con scroll horizontal
-//   - Las imágenes se prueban en orden: .jpg → .png → .jpeg → .webp → .gif
+//   - Las imágenes se cargan secuencialmente (1, 2, 3...) hasta que no se
+//     encuentre ninguna extensión válida (.webp → .jpg → .png → .jpeg → .gif)
 //   - El menú (abajo-izq) usa mix-blend-mode: difference (CSS)
 //   - "mokakopa" (arriba-izq) abre el overlay del about
 //   - About tiene toggle statement/CV + selector de idioma reutilizable
@@ -81,7 +82,7 @@ function createProjectElement(projectName, projectData) {
     gallery.className = 'gallery';
 
     // Todos los proyectos son simples: secuencia de imágenes + bloque de texto
-    addImagesToGallery(gallery, projectName, projectData.imgCount);
+    addImagesToGallery(gallery, projectName);
     addTextToGallery(gallery, projectName, projectData);
 
     projectDiv.appendChild(gallery);
@@ -160,43 +161,53 @@ function initResizeHandler() {
 // ============================================================================
 // CARGA DE IMÁGENES
 //
-// Intenta cargar cada imagen como .jpg primero.
-// Si falla, prueba .png → .jpeg → .webp → .gif en orden.
-// Si ninguna funciona, oculta el item.
+// Carga secuencial: empieza por 1.webp, si existe pasa a 2.webp, etc.
+// Para cada número, prueba extensiones en orden: .webp → .jpg → .png → .jpeg → .gif
+// Cuando un número falla en todas las extensiones, para (no busca más).
 // ============================================================================
 
-const IMG_EXTENSIONS = ['jpg', 'png', 'jpeg', 'webp', 'gif'];
+const IMG_EXTENSIONS = ['webp', 'jpg', 'png', 'jpeg', 'gif'];
 
-function addImagesToGallery(gallery, path, count) {
-    for (let i = 1; i <= count; i++) {
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
+function addImagesToGallery(gallery, path) {
+    loadNextImage(gallery, path, 1);
+}
 
-        const img = document.createElement('img');
-        img.alt = path + ' ' + i;
-        img.loading = 'lazy';
+function loadNextImage(gallery, path, index) {
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
 
-        // Índice de extensión actual (empieza en 0 = jpg)
-        let extIndex = 0;
-        img.src = 'data/' + path + '/' + i + '.' + IMG_EXTENSIONS[extIndex];
+    const img = document.createElement('img');
+    img.alt = path + ' ' + index;
 
-        // ⭐ Marcar item como loaded cuando la imagen carga exitosamente
-        img.onload = function() {
-            item.classList.add('loaded');
-        };
+    let extIndex = 0;
+    img.src = 'data/' + path + '/' + index + '.' + IMG_EXTENSIONS[extIndex];
 
-        img.onerror = function tryNext() {
-            extIndex++;
-            if (extIndex < IMG_EXTENSIONS.length) {
-                img.onerror = tryNext; // reasignar antes de cambiar src
-                img.src = 'data/' + path + '/' + i + '.' + IMG_EXTENSIONS[extIndex];
-            } else {
-                img.onerror = null;
-                item.style.display = 'none';
-            }
-        };
+    img.onload = function() {
+        item.classList.add('loaded');
+        // Imagen encontrada, intentar la siguiente
+        loadNextImage(gallery, path, index + 1);
+    };
 
-        item.appendChild(img);
+    img.onerror = function tryNext() {
+        extIndex++;
+        if (extIndex < IMG_EXTENSIONS.length) {
+            img.onerror = tryNext;
+            img.src = 'data/' + path + '/' + index + '.' + IMG_EXTENSIONS[extIndex];
+        } else {
+            // Ninguna extensión funcionó, parar aquí
+            img.onerror = null;
+            item.remove();
+        }
+    };
+
+    item.appendChild(img);
+
+    // Insertar antes del bloque de texto para que las imágenes
+    // siempre queden antes del texto, independientemente del orden de carga
+    const textBlock = gallery.querySelector('.gallery-text');
+    if (textBlock) {
+        gallery.insertBefore(item, textBlock);
+    } else {
         gallery.appendChild(item);
     }
 }
