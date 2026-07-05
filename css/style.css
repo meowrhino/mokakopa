@@ -1,6 +1,8 @@
 /* ============================================================================
-   STYLE.CSS — mokakopa
-   Portfolio de proyectos artísticos de Monica Kopatschek
+   STYLE.CSS — mokakopa / ana lópez (twin site)
+   Estilos compartidos por ambos sitios. El lado (izquierda por defecto,
+   derecha en el twin) se controla con el atributo data-lado en <body>;
+   ver la sección "OVERRIDES ESPEJO" al final de este archivo.
    ============================================================================ */
 
 /* === RESET Y CONFIGURACIÓN GLOBAL ========================================= */
@@ -26,7 +28,7 @@ body {
   overscroll-behavior-y: auto; /* permite scroll vertical entre proyectos */
 }
 
-/* === HEADER: NOMBRE (arriba izquierda) ============== */
+/* === HEADER: NOMBRE (arriba izquierda; derecha en la versión espejo) ===== */
 /*
    mix-blend-mode: difference con color: #fff en el contenedor.
    Sobre fondo blanco se ven negros, sobre imágenes oscuras se ven claros.
@@ -243,7 +245,7 @@ body {
   color: #666;
 }
 
-/* === MENÚ DE PROYECTOS (abajo izquierda, texto pelao, blend-mode) ========= */
+/* === MENÚ DE PROYECTOS (abajo izquierda; derecha en la versión espejo) ==== */
 /*
    Sin fondo, sin blur, sin bordes.
    mix-blend-mode: difference con color: #fff en los links
@@ -514,5 +516,56 @@ body {
 
   #about-content {
     padding: 12dvh 20px; /* menos padding vertical en móvil */
+  }
+}
+
+/* ============================================================================
+   OVERRIDES ESPEJO (versión derecha / RTL)
+   El sitio twin (twinMokakopa) marca <body data-lado="derecha"> para activar
+   estos overrides, que replican en espejo el layout de la versión izquierda
+   (por defecto, sin atributo data-lado, o data-lado="izquierda").
+   ============================================================================ */
+
+body[data-lado="derecha"] #site-header {
+  left: auto;
+  right: 20px;
+  align-items: flex-end;
+}
+
+body[data-lado="derecha"] #close-about {
+  right: auto;
+  left: 20px;
+}
+
+body[data-lado="derecha"] #menu {
+  left: auto;
+  right: 20px;
+  align-items: flex-end;
+}
+
+body[data-lado="derecha"] #menu-active {
+  left: auto;
+  right: 20px;
+  align-items: flex-end;
+}
+
+body[data-lado="derecha"] #menu-active a {
+  background-position: right bottom;
+}
+
+@media (max-width: 768px) {
+  body[data-lado="derecha"] #site-header {
+    left: auto;
+    right: 15px;
+  }
+
+  body[data-lado="derecha"] #menu {
+    left: auto;
+    right: 15px;
+  }
+
+  body[data-lado="derecha"] #menu-active {
+    left: auto;
+    right: 15px;
   }
 }

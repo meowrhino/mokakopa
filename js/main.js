@@ -1,12 +1,18 @@
 // ============================================================================
-// MAIN.JS — mokakopa
-// Portfolio de proyectos artísticos de Monica Kopatschek
+// MAIN.JS — mokakopa / ana lópez (twin site)
+//
+// Este script sirve a dos sitios casi idénticos (mokakopa y su espejo
+// twinMokakopa). El lado (izquierda/derecha) se controla vía CSS con el
+// atributo data-lado en <body> (ver style.css); este archivo es agnóstico
+// respecto a qué artista o lado se está sirviendo.
 //
 // Arquitectura:
 //   - data.json contiene proyectos, textos (ES/EN/CAT), about, cv y contacto
 //   - Cada proyecto se renderiza como una sección fullscreen con scroll horizontal
-//   - Las imágenes se cargan secuencialmente (1, 2, 3...) hasta que no se
-//     encuentre ninguna extensión válida (.webp → .jpg → .png → .jpeg → .gif)
+//   - Las imágenes de cada proyecto se crean DE GOLPE a partir de
+//     projectData.imgCount (1..N), sin sondeo secuencial. Cada <img> hace
+//     fallback de extensión en el propio elemento (onerror) probando
+//     ['webp','jpg','png','jpeg','gif'] a partir de projectData.ext || 'webp'.
 //   - El menú (abajo-izq) usa mix-blend-mode: difference (CSS)
 //   - "mokakopa" (arriba-izq) abre el overlay del about
 //   - About tiene toggle statement/CV + selector de idioma reutilizable
@@ -44,7 +50,7 @@ async function init() {
         document.getElementById('projects-container').innerHTML =
             '<div style="display:flex;justify-content:center;align-items:center;' +
             'height:100vh;flex-direction:column;padding:20px;text-align:center;">' +
-            '<h1>error al cargar mokakopa</h1>' +
+            '<h1>error al cargar la página</h1>' +
             '<p>no se pudieron cargar los datos. recarga la página.</p>' +
             '<p style="color:#666;font-size:14px;margin-top:20px;">error: ' +
             error.message + '</p></div>';
@@ -82,7 +88,7 @@ function createProjectElement(projectName, projectData) {
     gallery.className = 'gallery';
 
     // Todos los proyectos son simples: secuencia de imágenes + bloque de texto
-    addImagesToGallery(gallery, projectName);
+    addImagesToGallery(gallery, projectName, projectData);
     addTextToGallery(gallery, projectName, projectData);
 
     projectDiv.appendChild(gallery);
@@ -98,10 +104,29 @@ function createProjectElement(projectName, projectData) {
 // ============================================================================
 // CENTRADO DINÁMICO DE LA PRIMERA IMAGEN
 //
-// Calcula un padding-left para que la primera imagen de cada galería
+// Calcula un padding-left/right para que la primera imagen de cada galería
 // aparezca centrada en el viewport. Como cada imagen tiene dimensiones
 // diferentes, se calcula individualmente tras la carga de la imagen.
 // ============================================================================
+
+/**
+ * Calcula y aplica el padding horizontal de una galería para que su
+ * primera imagen quede centrada en el viewport. Padding mínimo de 20px.
+ * Compartida entre setupFirstImageCentering() e initResizeHandler().
+ */
+function applyGalleryPadding(gallery) {
+    const firstImg = gallery.querySelector('.gallery-item img');
+    if (!firstImg || firstImg.offsetWidth === 0) {
+        gallery.style.paddingLeft = '20px';
+        gallery.style.paddingRight = '20px';
+        return;
+    }
+    const viewportW = window.innerWidth;
+    const imgW = firstImg.offsetWidth;
+    const padding = Math.max(20, Math.floor((viewportW - imgW) / 2));
+    gallery.style.paddingLeft = padding + 'px';
+    gallery.style.paddingRight = padding + 'px';
+}
 
 function setupFirstImageCentering(gallery) {
     const firstImg = gallery.querySelector('.gallery-item img');
@@ -112,25 +137,11 @@ function setupFirstImageCentering(gallery) {
         return;
     }
 
-    /**
-     * Una vez la primera imagen tiene dimensiones reales,
-     * calcula: padding = (viewport_width - img_width) / 2
-     * con un mínimo de 20px para no pegar al borde.
-     */
-    const applyPadding = () => {
-        const viewportW = window.innerWidth;
-        const imgW = firstImg.offsetWidth;
-        if (imgW === 0) return; // aún no tiene dimensiones
-        const padding = Math.max(20, Math.floor((viewportW - imgW) / 2));
-        gallery.style.paddingLeft = padding + 'px';
-        gallery.style.paddingRight = padding + 'px';
-    };
-
     // La imagen puede ya estar cargada (cache) o no
     if (firstImg.complete && firstImg.naturalWidth > 0) {
-        applyPadding();
+        applyGalleryPadding(gallery);
     } else {
-        firstImg.addEventListener('load', applyPadding, { once: true });
+        firstImg.addEventListener('load', () => applyGalleryPadding(gallery), { once: true });
     }
 }
 
@@ -143,15 +154,7 @@ function initResizeHandler() {
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
-            galleries.forEach(gallery => {
-                const firstImg = gallery.querySelector('.gallery-item img');
-                if (!firstImg || firstImg.offsetWidth === 0) return;
-                const viewportW = window.innerWidth;
-                const imgW = firstImg.offsetWidth;
-                const padding = Math.max(20, Math.floor((viewportW - imgW) / 2));
-                gallery.style.paddingLeft = padding + 'px';
-                gallery.style.paddingRight = padding + 'px';
-            });
+            galleries.forEach(applyGalleryPadding);
         }, 150); // debounce 150ms
     });
 }
@@ -161,53 +164,55 @@ function initResizeHandler() {
 // ============================================================================
 // CARGA DE IMÁGENES
 //
-// Carga secuencial: empieza por 1.webp, si existe pasa a 2.webp, etc.
-// Para cada número, prueba extensiones en orden: .webp → .jpg → .png → .jpeg → .gif
-// Cuando un número falla en todas las extensiones, para (no busca más).
+// A partir de projectData.imgCount se crean de golpe los N gallery-items
+// (orden 1..N) y se añaden al DOM inmediatamente. Cada <img> intenta
+// primero projectData.ext || 'webp'; si falla, su propio onerror recorre
+// las extensiones restantes de IMG_EXTENSIONS. Si ninguna funciona,
+// se elimina ese gallery-item y se avisa por console.warn.
+// Si el proyecto no define imgCount (o es 0), no se añade ninguna imagen
+// y se avisa por console.warn.
 // ============================================================================
 
 const IMG_EXTENSIONS = ['webp', 'jpg', 'png', 'jpeg', 'gif'];
 
-function addImagesToGallery(gallery, path) {
-    loadNextImage(gallery, path, 1);
-}
+function addImagesToGallery(gallery, path, projectData) {
+    const imgCount = projectData && projectData.imgCount;
+    if (!imgCount) {
+        console.warn(`Proyecto "${path}": falta imgCount en data.json, no se cargarán imágenes.`);
+        return;
+    }
 
-function loadNextImage(gallery, path, index) {
-    const item = document.createElement('div');
-    item.className = 'gallery-item';
+    const initialExt = (projectData && projectData.ext) || 'webp';
+    const fallbackExts = IMG_EXTENSIONS.filter(ext => ext !== initialExt);
 
-    const img = document.createElement('img');
-    img.alt = path + ' ' + index;
+    for (let index = 1; index <= imgCount; index++) {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
 
-    let extIndex = 0;
-    img.src = 'data/' + path + '/' + index + '.' + IMG_EXTENSIONS[extIndex];
+        const img = document.createElement('img');
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.alt = path + ' ' + index;
 
-    img.onload = function() {
-        item.classList.add('loaded');
-        // Imagen encontrada, intentar la siguiente
-        loadNextImage(gallery, path, index + 1);
-    };
+        let fallbackIndex = 0;
+        img.onload = function() {
+            item.classList.add('loaded');
+        };
+        img.onerror = function tryNext() {
+            if (fallbackIndex < fallbackExts.length) {
+                const ext = fallbackExts[fallbackIndex];
+                fallbackIndex++;
+                img.src = 'data/' + path + '/' + index + '.' + ext;
+            } else {
+                console.warn(`Proyecto "${path}": no se encontró la imagen ${index} en ninguna extensión.`);
+                img.onerror = null;
+                item.remove();
+            }
+        };
 
-    img.onerror = function tryNext() {
-        extIndex++;
-        if (extIndex < IMG_EXTENSIONS.length) {
-            img.onerror = tryNext;
-            img.src = 'data/' + path + '/' + index + '.' + IMG_EXTENSIONS[extIndex];
-        } else {
-            // Ninguna extensión funcionó, parar aquí
-            img.onerror = null;
-            item.remove();
-        }
-    };
+        img.src = 'data/' + path + '/' + index + '.' + initialExt;
 
-    item.appendChild(img);
-
-    // Insertar antes del bloque de texto para que las imágenes
-    // siempre queden antes del texto, independientemente del orden de carga
-    const textBlock = gallery.querySelector('.gallery-text');
-    if (textBlock) {
-        gallery.insertBefore(item, textBlock);
-    } else {
+        item.appendChild(img);
         gallery.appendChild(item);
     }
 }
