@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://meowrhino.github.io/mokakopa/sitemap.xml
+Sitemap: https://www.mokakopa.com/sitemap.xml

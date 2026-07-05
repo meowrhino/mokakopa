@@ -1,50 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://meowrhino.github.io/mokakopa/</loc>
-    <lastmod>2026-02-07</lastmod>
+    <loc>https://www.mokakopa.com/</loc>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://meowrhino.github.io/mokakopa/#patoCeramics</loc>
-    <lastmod>2026-02-07</lastmod>
+    <loc>https://www.mokakopa.com/#patoCeramics</loc>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://meowrhino.github.io/mokakopa/#porSiglos</loc>
-    <lastmod>2026-02-07</lastmod>
+    <loc>https://www.mokakopa.com/#viscerales</loc>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://meowrhino.github.io/mokakopa/#abuelo</loc>
-    <lastmod>2026-02-07</lastmod>
+    <loc>https://www.mokakopa.com/#porSiglos</loc>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://meowrhino.github.io/mokakopa/#otrosCuentos</loc>
-    <lastmod>2026-02-07</lastmod>
+    <loc>https://www.mokakopa.com/#abuelo</loc>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://meowrhino.github.io/mokakopa/#pommeTerre</loc>
-    <lastmod>2026-02-07</lastmod>
+    <loc>https://www.mokakopa.com/#otrosCuentos</loc>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://meowrhino.github.io/mokakopa/#teatroPlantas</loc>
-    <lastmod>2026-02-07</lastmod>
+    <loc>https://www.mokakopa.com/#pommeTerre</loc>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://meowrhino.github.io/mokakopa/#bacanales</loc>
-    <lastmod>2026-02-07</lastmod>
+    <loc>https://www.mokakopa.com/#teatroPlantas</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mokakopa.com/#bacanales</loc>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
