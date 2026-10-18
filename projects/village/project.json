@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "it takes a village",
+  "text": {
+    "es": [
+      "<i>It takes a village</i> surge como un espacio de investigación escultórica que toma el barro como punto de partida, abordando la cerámica no solo como técnica sino como continuidad del gesto gráfico. Las piezas se originan en el dibujo, pero es en el tránsito hacia el volumen donde adquieren una autonomía inesperada: tanto el gres como la porcelana introducen ritmos, límites y respuestas propias que reconfiguran la forma inicial.",
+      "El proyecto se centra en el potencial expresivo del objeto cerámico como portador de narrativas abiertas. Las esculturas —criaturas, cuerpos intermedios, presencias difíciles de clasificar— operan como entidades que sugieren historias sin necesidad de un texto que las fije. En ellas, lo lúdico y lo perturbador coexisten, generando una tensión que se despliega en la superficie y en la percepción del espectador.",
+      "La práctica combina distintos métodos de trabajo, desde el modelado directo hasta el uso de moldes, junto con una aproximación experimental al esmaltado. La cocción introduce un margen de imprevisibilidad que se asume como parte constitutiva del proceso: fisuras, desplazamientos cromáticos y alteraciones formales dejan de entenderse como fallos para convertirse en huellas activas de la materia."
+    ],
+    "en": [
+      "<i>It takes a village </i>emerges as a space for sculptural research that takes clay as its starting point, approaching ceramics not only as a technique but as a continuation of the graphic gesture. The pieces originate in drawing, but it is in the transition to volume that they acquire an unexpected autonomy: both stoneware and porcelain introduce their own rhythms, limits, and responses that reconfigure the initial form.",
+      "The project focuses on the expressive potential of the ceramic object as a carrier of open narratives. The sculptures—creatures, intermediate bodies, presences difficult to classify—operate as entities that suggest stories without the need for a text to fix them. In them, the playful and the unsettling coexist, generating a tension that unfolds on the surface and in the viewer's perception.",
+      "The practice combines different working methods, from direct modeling to the use of molds, along with an experimental approach to glazing. The firing process introduces a margin of unpredictability that is assumed to be a constitutive part of the process: cracks, chromatic displacements and formal alterations cease to be understood as failures and become active traces of the matter."
+    ],
+    "ca": [
+      "It takes a village sorgeix com un espai de recerca escultòrica que pren el fang com a punt de partida, abordant la ceràmica no només com a tècnica sinó com a continuïtat del gest gràfic. Les peces s'originen al dibuix, però és en el trànsit cap al volum on adquireixen una autonomia inesperada: tant el gres com la porcellana introdueixen ritmes, límits i respostes pròpies que reconfiguren la forma inicial.",
+      "El projecte se centra en el potencial expressiu de lobjecte ceràmic com a portador de narratives obertes. Les escultures -criatures, cossos intermedis, presències difícils de classificar- operen com a entitats que suggereixen històries sense necessitat d'un text que les fixi. En elles, el lúdic i el pertorbador coexisteixen, generant una tensió que es desplega a la superfície ia la percepció de l'espectador.",
+      "La pràctica combina diferents mètodes de treball, des del modelatge directe fins a l'ús de motlles, juntament amb una aproximació experimental a l'esmaltat. La cocció introdueix un marge d'imprevisibilitat que s'assumeix com a part constitutiva del procés: fissures, desplaçaments cromàtics i alteracions formals deixen d'entendre's com a errors per esdevenir empremtes actives de la matèria."
+    ]
+  },
+  "photos": [
+    "1",
+    "2",
+    "3"
+  ]
+}

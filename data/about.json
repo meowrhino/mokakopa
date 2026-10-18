@@ -1,0 +1,158 @@
+{
+  "$schema": "../schema/about.json",
+  "title": "Monica Kopatschek",
+  "subtitle": "(San Francisco, 1993)",
+  "text": {
+    "es": [
+      "Mi práctica se centra en la pintura figurativa como un lugar donde se cruzan poder, intimidad y ficción. Construyo escenas habitadas por personajes que oscilan entre formas humanas, animales y biomórficas, cohabitando en espacios compartidos y entablando relaciones que sugieren narrativas sin resolución. Estas pinturas funcionan como escenarios--cuidadosamente compuestos y visiblemente construidos--mientras se apoyan en gestos y dinámicas que parecen instintivas o naturales.",
+      "El proceso es central en mi trabajo y a menudo tiene prioridad sobre la imagen terminada. El dibujo funciona como mi modo principal de pensar y tomar decisiones. A través de un trazado abierto y receptivo, las formas emergen gradualmente en lugar de estar predeterminadas. La línea aleatoria o intuitiva se convierte en una estructura generativa, definiendo los contornos de figuras y espacios que luego se desarrollan en escenas pintadas. Este enfoque permite que el azar siga activo dentro de la obra, dando forma tanto a la forma como a la narrativa.",
+      "Mi práctica está informada por un entorno cultural saturado de imágenes, donde el relato, el entretenimiento y la instrucción suelen compartir el mismo lenguaje visual. Esto ha fomentado un escepticismo hacia las narrativas que se presentan como neutrales o inocentes. Los cuentos infantiles y las estructuras folclóricas reaparecen en mis pinturas no como nostalgia, sino como marcos tempranos a través de los cuales se ensayan roles, jerarquías y expectativas morales.",
+      "En lugar de ilustrar historias específicas, uso la ambigüedad narrativa para desplazar el significado hacia la postura, la mirada, la proximidad y el gesto. La pintura se convierte en un espacio donde la creencia se escenifica, se encarna y se inquieta silenciosamente."
+    ],
+    "en": [
+      "My practice centers on figurative painting as a site where power, intimacy, and fiction intersect. I construct scenes inhabited by characters that shift between human, animal, and biomorphic forms, coexisting within shared spaces and enacting relationships that suggest narrative without resolution. These paintings function as stages--carefully composed and visibly constructed--while drawing on gestures and dynamics that appear instinctive or natural.",
+      "Process is central to my work and often takes precedence over the finished image. Drawing functions as my primary mode of thinking and decision-making. Through open, responsive mark-making, forms emerge gradually rather than being predetermined. The random or intuitive line becomes a generative structure, defining the contours of figures and spaces that later develop into painted scenes. This approach allows chance to remain active within the work, shaping both form and narrative.",
+      "My practice is informed by an image-dense cultural environment, where storytelling, entertainment, and instruction often share the same visual language. This has fostered a scepticism toward narratives that present themselves as neutral or innocent. Children's stories and folkloric structures recur in my paintings not as nostalgia, but as early frameworks through which roles, hierarchies, and moral expectations are rehearsed.",
+      "Rather than illustrating specific stories, I use narrative ambiguity to displace meaning into posture, gaze, proximity, and gesture. Painting becomes a space where belief is staged, embodied, and quietly unsettled."
+    ],
+    "ca": [
+      "La meva pràctica se centra en la pintura figurativa com un lloc on s'entrecreuen poder, intimitat i ficció. Construeixo escenes habitades per personatges que oscil·len entre formes humanes, animals i biomòrfiques, cohabitant en espais compartits i entaulant relacions que suggereixen narrativa sense resolució. Aquestes pintures funcionen com a escenaris--curosament compostos i visiblement construïts--mentre es recolzen en gestos i dinàmiques que semblen instintives o naturals.",
+      "El procés és central en la meva feina i sovint té prioritat sobre la imatge acabada. El dibuix funciona com el meu mode principal de pensament i presa de decisions. A través d'un traç obert i receptiu, les formes emergeixen gradualment en lloc d'estar predeterminades. La línia aleatòria o intuïtiva es converteix en una estructura generativa, definint els contorns de figures i espais que més tard es desenvolupen en escenes pintades. Aquest enfocament permet que l'atzar continuï actiu dins de l'obra, modelant tant la forma com la narrativa.",
+      "La meva pràctica està informada per un entorn cultural dens d'imatges, on la narració, l'entreteniment i la instrucció sovint comparteixen el mateix llenguatge visual. Això ha fomentat un escepticisme envers les narratives que es presenten com a neutres o innocents. Els contes infantils i les estructures folklòriques reapareixen en les meves pintures no com a nostàlgia, sinó com a marcs primerencs a través dels quals s'assagen rols, jerarquies i expectatives morals.",
+      "En lloc d'il·lustrar històries específiques, faig servir l'ambigüitat narrativa per desplaçar el significat cap a la postura, la mirada, la proximitat i el gest. La pintura esdevé un espai on la creença s'escenifica, s'encarna i s'inquieta silenciosament."
+    ]
+  },
+  "cv": [
+    {
+      "name": {
+        "es": "Educación Académica",
+        "en": "Academic Education",
+        "ca": "Educació Acadèmica"
+      },
+      "items": [
+        {
+          "date": "2020",
+          "title": " Arte y actividad. Estrategias interactivas para educar en el arte. MoMA"
+        },
+        {
+          "date": "2015",
+          "title": " Grado Superior Técnicas aplicadas al Muro. Escola Massana. Barcelona"
+        },
+        {
+          "date": "2014 – actualidad",
+          "title": "Bellas Artes. Universidad de Barcelona (UB)"
+        }
+      ]
+    },
+    {
+      "name": {
+        "es": "Exposiciones individuales y proyectos seleccionados",
+        "en": "Solo Exhibitions and Selected Projects",
+        "ca": "Exposicions individuals i projectes seleccionats"
+      },
+      "items": [
+        {
+          "date": "2024",
+          "title": "El teatro de las plantas. Finalista Convocatòria d'Exposicions Pere Pruna 2024. Barcelona"
+        },
+        {
+          "date": "2023",
+          "title": "El teatre de les plantes. CC Vázquez Montalbán. Vallvidrera"
+        },
+        {
+          "date": "2023",
+          "title": "El teatro de las plantas. Convocatòria Art i Ciutat. Sant Cugat del Vallès"
+        },
+        {
+          "date": "2022",
+          "title": "Por Siglos en Eros. Espai Jove Boca Nord. Barcelona"
+        },
+        {
+          "date": "2022",
+          "title": "Se acabaron las bacanales. CC Guinardó. Barcelona"
+        },
+        {
+          "date": "2021",
+          "title": "Poesía fantasiosa para combatir la resaca. Cercle artístic Sant Lluc. Barcelona"
+        },
+        {
+          "date": "2021 ",
+          "title": "Xarxa Poètica de Sant Andreu. Barcelona"
+        },
+        {
+          "date": "2021",
+          "title": "Se acabaron las Bacanales. Finalista Art Jove 2021. Barcelona"
+        }
+      ]
+    },
+    {
+      "name": {
+        "es": "Exposiciones y eventos colectivos",
+        "en": "Group Exhibitions and Events",
+        "ca": "Exposicions i esdeveniments col·lectius"
+      },
+      "items": [
+        {
+          "date": "2025",
+          "title": "El picnic. Tinta Invisible Editions. Barcelona."
+        },
+        {
+          "date": "2023",
+          "title": "Placenta. Grau-Garriga Centre d'Art textil contemporani. Sant Cugat del Vallès"
+        },
+        {
+          "date": "2022",
+          "title": "La forma del vers. Taller 131, Barcelona."
+        },
+        {
+          "date": "2021",
+          "title": "Triennal Memento Mori. Xefo Art Gallery (Barcelona) Kampus Hybernská (Praga) La trampa gráfica (México)"
+        },
+        {
+          "date": "2021",
+          "title": "Etching and engraving. Barn Gallery. Wingfield"
+        },
+        {
+          "date": "2021",
+          "title": "Galería L’Etang d’Art. Bages"
+        },
+        {
+          "date": "2021",
+          "title": "The living stone. Alexander’s Gallery. Barcelona.  "
+        },
+        {
+          "date": "2021",
+          "title": "Horitzons. Galería Fort. Cadaquès. "
+        },
+        {
+          "date": "2021",
+          "title": "Talent Creatiu i Empresa. Ceràmiques Marcó. Girona"
+        },
+        {
+          "date": "2021",
+          "title": "Botánica i creació artística. HerbArt. Instituto Botánico. Barcelona."
+        },
+        {
+          "date": "2019",
+          "title": "Jardín Mutante. Cadáver exquisito. Barcelona"
+        },
+        {
+          "date": "2019",
+          "title": "La Cama del Amor. Espai Tundra. Barcelona"
+        },
+        {
+          "date": "2018",
+          "title": "On el verb s’adorm. Edifici Freixas. Hospitalet. "
+        },
+        {
+          "date": "2017",
+          "title": "Thamer. Casa Viçens Piera. Barcelona"
+        },
+        {
+          "date": "2017",
+          "title": "Poiesis. La Colectiva. Barcelona"
+        }
+      ]
+    }
+  ]
+}

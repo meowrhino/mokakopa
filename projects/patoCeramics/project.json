@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "pato ceramics",
+  "text": {
+    "es": [
+      "<i>Pato ceramics</i> nace de la voluntad de explorar la escultura desde el barro, entendiendo la cerámica como extensión natural del dibujo. Cada pieza parte de un boceto previo que se transforma al entrar en contacto con el material: el gres y la porcelana imponen sus propios tiempos y resistencias.",
+      "El proyecto investiga las posibilidades narrativas del objeto cerámico. Las figuras —animales, híbridos, formas ambiguas— funcionan como personajes de un relato sin texto, donde el humor y lo inquietante conviven en la misma superficie esmaltada.",
+      "El proceso de producción combina técnicas de modelado manual, moldes y esmaltado experimental. El horno introduce un factor de azar que se incorpora como parte del lenguaje: las grietas, las variaciones de color y las deformaciones no son errores sino gestos del material."
+    ],
+    "en": [
+      "<i>Pato ceramics</i> was born from a desire to explore sculpture using clay, understanding ceramics as a natural extension of drawing. Each piece begins with a preliminary sketch that is transformed upon contact with the material: stoneware and porcelain impose their own rhythms and resistances.",
+      "The project investigates the narrative possibilities of the ceramic object. The figures—animals, hybrids, ambiguous forms—function as characters in a wordless story, where humor and the unsettling coexist on the same glazed surface.",
+      "The production process combines hand-modeling techniques, molds, and experimental glazing. The kiln introduces an element of chance that becomes part of the artistic language: cracks, color variations, and deformations are not errors but rather gestures of the material itself."
+    ],
+    "ca": [
+      "<i>Pato ceramics</i> neix de la voluntat d'explorar l'escultura des del fang, entenent la ceràmica com a extensió natural del dibuix. Cada peça parteix d'un esbós previ que es transforma en entrar en contacte amb el material: el gres i la porcellana imposen els seus propis temps i resistències.",
+      "El projecte investiga les possibilitats narratives de lobjecte ceràmic. Les figures —animals, híbrids, formes ambigües— funcionen com a personatges d'un relat sense text, on l'humor i l'inquietant conviuen a la mateixa superfície esmaltada.",
+      "El procés de producció combina tècniques de modelatge manual, motlles i esmaltat experimental. El forn introdueix un factor d'atzar que s'incorpora com a part del llenguatge: les esquerdes, les variacions de color i les deformacions no són errades sinó gestos del material."
+    ]
+  },
+  "photos": [
+    "1",
+    "2",
+    "3"
+  ]
+}

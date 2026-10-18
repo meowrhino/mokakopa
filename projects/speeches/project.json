@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "speeches for the future",
+  "text": {
+    "es": [
+      "Este proyecto pictórico se sitúa en el cruce entre prácticas posthumanistas y sensibilidades ecofeministas, cuestionando la centralidad de lo humano en los regímenes de representación. A través de composiciones donde figuras humanas y animales coexisten en espacios ambiguos, las obras desestabilizan las jerarquías interespecie y desplazan la mirada antropocéntrica que ha estructurado históricamente la pintura.",
+      "Mediante alteraciones de escala, agencia y relación, las imágenes activan un campo de tensiones en el que lo humano deja de operar como medida única. En este sentido, el trabajo dialoga con las nociones de relacionalidad y subjetividad posthumana desarrolladas por Donna Haraway y Rosi Braidotti, trasladando estas problemáticas al ámbito específico de la práctica pictórica."
+    ],
+    "en": [
+      "This series is situated at the intersection of posthumanist practices and ecofeminist sensibilities, questioning the centrality of the human in regimes of representation. Through compositions where human and animal figures coexist in ambiguous spaces, the works destabilize interspecies hierarchies and displace the anthropocentric gaze that has historically structured painting.",
+      "Through alterations of scale, agency, and relationship, the images activate a field of tensions in which the human ceases to operate as the sole measure. In this sense, the work engages with the notions of relationality and posthuman subjectivity developed by Donna Haraway and Rosi Braidotti, transferring these issues to the specific realm of painting practice."
+    ],
+    "ca": [
+      "Aquest projecte pictòric es situa en la intersecció de les pràctiques posthumanistes i les sensibilitats ecofeministes, qüestionant la centralitat del que és humà en els règims de representació. Mitjançant composicions on figures humanes i animals coexisteixen en espais ambigus, les obres desestabilitzen les jerarquies interespecífiques i desplacen la mirada antropocèntrica que històricament ha estructurat la pintura.",
+      "A través d'alteracions d'escala, agència i relació, les imatges activen un camp de tensions en què allò humà deixa de ser l'única mesura. En aquest sentit, l'obra dialoga amb les nocions de relacionalitat i subjectivitat posthumana desenvolupades per Donna Haraway i Rosi Braidotti, i trasllada aquestes qüestions a l'àmbit específic de la pràctica pictòrica."
+    ]
+  },
+  "photos": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ]
+}

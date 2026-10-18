@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "data/about.json: el about",
+  "description": "data/about.json: el nombre, el statement y el CV. VS Code lee este fichero (por el \"$schema\" de arriba del JSON) para autocompletar, explicar cada campo y subrayar lo que está mal; el build y la vista previa lo usan para revisar.",
+  "type": "object",
+  "required": [
+    "title",
+    "text"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "_": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "description": "El nombre: \"Monica Kopatschek\""
+    },
+    "subtitle": {
+      "type": "string",
+      "description": "Lo de debajo del nombre: \"(San Francisco, 1993)\". Puede ir vacío: \"\""
+    },
+    "text": {
+      "$ref": "#/$defs/textos",
+      "description": "El statement, una lista de párrafos por idioma. El principio sale en Google."
+    },
+    "cv": {
+      "type": "array",
+      "description": "Las secciones del CV, en orden.",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "items"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "El nombre de la sección: { \"es\": \"…\", \"en\": \"…\", \"ca\": \"…\" }",
+            "properties": {
+              "es": {
+                "type": "string"
+              },
+              "en": {
+                "type": "string"
+              },
+              "ca": {
+                "type": "string"
+              }
+            }
+          },
+          "items": {
+            "type": "array",
+            "description": "Una línea por cosa: { \"date\": \"2017\", \"title\": \"…\" }",
+            "items": {
+              "type": "object",
+              "required": [
+                "date",
+                "title"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "date": {
+                  "type": "string",
+                  "description": "El año o las fechas, entre comillas: \"2017\""
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Qué, dónde. Se puede poner <em>cursiva</em>."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "textos": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Por idioma: { \"es\": [...], \"en\": [...], \"ca\": [...] }. Si falta uno, sale el español.",
+      "properties": {
+        "es": {
+          "$ref": "#/$defs/parrafos"
+        },
+        "en": {
+          "$ref": "#/$defs/parrafos"
+        },
+        "ca": {
+          "$ref": "#/$defs/parrafos"
+        }
+      }
+    },
+    "parrafos": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Una lista de párrafos: [\"primero\", \"segundo\"]. Dentro, <em>cursiva</em>, <strong>negrita</strong> o <a href='https://…'>un enlace</a>."
+    }
+  }
+}

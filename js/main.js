@@ -7,20 +7,34 @@
 // respecto a qué artista o lado se está sirviendo.
 //
 // Arquitectura:
-//   - data.json contiene proyectos, textos (ES/EN/CAT), about, cv y contacto
+//   - El contenido: data/site.json, data/about.json y projects/<slug>/
+//     project.json (house.js lo pasa a la forma de antes: proyectos, textos
+//     ES/EN/CAT, about, cv y contacto)
 //   - Cada proyecto se renderiza como una sección fullscreen con scroll horizontal
-//   - Las imágenes de cada proyecto se crean DE GOLPE a partir de
-//     projectData.imgCount (1..N), sin sondeo secuencial. Cada <img> hace
-//     fallback de extensión en el propio elemento (onerror) probando
-//     ['webp','jpg','png','jpeg','gif'] a partir de projectData.ext || 'webp'.
+//   - Las imágenes de cada proyecto, las de su "photos" (projects/<slug>/img/N.webp)
+//   - El build (build/build.mjs) escribe una página por idioma (/, /en/, /ca/)
+//     con todo esto ya dentro; al cargar, este JS vuelve a pintar lo mismo
 //   - El menú (abajo-izq) usa mix-blend-mode: difference (CSS)
 //   - "mokakopa" (arriba-izq) abre el overlay del about
 //   - About tiene toggle statement/CV + selector de idioma reutilizable
 // ============================================================================
 
+import { slugsOf, toOld } from './house.js';
+import { leerJSON, validar } from './validar.js';
+
 // --- Estado global ---
-let currentLang = 'ES';
+// El idioma, el de la página (<html lang>): /, /en/ o /ca/
+let currentLang = { es: 'ES', en: 'EN', ca: 'CAT' }[document.documentElement.lang] || 'ES';
 let projectsData = null;
+
+// La raíz de la web: la carpeta de encima de js/. Vale igual en la raíz, en
+// /en/ y en meowrhino.github.io/mokakopa/
+const ROOT = new URL('..', import.meta.url).href;
+
+// Las páginas que escribe el build llevan data-built en <html>. Sin él es la
+// vista previa (Live Server, sin build): los JSON se revisan con schema/ como
+// hace el build, y lo que esté mal sale en pantalla.
+const BUILT = document.documentElement.hasAttribute('data-built');
 
 // Todas las galerías, para recalcular padding en resize
 const galleries = [];
@@ -30,11 +44,30 @@ const galleries = [];
 // INICIALIZACIÓN
 // ============================================================================
 
+async function loadData() {
+    const get = async (path) => {
+        const res = await fetch(ROOT + path, { cache: BUILT ? 'default' : 'no-store' });
+        if (!res.ok) throw new Error(`no encuentro ${path}`);
+        return leerJSON(await res.text(), path);
+    };
+    const [site, about] = await Promise.all([get('data/site.json'), get('data/about.json')]);
+    const slugs = slugsOf(site).filter(s => typeof s === 'string');
+    const projects = Object.fromEntries(await Promise.all(slugs.map(async s => [s, await get(`projects/${s}/project.json`)])));
+    if (!BUILT) {
+        const schema = Object.fromEntries(await Promise.all(['site', 'about', 'project'].map(async t => [t, await get(`schema/${t}.json`)])));
+        const errores = [
+            ...validar(site, schema.site, 'data/site.json'),
+            ...validar(about, schema.about, 'data/about.json'),
+            ...slugs.flatMap(s => validar(projects[s], schema.project, `projects/${s}/project.json`)),
+        ];
+        if (errores.length) throw new Error(errores.map(e => '✗ ' + e).join('\n'));
+    }
+    return toOld(site, about, projects);
+}
+
 async function init() {
     try {
-        const response = await fetch('data.json');
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        projectsData = await response.json();
+        projectsData = await loadData();
 
         if (projectsData.resaltado) {
             document.documentElement.style.setProperty('--resaltado', projectsData.resaltado);
@@ -47,13 +80,13 @@ async function init() {
         initResizeHandler();
     } catch (error) {
         console.error('Error al inicializar:', error);
-        document.getElementById('projects-container').innerHTML =
-            '<div style="display:flex;justify-content:center;align-items:center;' +
-            'height:100vh;flex-direction:column;padding:20px;text-align:center;">' +
-            '<h1>error al cargar la página</h1>' +
-            '<p>no se pudieron cargar los datos. recarga la página.</p>' +
-            '<p style="color:#666;font-size:14px;margin-top:20px;">error: ' +
-            error.message + '</p></div>';
+        // en pantalla, no en la consola: ahí no lo mira nadie
+        const box = document.createElement('div');
+        box.style.cssText = 'padding:2rem;max-width:70ch;white-space:pre-wrap;font:15px/1.5 monospace;';
+        box.textContent = BUILT
+            ? 'error al cargar la página. recarga la página.\n\n' + error.message
+            : 'esto no se publicaría:\n\n' + error.message + '\n\narréglalo, guarda, y la página se recarga sola.';
+        document.getElementById('projects-container').replaceChildren(box);
     }
 }
 
@@ -164,57 +197,30 @@ function initResizeHandler() {
 // ============================================================================
 // CARGA DE IMÁGENES
 //
-// A partir de projectData.imgCount se crean de golpe los N gallery-items
-// (orden 1..N) y se añaden al DOM inmediatamente. Cada <img> intenta
-// primero projectData.ext || 'webp'; si falla, su propio onerror recorre
-// las extensiones restantes de IMG_EXTENSIONS. Si ninguna funciona,
-// se elimina ese gallery-item y se avisa por console.warn.
-// Si el proyecto no define imgCount (o es 0), no se añade ninguna imagen
-// y se avisa por console.warn.
+// Las de su "photos" (projects/<slug>/img/N.webp, de imgToWeb), en ese orden,
+// de golpe. Una que no está se quita y se avisa por console.warn (el build
+// ya no publica si falta alguna).
 // ============================================================================
 
-const IMG_EXTENSIONS = ['webp', 'jpg', 'png', 'jpeg', 'gif'];
-
 function addImagesToGallery(gallery, path, projectData) {
-    const imgCount = projectData && projectData.imgCount;
-    if (!imgCount) {
-        console.warn(`Proyecto "${path}": falta imgCount en data.json, no se cargarán imágenes.`);
-        return;
-    }
-
-    const initialExt = (projectData && projectData.ext) || 'webp';
-    const fallbackExts = IMG_EXTENSIONS.filter(ext => ext !== initialExt);
-
-    for (let index = 1; index <= imgCount; index++) {
+    (projectData.photos || []).forEach((src, i) => {
         const item = document.createElement('div');
         item.className = 'gallery-item';
 
         const img = document.createElement('img');
         img.loading = 'lazy';
         img.decoding = 'async';
-        img.alt = path + ' ' + index;
-
-        let fallbackIndex = 0;
-        img.onload = function() {
-            item.classList.add('loaded');
+        img.alt = path + ' ' + (i + 1);
+        img.onload = () => item.classList.add('loaded');
+        img.onerror = () => {
+            console.warn(`Proyecto "${path}": no se encontró ${src}.`);
+            item.remove();
         };
-        img.onerror = function tryNext() {
-            if (fallbackIndex < fallbackExts.length) {
-                const ext = fallbackExts[fallbackIndex];
-                fallbackIndex++;
-                img.src = 'data/' + path + '/' + index + '.' + ext;
-            } else {
-                console.warn(`Proyecto "${path}": no se encontró la imagen ${index} en ninguna extensión.`);
-                img.onerror = null;
-                item.remove();
-            }
-        };
-
-        img.src = 'data/' + path + '/' + index + '.' + initialExt;
+        img.src = ROOT + src;
 
         item.appendChild(img);
         gallery.appendChild(item);
-    }
+    });
 }
 
 
@@ -634,7 +640,7 @@ function renderStatement(container) {
 }
 
 /**
- * Renderiza las secciones del CV desde data.json.
+ * Renderiza las secciones del CV (data/about.json → cv).
  */
 function renderCV(container) {
     const cvData = projectsData.cv;
@@ -663,7 +669,7 @@ function renderCV(container) {
 }
 
 /**
- * Renderiza la sección de contacto desde data.json.
+ * Renderiza la sección de contacto (data/site.json y about.json).
  */
 function renderContact() {
     const contacto = projectsData.contacto;

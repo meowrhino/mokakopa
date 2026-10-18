@@ -1,0 +1,45 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "el teatro de las plantas",
+  "text": {
+    "es": [
+      "El teatro de las plantas es un trabajo en curso que investiga la vida en los ecosistemas de Collserola a partir de la observación, el dibujo y la imaginación. Seleccionado inicialmente para la convocatoria Art i Ciutat Sant Cugat 2022, se inspiró en las revolucionarias ideas mediante las cuales diversos autores, desde Demócrito, pasando por Darwin, y desembocando en actuales neuropbiólogos del mundo vegetal como Monica Gagliano o Stefano Mancuso, han expresado su convicción de que las plantas están dotadas de habilidades y sensibilidades mucho más refinadas de las que comúnmente se observan.",
+      "El proyecto parte de la voluntad de explorar las posibilidades narrativas y poéticas cuando imaginamos la existencia desde percepciones diferentes a la temporalidad y el desplazamiento humano habitual. Comienza observando la naturaleza de Collserola para desembocar en dibujos que expresan los patrones de crecimiento de plantas e insectos. Las líneas que los conforman dan información sobre su desarrollo ordenado en el tiempo. Estos patrones remiten a ideas y símbolos presentes en nuestro subconsciente y, por ende, en el arte y la literatura de autores contemporáneos y anteriores a nosotras. Muchas piezas experimentan también con escenas narrativas y asociaciones. A lo largo de este recorrido, encontramos una contemplación reiterada de lo desconocido mediante personajes que descubren diminutos mundos de fantasía.",
+      "Estas escenas desprenden un lirismo nostálgico de la infancia como época de descubrimiento e imaginación. A medida que El Teatro de las plantas avanza, surgen ideas relacionadas con los ciclos lunares, que se reflejan en sincronía rítmica y regular en la vida de los ecosistemas, y también preguntas sobre el sol y los ciclos estacionales. Poco a poco, el tiempo se desvanece y la única medida que queda de él es el cambio. Un compás complejo y sordo reproduce la esfera celeste en los movimientos del bosque.",
+      "Este proyecto tuvo su segunda etapa en 2024, siendo seleccionado para la 'Convocatòria d'Exposicions 2024' del CC Pere Pruna.",
+      "La nueva edición busca revelar los vínculos invisibles entre aquello que huye de ser visto, y dar forma material a posibles imaginarios surgidos de las relaciones no jerárquicas y las celebraciones humanas.",
+      "Sus inspiraciones son tan diversas como los grabados botánicos, las novelas de ciencia ficción, cómico, dibujos animados, magia, mitología griega y folklore popular. El teatro de las plantas sirve de marco teórico para la necesidad de autoconocimiento y reflexión sobre el entorno que habitamos."
+    ],
+    "en": [
+      "El teatro de las plantas is an ongoing work that investigates life in the ecosystems of Collserola through observation, drawing, and imagination. Initially selected for the Art i Ciutat Sant Cugat 2022 call, it was inspired by the revolutionary ideas through which various authors, from Demócrito, through Darwin, and arriving at current neurobiologists of the plant world such as Monica Gagliano or Stefano Mancuso, have expressed their conviction that plants are endowed with abilities and sensitivities far more refined than those commonly observed.",
+      "The project begins from the desire to explore narrative and poetic possibilities when we imagine existence from perceptions different from usual human temporality and movement. It begins by observing the nature of Collserola to culminate in drawings that express the growth patterns of plants and insects. The lines that shape them provide information about their ordered development over time. These patterns refer to ideas and symbols present in our subconscious and, therefore, in the art and literature of contemporary authors and those who came before us. Many pieces also experiment with narrative scenes and associations. Along this path, we find a repeated contemplation of the unknown through characters who discover tiny worlds of fantasy.",
+      "These scenes give off a nostalgic lyricism of childhood as a time of discovery and imagination. As El Teatro de las plantas advances, ideas related to lunar cycles arise, which are reflected in rhythmic and regular synchrony in the life of ecosystems, and also questions about the sun and seasonal cycles. Little by little, time fades and the only measure left is change. A complex and muted beat reproduces the celestial sphere in the movements of the forest.",
+      "This project had its second stage in 2024, being selected for the 'Convocatòria d'Exposicions 2024' of CC Pere Pruna.",
+      "The new edition seeks to reveal the invisible links between what eludes being seen, and to give material form to possible imaginaries arising from non-hierarchical relationships and human celebrations.",
+      "Its inspirations are as diverse as botanical engravings, science fiction novels, comics, animated cartoons, magic, Greek mythology, and popular folklore. El teatro de las plantas serves as a theoretical framework for the need for self-knowledge and reflection on the environment we inhabit."
+    ],
+    "ca": [
+      "<i>El teatre de les plantes </i>és un treball en curs que investiga la vida als ecosistemes de Collserola a partir de l'observació, el dibuix i la imaginació. Seleccionat inicialment per a la convocatòria Art i Ciutat Sant Cugat 2022, es va inspirar en les idees revolucionàries mitjançant les quals diversos autors, des de Demócrito, passant per Darwin, i arribant a neurobiòlegs actuals del món vegetal com Monica Gagliano o Stefano Mancuso, han expressat la seva convicció que les plantes estan dotades d'habilitats i sensibilitats molt més refinades de les que comunament s'observen.",
+      "El projecte parteix de la voluntat d'explorar les possibilitats narratives i poètiques quan imaginem l'existència des de percepcions diferents de la temporalitat i el desplaçament humà habitual. Comença observant la natura de Collserola per desembocar en dibuixos que expressen els patrons de creixement de plantes i insectes. Les línies que els conformen donen informació sobre el seu desenvolupament ordenat en el temps. Aquests patrons remeten a idees i símbols presents en el nostre subconscient i, per tant, en l'art i la literatura d'autors contemporanis i anteriors a nosaltres. Moltes peces experimenten també amb escenes narratives i associacions. Al llarg d'aquest recorregut, trobem una contemplació reiterada del desconegut mitjançant personatges que descobreixen diminuts mons de fantasia.",
+      "Aquestes escenes desprenen un lirisme nostàlgic de la infància com a època de descobriment i imaginació. A mesura que El Teatro de las plantas avança, sorgeixen idees relacionades amb els cicles lunars, que es reflecteixen en sincronies rítmiques i regulars en la vida dels ecosistemes, i també preguntes sobre el sol i els cicles estacionals. A poc a poc, el temps s'esvaeix i l'única mesura que en queda és el canvi. Un compàs complex i sord reprodueix l'esfera celeste en els moviments del bosc.",
+      "Aquest projecte va tenir la seva segona etapa el 2024, i va ser seleccionat per a la 'Convocatòria d'Exposicions 2024' del CC Pere Pruna.",
+      "La nova edició busca revelar els vincles invisibles entre allò que fuig de ser vist, i donar forma material a possibles imaginaris sorgits de les relacions no jeràrquiques i les celebracions humanes.",
+      "Les seves inspiracions són tan diverses com els gravats botànics, les novel·les de ciència-ficció, còmic, dibuixos animats, màgia, mitologia grega i folklore popular. El teatro de las plantas serveix de marc teòric per a la necessitat d'autoconeixement i reflexió sobre l'entorn que habitem."
+    ]
+  },
+  "photos": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13"
+  ]
+}

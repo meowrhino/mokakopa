@@ -1,0 +1,23 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "o sole mio",
+  "text": {
+    "es": [
+      "La presente propuesta se plantea como un espacio crítico y especulativo desde el cual no tanto representar el mundo como ensayar otras maneras de habitarlo. Frente a visiones nostálgicas o idealizadas de la naturaleza, el proyecto propone una ecología imaginaria basada en la interdependencia y el humor como herramientas de desestabilización. En este desplazamiento, las imágenes no ofrecen respuestas cerradas, sino que abren un campo de posibilidades donde repensar las relaciones y formas de vida."
+    ],
+    "en": [
+      "This proposal is conceived as a critical and speculative space from which to explore alternative ways of inhabiting the world, rather than simply representing it. In contrast to nostalgic or idealized views of nature, the project proposes an imaginary ecology based on interdependence and humor as tools for destabilization. In this shift, the images do not offer definitive answers, but rather open up a field of possibilities for rethinking relationships and ways of life."
+    ],
+    "ca": [
+      "Aquesta proposta es planteja com un espai crític i especulatiu des del qual no representar tant el món com assajar altres maneres d'habitar-lo. Enfront de visions nostàlgiques o idealitzades de la natura, el projecte proposa una ecologia imaginària basada en la interdependència i l'humor com a eines de desestabilització. En aquest desplaçament, les imatges no ofereixen respostes tancades, sinó que obren un camp de possibilitats on repensar les relacions i les formes de vida."
+    ]
+  },
+  "photos": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  ]
+}

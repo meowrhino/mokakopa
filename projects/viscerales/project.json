@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "diálogos viscerales",
+  "text": {
+    "es": [
+      "Diálogos viscerales es una serie de dibujos realizados con plumilla y tinta china que parte del encuentro con apuntes de álgebra encontrados, asumidos como objets trouvés, para activar un desplazamiento del lenguaje matemático hacia un territorio sensorial y orgánico. Las fórmulas, originalmente concebidas como estructuras abstractas y cerradas, son recontextualizadas dentro de un sistema visual que las desborda, proponiendo una lectura donde lo racional se ve atravesado por lo corporal. El uso de la plumilla, con su capacidad para modular la línea entre precisión y accidente, articula un lenguaje gráfico que oscila entre el control del trazo y su deriva.",
+      "Las expresiones algebraicas conviven con formas blandas, expansivas y difíciles de contener: figuras viscerales —pliegues, membranas, masas en crecimiento— envuelven, invaden y en ocasiones parecen devorar los signos matemáticos, generando una tensión constante entre orden y descomposición. La tinta china, con sus negros densos y variaciones tonales, intensifica esta relación, convirtiendo la superficie en un campo de absorción y resistencia. El proyecto se sitúa en un punto de intersección entre sistemas de conocimiento aparentemente opuestos: la precisión del cálculo y la indeterminación de lo vivo. En esta superposición, las imágenes plantean una inversión de roles donde aquello que debía estructurar el mundo es absorbido por dinámicas que escapan a su control, sugiriendo una forma de pensamiento que se expande más allá de lo lógico hacia lo visceral y lo intuitivo."
+    ],
+    "en": [
+      "Visceral Dialogues is a series of pen and ink drawings that stems from encountering found algebraic notes, treated as objets trouvés, to shift mathematical language toward a sensory and organic realm. The formulas, originally conceived as closed, abstract structures, are recontextualized within a visual system that overflows them, proposing an interpretation where the rational is interwoven with the corporeal. The use of the pen, with its capacity to modulate the line between precision and accident, articulates a graphic language that oscillates between controlled strokes and their free-flowing nature.",
+      "The algebraic expressions coexist with soft, expansive, and difficult-to-contain forms: visceral figures—folds, membranes, growing masses—envelop, invade, and at times seem to devour the mathematical symbols, generating a constant tension between order and decomposition. The India ink, with its dense blacks and tonal variations, intensifies this relationship, transforming the surface into a field of absorption and resistance. The project is situated at the intersection of seemingly opposing systems of knowledge: the precision of calculation and the indeterminacy of life. In this superimposition, the images suggest a reversal of roles where that which should structure the world is absorbed by dynamics beyond its control, suggesting a form of thought that expands beyond the logical into the visceral and the intuitive."
+    ],
+    "ca": [
+      "Diàlegs viscerals és una sèrie de dibuixos realitzats amb ploma i tinta xinesa que parteix de la trobada amb apunts d'àlgebra trobats, assumits com a objets trouvés, per activar un desplaçament del llenguatge matemàtic cap a un territori sensorial i orgànic. Les fórmules, originalment concebudes com a estructures abstractes i tancades, són recontextualitzades dins d'un sistema visual que les desborda, proposant una lectura on allò racional es veu travessat per allò corporal. L'ús de la ploma, amb la seva capacitat per modular la línia entre precisió i accident, articula un llenguatge gràfic que oscil·la entre el control del traç i la deriva.",
+      "Les expressions algebraiques conviuen amb formes toves, expansives i difícils de contenir: figures viscerals —plecs, membranes, masses en creixement— envolten, envaeixen i de vegades semblen devorar els signes matemàtics, generant una tensió constant entre ordre i descomposició. La tinta xinesa, amb els negres densos i variacions tonals, intensifica aquesta relació, convertint la superfície en un camp d'absorció i resistència. El projecte se situa en un punt d‟intersecció entre sistemes de coneixement aparentment oposats: la precisió del càlcul i la indeterminació del que és viu. En aquesta superposició, les imatges plantegen una inversió de rols on allò que havia d'estructurar el món és absorbit per dinàmiques que escapen al seu control, suggerint una forma de pensament que s'expandeix més enllà del que és lògic cap a allò visceral i allò intuïtiu."
+    ]
+  },
+  "photos": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ]
+}

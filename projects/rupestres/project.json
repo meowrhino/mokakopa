@@ -1,0 +1,22 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "rupestres",
+  "text": {
+    "es": [
+      "Este proyecto de dibujo a tinta que toma como punto de partida la superficie como territorio de inscripción. Capas irregulares de gesso y yeso construyen un fondo que remite a la sequedad mineral de la roca, evocando una relación directa con las lógicas de las pinturas rupestres. Sobre este campo, la línea emerge como gesto primario: un trazo inicial, casi automático, da lugar a la aparición de figuras humanas, animales, e híbridas que parecen activarse desde el propio acto de marcar la superficie.",
+      "La tinta, en su inmediatez y capacidad de fijar el gesto, articula un lenguaje basado en la acumulación de marcas, donde el dibujo se entiende como huella y registro más que como representación cerrada."
+    ],
+    "en": [
+      "This project takes the surface as its starting point, as a territory for inscription. Irregular layers of gesso and plaster create a background that evokes the mineral dryness of rock, suggesting a direct connection to the logic of cave paintings. On this surface, the line emerges as a primary gesture: an initial, almost automatic stroke gives rise to human, animal, and hybrid figures that seem to be activated by the very act of marking the surface.",
+      "Ink, in its immediacy and capacity to fix the gesture, articulates a language based on the accumulation of marks, where drawing is understood as a trace and record rather than a closed representation."
+    ],
+    "ca": [
+      "Aquest projecte de dibuix a tinta que pren com a punt de partida la superfície com a territori dinscripció. Capes irregulars de gesso i guix construeixen un fons que remet a la sequedat mineral de la roca, evocant una relació directa amb les lògiques de les pintures rupestres. Sobre aquest camp, la línia emergeix com a gest primari: un traç inicial, gairebé automàtic, dóna lloc a l'aparició de figures humanes, animals i híbrides que semblen activar-se des del mateix acte de marcar la superfície.",
+      "La tinta, en la immediatesa i la capacitat de fixar el gest, articula un llenguatge basat en l'acumulació de marques, on el dibuix s'entén com a empremta i registre més que com a representació tancada."
+    ]
+  },
+  "photos": [
+    "1",
+    "2"
+  ]
+}

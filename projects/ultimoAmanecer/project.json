@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "el último amanecer",
+  "text": {
+    "es": [
+      "Speeches for the future es un proyecto de ilustración y narrativa gráfica que parte de los archivos familiares para reconstruir una genealogía afectiva. A través de retratos, objetos y espacios domésticos, la obra traza las líneas invisibles que conectan generaciones y revela los patrones que se heredan sin nombrar.",
+      "El dibujo a tinta y acuarela se combina con fragmentos de texto autobiográfico, creando un diálogo entre imagen y palabra donde ninguno de los dos lenguajes completa al otro. Las lagunas y los silencios forman parte del relato tanto como lo que se muestra.",
+      "El título alude a la repetición de roles y destinos dentro de una familia, pero también a la posibilidad de interrumpir esa cadena. La obra se sitúa en ese punto de tensión entre la herencia recibida y la identidad que se elige construir."
+    ],
+    "en": [
+      "Speeches for the future is an illustration and graphic narrative project that draws from family archives to reconstruct an affective genealogy. Through portraits, objects, and domestic spaces, the work traces the invisible lines connecting generations and reveals patterns inherited without being named.",
+      "Ink and watercolor drawing is combined with fragments of autobiographical text, creating a dialogue between image and word where neither language completes the other. Gaps and silences are as much a part of the narrative as what is shown.",
+      "The title alludes to the repetition of roles and destinies within a family, but also to the possibility of interrupting that chain. The work situates itself at the point of tension between inherited legacy and the identity one chooses to build."
+    ],
+    "ca": [
+      "Speeches for the future és un projecte d'il·lustració i narrativa gràfica que parteix dels arxius familiars per reconstruir una genealogia afectiva. A través de retrats, objectes i espais domèstics, l'obra traça les línies invisibles que connecten generacions i revela els patrons que s'hereten sense nomenar.",
+      "El dibuix a tinta i aquarel·la es combina amb fragments de text autobiogràfic, creant un diàleg entre imatge i paraula on cap dels dos llenguatges completa l'altre. Les llacunes i els silencis formen part del relat tant com allò que es mostra.",
+      "El títol al·ludeix a la repetició de rols i destins dins d'una família, però també a la possibilitat d'interrompre aquesta cadena. L'obra se situa en aquest punt de tensió entre l'herència rebuda i la identitat que es tria construir."
+    ]
+  },
+  "photos": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7"
+  ]
+}

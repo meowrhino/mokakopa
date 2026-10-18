@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "reach for the stars",
+  "text": {
+    "es": [
+      "<i>Reach for the stars</i> es un proyecto narrativo gráfico que se nutre de archivos familiares para reconstruir una genealogía afectiva. A través de retratos, objetos y espacios domésticos, la obra traza las líneas invisibles que conectan generaciones y revela patrones heredados sin ser nombrados explícitamente.",
+      "Dibujos a tinta y acuarela se combinan con fragmentos de texto autobiográfico, estableciendo un diálogo entre imagen y palabra en el que ninguna forma de expresión resuelve completamente a la otra. La ausencia, los vacíos y los silencios funcionan como elementos narrativos integrales, dando forma a la estructura de la obra tanto como a su contenido visible.",
+      "El título alude a la repetición de roles y trayectorias dentro de una familia, al tiempo que señala la posibilidad de interrumpir dichos ciclos. El proyecto se sitúa en esta tensión entre los marcos heredados y la construcción activa de la identidad, proponiendo un espacio en el que la historia personal puede ser examinada y reconfigurada."
+    ],
+    "en": [
+      "<i>Reach for the stars</i> is graphic narrative project that draws from family archives to reconstruct an affective genealogy. Through portraits, objects, and domestic spaces, the work traces the invisible lines that connect generations and reveals patterns that are inherited without being explicitly named.\nInk and watercolor drawings are combined with fragments of autobiographical text, establishing a dialogue between image and word in which neither mode of expression fully resolves the other.",
+      "The title alludes to the repetition of roles and trajectories within a family, while also pointing to the possibility of interrupting such cycles. The project situates itself within this tension between inherited frameworks and the active construction of identity, proposing a space in which personal history can be both examined and reconfigured."
+    ],
+    "ca": [
+      "Reach for the stars és un projecte narratiu gràfic que es nodreix d'arxius familiars per reconstruir una genealogia afectiva. A través de retrats, objectes i espais domèstics, l'obra traça les línies invisibles que connecten generacions i revela patrons heretats sense ser anomenats explícitament.",
+      "Dibuixos a tinta i aquarel·la es combinen amb fragments de text autobiogràfic, establint un diàleg entre imatge i paraula en què cap forma d'expressió no resol completament l'altra. L'absència, els buits i els silencis funcionen com a elements narratius integrals, donant forma a l'estructura de l'obra tant com al contingut visible.",
+      "El títol fa referència a la repetició de rols i trajectòries dins d'una família, alhora que assenyala la possibilitat d'interrompre aquests cicles. El projecte se situa en aquesta tensió entre els marcs heretats i la construcció activa de la identitat, proposant un espai on la història personal pot ser examinada i reconfigurada."
+    ]
+  },
+  "photos": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "../schema/site.json",
+  "title": "mokakopa",
+  "url": "https://www.mokakopa.com",
+  "color": "#FF69B4",
+  "email": "mokakopa@gmail.com",
+  "social": {
+    "instagram": "mokakopa"
+  },
+  "lists": {
+    "work": {
+      "projects": [
+        "speeches",
+        "soleMio",
+        "rupestres",
+        "stars",
+        "village",
+        "pommeTerre",
+        "patoCeramics",
+        "teatroPlantas",
+        "bacanales",
+        "playing",
+        "otrosCuentos",
+        "viscerales",
+        "ultimoAmanecer",
+        "porSiglos"
+      ]
+    }
+  }
+}

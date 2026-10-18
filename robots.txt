@@ -1,6 +1,0 @@
-# robots.txt para mokakopa
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://www.mokakopa.com/sitemap.xml

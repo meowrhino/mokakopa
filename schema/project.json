@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "projects/<slug>/project.json: un proyecto",
+  "description": "projects/<slug>/project.json: un proyecto. Sus fotos, en img/ de la misma carpeta (1.webp, 2.webp…, de imgToWeb). VS Code lee este fichero (por el \"$schema\" de arriba del JSON) para autocompletar, explicar cada campo y subrayar lo que está mal; el build y la vista previa lo usan para revisar.",
+  "type": "object",
+  "required": [
+    "title",
+    "photos"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "_": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "description": "El título: sale en el menú y encima del texto."
+    },
+    "text": {
+      "$ref": "#/$defs/textos",
+      "description": "El texto del proyecto, una lista de párrafos por idioma."
+    },
+    "photos": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9]+$",
+        "description": "El número, entre comillas y sin .webp: \"3\""
+      },
+      "description": "Las fotos de img/, en el orden en que salen: [\"1\", \"2\", \"3\"]"
+    }
+  },
+  "$defs": {
+    "textos": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Por idioma: { \"es\": [...], \"en\": [...], \"ca\": [...] }. Si falta uno, sale el español.",
+      "properties": {
+        "es": {
+          "$ref": "#/$defs/parrafos"
+        },
+        "en": {
+          "$ref": "#/$defs/parrafos"
+        },
+        "ca": {
+          "$ref": "#/$defs/parrafos"
+        }
+      }
+    },
+    "parrafos": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Una lista de párrafos: [\"primero\", \"segundo\"]. Dentro, <em>cursiva</em>, <strong>negrita</strong> o <a href='https://…'>un enlace</a>."
+    }
+  }
+}

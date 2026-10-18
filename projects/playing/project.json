@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "playing",
+  "text": {
+    "es": [
+      "<i>Playing </i>es un proyecto de obra gráfica que se articula a través de técnicas de aguafuerte y aguatinta, entendiendo la matriz como un espacio de incisión y acumulación. La superficie metálica, trabajada mediante mordidas sucesivas, construye campos de densidad variable donde la imagen no se dibuja únicamente, sino que se inscribe y se erosiona. \nLa combinación de línea y mancha, característica de estas técnicas, da lugar a composiciones que oscilan entre lo definido y lo difuso. El trazo del aguafuerte delimita contornos inestables, mientras que la aguatinta introduce zonas de sombra y atmósferas granulares que expanden la imagen hacia lo indeterminado. Las figuras no se presentan como formas cerradas, sino como apariciones en tránsito, atravesadas por texturas y gradaciones que sugieren estados de transformación constante. La repetición y variación propias del proceso gráfico refuerzan esta condición, generando imágenes que nunca se fijan del todo.",
+      "El proyecto se sitúa en un terreno donde lo orgánico se entrelaza con lo técnico, y donde la imagen surge del diálogo entre control e imprevisibilidad. En esta tensión, las formas biomórficas funcionan como vehículos para pensar otras lógicas de corporalidad y crecimiento, alejadas de estructuras estables o jerárquicas. Más que representar organismos reconocibles, la serie propone un imaginario en el que la vida se manifiesta como flujo, como proliferación de formas que desbordan sus propios límites y abren un espacio para lo incierto y lo cambiante."
+    ],
+    "en": [
+      "<i>Playing</i> is a graphic art project that employs etching and aquatint techniques, understanding the matrix as a space of incision and accumulation. The metallic surface, worked through successive bites, constructs fields of varying density where the image is not merely drawn, but inscribed and eroded.",
+      "The combination of line and stain, characteristic of these techniques, gives rise to compositions that oscillate between the defined and the diffuse. The etching line delineates unstable contours, while the aquatint introduces areas of shadow and granular atmospheres that expand the image into the indeterminate. The figures are not presented as closed forms, but as apparitions in transit, traversed by textures and gradations that suggest states of constant transformation. The repetition and variation inherent in the graphic process reinforce this condition, generating images that never fully settle.",
+      "The project occupies a space where the organic intertwines with the technical, and where the image emerges from the dialogue between control and unpredictability. Within this tension, biomorphic forms function as vehicles for exploring alternative logics of embodiment and growth, far removed from stable or hierarchical structures. Rather than representing recognizable organisms, the series proposes an imaginary world in which life manifests as flow, as a proliferation of forms that overflow their own boundaries and open a space for the uncertain and the ever-changing."
+    ],
+    "ca": [
+      "<i>Playing</i> és un projecte d'obra gràfica que s'articula mitjançant tècniques d'aiguafort i aiguatinta, entenent la matriu com un espai d'incisió i acumulació. La superfície metàl·lica, treballada mitjançant mossegades successives, construeix camps de densitat variable on la imatge no es dibuixa únicament, sinó que s'inscriu i s'erosiona.",
+      "La combinació de línia i taca, característica d'aquestes tècniques, dóna lloc a composicions que oscil·len entre allò definit i allò difús. El traç de l'aiguafort delimita contorns inestables, mentre que l'aiguatinta introdueix zones d'ombra i atmosferes granulars que expandeixen la imatge cap a allò indeterminat. Les figures no es presenten com a formes tancades, sinó com a aparicions en trànsit, travessades per textures i gradacions que suggereixen estats de transformació constant. La repetició i variació pròpies del procés gràfic reforcen aquesta condició, generant imatges que mai no es fixen del tot.",
+      "El projecte se situa en un terreny on allò orgànic s'entrellaça amb allò tècnic, i on la imatge sorgeix del diàleg entre control i imprevisibilitat. En aquesta tensió, les formes biomòrfiques funcionen com a vehicles per pensar altres lògiques de corporalitat i creixement, allunyades d‟estructures estables o jeràrquiques. Més que representar organismes reconeixibles, la sèrie proposa un imaginari en què la vida es manifesta com a flux, com a proliferació de formes que desborden els seus propis límits i obren un espai per a allò incert i canviant."
+    ]
+  },
+  "photos": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  ]
+}
